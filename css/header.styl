@@ -2,3 +2,55 @@
 	background-color COLOR_BG_HEADER
 	height 150px
 	color COLOR_TEXT_LIGHT
+	overflow hidden
+
+.header__container
+	height 100%
+
+.header__flex
+	flexbox()
+	height 100%
+
+.header__flex__item
+	align-self center
+	flex-grow 1
+
+.header__flex__item__phone,
+.header__flex__item__title__name
+	font-size 24px
+	white-space nowrap
+
+.header__flex__item__title__name,
+.header__flex__item__title__note
+	display inline-block
+	line-height 90%
+
+.header__flex__item__title__note
+	color #95cbe6
+	font-size 0.9em
+	padding-top 8px
+
+
+.header__flex__item__owl
+	display inline-block
+	width 215px
+	height 215px
+	border-radius(215px)
+	background-color rgba(255,255,255, 0.5);
+	margin-bottom -88px
+	background-image url("../img/owl.png")
+	background-repeat no-repeat
+	background-position center 30px
+	background-size 72%
+
+.header__flex__item--logo,
+.header__flex__item--contacts
+	flex-shrink 0
+
+.header__flex__item--logo
+	padding-left 95px
+
+	.header__flex__item__logo
+		margin-left -80px
+		padding-right 10px
+		float left
