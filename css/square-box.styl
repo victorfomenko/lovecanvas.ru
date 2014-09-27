@@ -1,0 +1,36 @@
+.square-box
+	position: relative
+	width: 100%
+	overflow: hidden
+	background-size cover
+	background-repeat no-repeat
+	background-position 0 center
+
+.square-box:before
+	content: ""
+	display: block
+	padding-top: 100%
+
+.square-box--small:before
+	padding-top: 50% !important
+
+.square-box--xs:before
+	padding-top 25% !important
+
+.square-box:first-child
+	margin-bottom 6px
+
+.square-box:first-child:last-child
+	padding-bottom 6px
+
+.square-box--item-1
+	background-image url("../img/samples/item1.jpg")
+
+.square-box--item-2
+	background-image url("../img/samples/item2.jpg")
+
+.square-box--item-3
+	background-image url("../img/samples/item3.jpg")
+
+.square-box--item-4
+	background-image url("../img/samples/item4.jpg")
