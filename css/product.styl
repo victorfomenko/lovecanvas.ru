@@ -1,0 +1,66 @@
+.product
+	display inline-block
+	position relative
+	margin 0 auto
+	max-width 100%
+	margin-bottom 60px
+
+.product__frame,
+.product__shadow
+	display block
+	position relative
+
+.product__image
+	width auto
+	height auto
+	position relative
+	z-index 1
+	margin 0 auto
+	max-width 100%
+	max-height 500px
+	-webkit-box-shadow 0 1px 4px 0 #99A3AD,inset 0 0 40px #EEE
+	box-shadow 0 1px 4px 0 #99A3AD,inset 0 0 40px #EEE
+
+
+.product--print-only
+	.product__shadow:after
+		position absolute
+		content ""
+		bottom 11px
+		right 4px
+		left auto
+		width 50%
+		height 20px
+		max-width 300px
+		-webkit-box-shadow 0 15px 10px rgba(0, 0, 0, 0.2)
+		box-shadow 0 15px 10px rgba(0, 0, 0, 0.2)
+		-webkit-transform rotateZ(3deg)
+		-ms-transform rotateZ(3deg)
+		transform rotateZ(3deg)
+
+
+.product--canvas:before,
+.product--canvas:after
+	content ""
+	position absolute
+	height 10px
+	left 0
+	right 0
+	top -10px
+	background #1A1C1D
+	z-index 1
+
+.product--canvas:before
+	left 10px
+	right 40px
+	z-index 5
+	-webkit-transform skewX(-64deg)
+	-ms-transform skewX(-64deg)
+	transform skewX(-64deg)
+	
+.product--canvas:after
+	left 40px
+	right 10px
+	-webkit-transform skewX(64deg)
+	-ms-transform skewX(64deg)
+	transform skewX(64deg)

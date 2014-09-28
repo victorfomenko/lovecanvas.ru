@@ -1,0 +1,83 @@
+<section class="container m-padding-main">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-lg-8 ">
+            <div class="product product--print-only">
+                <div class="product__frame">
+                    <div class="product__shadow">
+                        <img class="product__image" src="../img/image.jpg" width="1500" height="759" alt="Map of The World 7"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-lg-4 ">
+            <form action="/order.php" method="POST" class="form">
+                <div class="form__row">
+                    <input type="text" placeholder="Имя"/>
+                </div>
+                <div class="form__row">
+                    <input type="tel" placeholder="Телефон"/>
+                </div>
+                <div class="form__row">
+                    <input type="email" required="required" placeholder="Почта"/>
+                </div>
+
+                <div class="form__samples row">
+                    <div class="col-xs-4">
+                        <input id="product-PO" type="radio" name="product_code" class="radio radio--image" value="PO" checked>
+                        <label for="product-PO">
+                            <small>Печать</small>
+                            <img src="./img/products/product-PO.jpg">
+                        </label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input id="product-CP" type="radio" name="product_code" class="radio radio--image" value="CP">
+                        <label for="product-CP">
+                            <small>На холсте</small>
+                            <img src="./img/products/product-CP.jpg">
+                        </label>
+                    </div>
+                    <div class="col-xs-4">
+                        <input id="product-FP" type="radio" name="product_code" class="radio radio--image" value="FP">
+                        <label for="product-FP">
+                            <small>В раме</small>
+                            <img src="./img/products/product-FP.jpg">
+                        </label>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <label for="imgSizing">Размер</label>
+                    <div class="select">
+                        <select id="imgSizing" name="size" required="">
+                            <option value="17|32" data-price="78">17" × 32" - Small</option>
+                            <option value="25|47" data-price="148">25" × 47" - Medium</option>
+                            <option value="26|49" data-price="159">26" × 49" - Large</option>
+                            <option value="34|64" data-price="274">34" × 64" - Extra Large</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <label for="imgFrame">Рамка</label>
+                    <div class="select">
+                        <select id="imgFrame" name="frame" required="">
+                            <option value="BF">Древесная белая</option>
+                            <option value="WB">Древесная черная</option>
+                            <option value="EF">Древесная кофейная</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <label for="imgEdge">Края</label>
+                    <div class="select">
+                        <select id="imgEdge" name="edge" required="">
+                            <option value="BF">Черный край</option>
+                            <option value="WB">Белый край</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form__price">12 000 <span>Р</span></div>
+                <a style="display: block" class="btn btn-info btn-lg">Купить</a>
+                <small class="m-text_info">100% гарантия возврата средств</small>
+            </form>
+        </div>
+    </div>
+</section>

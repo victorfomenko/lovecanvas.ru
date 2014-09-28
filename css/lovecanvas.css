@@ -187,6 +187,12 @@ th {
 .m-text_center {
   text-align: center;
 }
+.m-text_info {
+  color: #30beda;
+}
+.m-padding-main {
+  padding: 66px 0;
+}
 /*
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -1305,8 +1311,113 @@ hr {
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 body {
+  min-height: 100%;
+  background: #fff;
   color: #6e7b8e;
+  font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  overflow-x: hidden;
+  line-height: 1.46667;
+  font-size: 15px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+.select {
+  position: relative;
+}
+.select select {
+  text-indent: 0.01px;
+  text-overflow: "";
+  -webkit-box-shadow: 0 2px 2px 0 rgba(140,146,159,0.1);
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+  color: #33383f;
+  display: block;
+  background-image: none;
+  background: #fff;
+  border: 1px solid #c7cdd1;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 0 0 5.5px 0;
+  padding: 11.75px 17.6px;
+  width: 100%;
+  -webkit-appearance: button;
+}
+.select:after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 4px solid #8a95a5;
+  border-left: 4px solid rgba(0,0,0,0);
+  border-right: 4px solid rgba(0,0,0,0);
+  top: 22.75px;
+  right: 22px;
+}
+.form__row {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.form__row [type='text'],
+.form__row [type='email'],
+.form__row [type='tel'] {
+  display: block;
+  width: 100%;
+  height: 46px;
+  border: 1px solid #e0e3e8;
+  padding: 6px 18px;
+  font-weight: normal;
+  font-size: 18px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.form__samples {
+  margin-top: 32px;
+  margin-bottom: 15px;
+}
+.radio--image {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.radio--image+label {
+  display: block;
+  background: #fff;
+  cursor: pointer;
+}
+.radio--image+label img {
+  border: 3px solid #f3f5f5;
+  max-width: 100%;
+  height: auto;
+}
+.radio--image:checked+label img {
+  border-color: #30beda;
+}
+.form__price {
+  font-size: 30px;
+  margin-top: 5px;
+  margin-bottom: 21px;
+}
+@media (min-width: 768px) {
+  .form {
+    padding-left: 50px;
+  }
 }
 .btn {
   display: inline-block;
@@ -1892,6 +2003,77 @@ input[type="button"].btn-block {
   margin-left: -150px;
   padding: 17px 90px;
   font-size: 18px !important;
+}
+.product {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+  margin-bottom: 60px;
+}
+.product__frame,
+.product__shadow {
+  display: block;
+  position: relative;
+}
+.product__image {
+  width: auto;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 500px;
+  -webkit-box-shadow: 0 1px 4px 0 #99a3ad, inset 0 0 40px #eee;
+  -webkit-box-shadow: 0 1px 4px 0 #99a3ad;
+  -moz-box-shadow: 0 1px 4px 0 #99a3ad;
+  box-shadow: 0 1px 4px 0 #99a3ad;
+}
+.product--print-only .product__shadow:after {
+  position: absolute;
+  content: "";
+  bottom: 11px;
+  right: 4px;
+  left: auto;
+  width: 50%;
+  height: 20px;
+  max-width: 300px;
+  -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.2);
+  -webkit-box-shadow: 0;
+  -moz-box-shadow: 0;
+  box-shadow: 0;
+  -webkit-transform: rotateZ(3deg);
+  -ms-transform: rotateZ(3deg);
+  -webkit-transform: rotateZ(3deg);
+  transform: rotateZ(3deg);
+}
+.product--canvas:before,
+.product--canvas:after {
+  content: "";
+  position: absolute;
+  height: 10px;
+  left: 0;
+  right: 0;
+  top: -10px;
+  background: #1a1c1d;
+  z-index: 1;
+}
+.product--canvas:before {
+  left: 10px;
+  right: 40px;
+  z-index: 5;
+  -webkit-transform: skewX(-64deg);
+  -ms-transform: skewX(-64deg);
+  -webkit-transform: skewX(-64deg);
+  transform: skewX(-64deg);
+}
+.product--canvas:after {
+  left: 40px;
+  right: 10px;
+  -webkit-transform: skewX(64deg);
+  -ms-transform: skewX(64deg);
+  -webkit-transform: skewX(64deg);
+  transform: skewX(64deg);
 }
 .footer {
   color: #386a7c;

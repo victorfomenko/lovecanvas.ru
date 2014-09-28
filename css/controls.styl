@@ -1,0 +1,82 @@
+.select
+	position: relative;
+
+	select
+		text-indent .01px
+		text-overflow ""
+		-webkit-box-shadow 0 2px 2px 0 rgba(140, 146, 159, 0.1)
+		box-shadow 0 2px 2px 0 rgba(140, 146, 159, 0.1)
+		color #33383F
+		display block
+		background-image none
+		background #FFF
+		border 1px solid #C7CDD1
+		border-radius 3px
+		font-size 14px
+		margin 0 0 5.5px 0
+		padding 11.75px 17.6px
+		width 100%
+		-webkit-appearance button
+
+
+.select:after
+	pointer-events: none
+	content: ""
+	position: absolute
+	width: 0
+	height: 0
+	border-top: 4px solid #8A95A5
+	border-left: 4px solid rgba(0, 0, 0, 0)
+	border-right: 4px solid rgba(0, 0, 0, 0)
+	top: 22.75px
+	right: 22px
+
+.form__row
+	margin-bottom  15px
+	overflow hidden
+
+	[type='text'],
+	[type='email'],
+	[type='tel']
+		display block
+		width 100%
+		height 46px
+		border 1px solid COLOR_BORDER
+		padding 6px 18px
+		font-weight normal
+		font-size 18px
+		border-radius(3px)
+
+.form__samples
+	margin-top 32px
+	margin-bottom 15px
+
+
+.radio--image
+	position absolute
+	opacity 0
+	cursor pointer
+
+.radio--image+label
+	display block
+	background #FFF
+	cursor pointer
+
+	img
+		border: 3px solid #F3F5F5
+		max-width 100%
+		height auto
+
+.radio--image:checked+label img
+	border-color COLOR_SELECTED
+
+
+.form__price
+	font-size 30px
+	margin-top 5px
+	margin-bottom 21px
+
+
+@media (min-width: 768px)
+	.form
+		padding-left 50px
