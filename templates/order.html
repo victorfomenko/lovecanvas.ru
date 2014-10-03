@@ -1,4 +1,4 @@
-<section class="container m-padding-main">
+<section class="container m-padding-main" ng-class="mainClass">
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-lg-8 ">
             <div class="product product--print-only">
@@ -22,29 +22,15 @@
                 </div>
 
                 <div class="form__samples row">
-                    <div class="col-xs-4">
-                        <input id="product-PO" type="radio" name="product_code" class="radio radio--image" value="PO" checked>
-                        <label for="product-PO">
-                            <small>Печать</small>
-                            <img src="./img/products/product-PO.jpg">
-                        </label>
-                    </div>
-                    <div class="col-xs-4">
-                        <input id="product-CP" type="radio" name="product_code" class="radio radio--image" value="CP">
-                        <label for="product-CP">
-                            <small>На холсте</small>
-                            <img src="./img/products/product-CP.jpg">
-                        </label>
-                    </div>
-                    <div class="col-xs-4">
-                        <input id="product-FP" type="radio" name="product_code" class="radio radio--image" value="FP">
-                        <label for="product-FP">
-                            <small>В раме</small>
-                            <img src="./img/products/product-FP.jpg">
+                    <div class="col-xs-4" ng-repeat="product in productStates">
+                        <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="productSelected" value="{{product.id}}" ng-click="changeProduct(product)">
+                        <label for="product-{{product.id}}">
+                            <small>{{product.name}}</small>
+                            <img src="./img/products/product-{{product.id}}.jpg">
                         </label>
                     </div>
                 </div>
-                <div class="form__row">
+                <div class="form__row form__row--size">
                     <label for="imgSizing">Размер</label>
                     <div class="select">
                         <select id="imgSizing" name="size" required="">
@@ -55,17 +41,19 @@
                         </select>
                     </div>
                 </div>
-                <div class="form__row">
+                <div class="form__row form__row--frame">
                     <label for="imgFrame">Рамка</label>
                     <div class="select">
                         <select id="imgFrame" name="frame" required="">
+                            <option value="150">1.5 см в толщину</option>
+                            <option value="300">3 см толщину</option>
                             <option value="BF">Древесная белая</option>
                             <option value="WB">Древесная черная</option>
                             <option value="EF">Древесная кофейная</option>
                         </select>
                     </div>
                 </div>
-                <div class="form__row">
+                <div class="form__row form__row--border">
                     <label for="imgEdge">Края</label>
                     <div class="select">
                         <select id="imgEdge" name="edge" required="">
@@ -74,7 +62,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="form__price">12 000 <span>Р</span></div>
+                <div class="form__price">3 400 <span>Р</span></div>
                 <a style="display: block" class="btn btn-info btn-lg">Купить</a>
                 <small class="m-text_info">100% гарантия возврата средств</small>
             </form>

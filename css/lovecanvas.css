@@ -193,6 +193,10 @@ th {
 .m-padding-main {
   padding: 66px 0;
 }
+.print-only .form__row--frame,
+.print-only .form__row--border {
+  display: none;
+}
 /*
  * Bootstrap v3.2.0 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -1861,7 +1865,8 @@ input[type="button"].btn-block {
   align-self: center;
   flex-grow: 1;
 }
-.header__flex__item__phone a {
+.header__flex__item__phone a,
+.header__flex__item__title__name a {
   color: #fff;
 }
 .header__flex__item__phone,
