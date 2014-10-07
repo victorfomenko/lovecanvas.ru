@@ -2035,6 +2035,56 @@ input[type="button"].btn-block {
   display: block;
   position: relative;
 }
+.product__split {
+  display: none;
+}
+.product__split:before,
+.product__split:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 75px;
+  overflow: hidden;
+  width: 1px;
+  background: rgba(0,0,0,0.1);
+}
+.product__split--top:before {
+  top: -10px;
+  left: 27px;
+  -webkit-transform: rotateZ(-45deg);
+  -ms-transform: rotateZ(-45deg);
+  -webkit-transform: rotateZ(-45deg);
+  transform: rotateZ(-45deg);
+}
+.product__split--top:after {
+  top: -10px;
+  right: 27px;
+  left: auto;
+  -webkit-transform: rotateZ(45deg);
+  -ms-transform: rotateZ(45deg);
+  -webkit-transform: rotateZ(45deg);
+  transform: rotateZ(45deg);
+}
+.product__split--bottom:before {
+  top: auto;
+  bottom: -10px;
+  left: 27px;
+  -webkit-transform: rotateZ(-135deg);
+  -ms-transform: rotateZ(-135deg);
+  -webkit-transform: rotateZ(-135deg);
+  transform: rotateZ(-135deg);
+}
+.product__split--bottom:after {
+  top: auto;
+  bottom: -10px;
+  right: 27px;
+  left: auto;
+  -webkit-transform: rotateZ(135deg);
+  -ms-transform: rotateZ(135deg);
+  -webkit-transform: rotateZ(135deg);
+  transform: rotateZ(135deg);
+}
 .product__image {
   width: auto;
   height: auto;
@@ -2125,10 +2175,31 @@ input[type="button"].btn-block {
   left: 20px;
   right: 5px;
 }
+.product--frame .product__split {
+  display: block;
+}
 .product--frame .product__frame {
   display: block;
   background: #222526;
   padding: 20px;
+}
+.product--frame .product__frame .product__shadow {
+  position: relative;
+}
+.product--frame .product__frame .product__shadow:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.product--frame .product__frame .product__image {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
 .product--frame.product--WF .product__frame {
   background: #f7fcff;
@@ -2147,6 +2218,10 @@ input[type="button"].btn-block {
 .product--frame .product__frame {
 	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.4),0 23px 20px rgba(0, 0, 0, 0.2);
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.4),0 23px 20px rgba(0, 0, 0, 0.2);
+}
+.product--frame .product__shadow:after {
+	box-shadow: inset 0 -3px 3px 2px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: inset 0 -3px 3px 2px rgba(0, 0, 0, 0.1);
 }
 .footer {
   color: #386a7c;
