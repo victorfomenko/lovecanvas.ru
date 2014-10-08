@@ -1,10 +1,14 @@
-app.controller("orderController", function($scope){
+app.controller("orderController", function($scope, $http, $timeout, $state){
     var productModefierPrefix = 'product--';
     //Default states
-    $scope.productSelected = 'PO';
-    $scope.frameType = "none";
-    $scope.frameSize = "17|32";
-    $scope.borderType = "none";
+    $scope.formName =           '';
+    $scope.formPhone =           '';
+    $scope.formEmail =           '';
+    $scope.formProduct =        'PO';
+    $scope.formFrameSize =      '17|32';
+    $scope.formFrameType =      'none';
+    $scope.formBorderType =     'none';
+    $scope.formPrice =          '3200';
     $scope.productClass = productModefierPrefix + "print-only";
     $scope.productStates = [
         { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
@@ -50,7 +54,6 @@ app.controller("orderController", function($scope){
     $scope.frameOptions = formListOptions.print.frame;
     $scope.borderOptions = formListOptions.print.borders;
 
-
     $scope.changeProduct = function(product){
         $scope.productStates.forEach(function(item){
             item.isActive = false
@@ -59,20 +62,20 @@ app.controller("orderController", function($scope){
         $scope.disableEdge = false;
 
         if(product.id === "PO"){
-            $scope.frameType = "none";
-            $scope.borderType = "none";
+            $scope.formFrameType = "none";
+            $scope.formBorderType = "none";
             $scope.borderOptions = formListOptions.print.borders;
             $scope.frameOptions = formListOptions.print.frame;
         }
         else if(product.id === "CP"){
-            $scope.frameType = "150";
-            $scope.borderType = "BB";
+            $scope.formFrameType = "150";
+            $scope.formBorderType = "BB";
             $scope.borderOptions = formListOptions.canvas.borders;
             $scope.frameOptions = formListOptions.canvas.frame;
         }
         else if(product.id === "FP") {
-            $scope.frameType = "BF";
-            $scope.borderType = "NOMA";
+            $scope.formFrameType = "BF";
+            $scope.formBorderType = "630MA";
             $scope.borderOptions = formListOptions.inframe.borders;
             $scope.frameOptions = formListOptions.inframe.frame;
         }
@@ -82,14 +85,48 @@ app.controller("orderController", function($scope){
     $scope.updateMainClass = function(){
         $scope.disableEdge = false;
         //disable edge form if border frame selected
-        if( baseMainClass === 'canvas' && ($scope.frameType === "BF" || $scope.frameType === "WF" || $scope.frameType === "EF") ) {
+        if( baseMainClass === 'canvas' && ($scope.formFrameType === "BF" || $scope.formFrameType === "WF" || $scope.formFrameType === "EF") ) {
             $scope.disableEdge = true;
         }
         changeClasses();
     };
+    $scope.hideOrderModal = function () {
+        $scope.orderModalIsShow = false;
+    };
+    $scope.sendData = function(){
+        //get all data from form fields
+        var data = {
+            name: $scope.formName,
+            phone: $scope.formPhone,
+            email: $scope.formEmail,
+            productType: $scope.formProduct,
+            frameSize: $scope.formFrameSize,
+            frameType: $scope.formFrameType,
+            borderType: $scope.formBorderType,
+            price: $scope.formPrice
+        };
+        $scope.orderModalIsShow = true;
+        var hideModal = function () {
+            $scope.orderModalIsShow = false;
+            $timeout.cancel();
+            $state.go('main');
+        };
+        $scope.orderLoading = true;
+        var request = $http.post('ajax/order.php/', data).success(function(data){
+            if(data === "ok") {
+                    console.log('ok');
+                $scope.orderLoading = false;
+                $scope.orderSuccess = true;
+                $timeout(hideModal, 2000);
+
+            }
+        }).error(function(){
+            console.log('error');
+        });
+        request;
+    };
     var changeClasses = function(){
         $scope.mainClass = baseMainClass;
-        $scope.productClass = productModefierPrefix + baseMainClass + ' ' + productModefierPrefix + $scope.frameType + ' ' + productModefierPrefix + $scope.borderType;
-        console.log($scope.productClass);
-    }
+        $scope.productClass = productModefierPrefix + baseMainClass + ' ' + productModefierPrefix + $scope.formFrameType + ' ' + productModefierPrefix + $scope.formBorderType;
+    };
 });

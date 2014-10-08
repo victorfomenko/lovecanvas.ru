@@ -5,27 +5,29 @@
                 <div class="product__frame">
                     <div class="product__split product__split--top"></div>
                     <div class="product__split product__split--bottom"></div>
-                    <div class="product__shadow">
-                        <img class="product__image" src="../img/image.jpg" width="1500" height="759" alt="Map of The World 7"/>
+                    <div class="product__mate">
+                        <div class="product__shadow">
+                            <img class="product__image" src="../img/image.jpg" width="1500" height="759" alt="Map of The World 7"/>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-xs-12 col-sm-5 col-lg-4 ">
-            <form action="/order.php" method="POST" class="form">
+            <form ng-submit="sendData()" class="form">
                 <div class="form__row">
-                    <input type="text" placeholder="Имя"/>
+                    <input type="text" placeholder="Имя" ng-model="formName" required/>
                 </div>
                 <div class="form__row">
-                    <input type="tel" placeholder="Телефон"/>
+                    <input type="tel" placeholder="Телефон" ng-model="formPhone" required/>
                 </div>
                 <div class="form__row">
-                    <input type="email" required="required" placeholder="Почта"/>
+                    <input type="email" required placeholder="Почта" ng-model="formEmail"/>
                 </div>
 
                 <div class="form__samples row">
                     <div class="col-xs-4" ng-repeat="product in productStates">
-                        <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="productSelected" value="{{product.id}}" ng-click="changeProduct(product)">
+                        <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="formProduct" value="{{product.id}}" ng-click="changeProduct(product)">
                         <label for="product-{{product.id}}">
                             <small>{{product.name}}</small>
                             <img src="./img/products/product-{{product.id}}.jpg">
@@ -35,7 +37,7 @@
                 <div class="form__row form__row--size">
                     <label for="imgSizing">Размер</label>
                     <div class="select">
-                        <select id="imgSizing" name="size" required="" ng-model="frameSize">
+                        <select id="imgSizing" name="size" required="" ng-model="formFrameSize">
                             <option value="17|32">17" × 32" - Маленький</option>
                             <option value="25|47">25" × 47" - Средний</option>
                             <option value="26|49">26" × 49" - Большой</option>
@@ -46,19 +48,29 @@
                 <div class="form__row form__row--frame">
                     <label for="imgFrame">Рамка</label>
                     <div class="select">
-                        <select id="imgFrame" name="frame" required="" ng-model="frameType" ng-options="o.value as o.name for o in frameOptions" ng-change="updateMainClass()"></select>
+                        <select id="imgFrame" name="frame" required="" ng-model="formFrameType" ng-options="o.value as o.name for o in frameOptions" ng-change="updateMainClass()"></select>
                     </div>
                 </div>
                 <div class="form__row form__row--border">
                     <label for="imgEdge">Края</label>
                     <div class="select">
-                        <select id="imgEdge" name="edge" required="" ng-model="borderType" ng-options="o.value as o.name for o in borderOptions" ng-change="updateMainClass()" ng-disabled="disableEdge"></select>
+                        <select id="imgEdge" name="edge" required="" ng-model="formBorderType" ng-options="o.value as o.name for o in borderOptions" ng-change="updateMainClass()" ng-disabled="disableEdge"></select>
                     </div>
                 </div>
-                <div class="form__price">3 400 <span>Р</span></div>
-                <a style="display: block" class="btn btn-info btn-lg" href="javascript: void(0)">Купить</a>
+                <div class="form__price">{{formPrice}}<span> Р</span></div>
+                <!--<a style="display: block" class="btn btn-info btn-lg" href="javascript: void(0)" ng-click="sendData()">Купить</a>-->
+                <input class="btn btn-info btn-lg" type="submit" style="display: block; width: 100%" value="Купить">
                 <small class="m-text_info">100% гарантия возврата средств</small>
             </form>
         </div>
     </div>
 </section>
+<div class="modal" ng-show="orderModalIsShow">
+    <div class="modal__close"><i class="m-close" ng-click="hideOrderModal()"></i></div>
+    <div class="modal__container">
+        <div class="modal__data" >
+            <img ng-show="orderLoading" src="./img/loading.gif" alt="Loading"/>
+            <h2 ng-show="orderSuccess">Спасибо! Я свяжусь с вами в ближайшее время.</h2>
+        </div>
+    </div>
+</div>
