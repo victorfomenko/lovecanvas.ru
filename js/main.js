@@ -7,11 +7,13 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         .state('main', {
             url: "/",
             templateUrl: "templates/home.html",
-            controller: "mainController"
+            controller: "mainController",
+            data : { pageTitle: 'Главная' }
         })
         .state('order', {
             url: "/order",
             templateUrl: "templates/order.html",
-            controller: "orderController"
+            controller: "orderController",
+            data : { pageTitle: 'Заказ' }
         });
 });

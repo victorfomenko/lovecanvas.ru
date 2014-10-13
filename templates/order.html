@@ -7,7 +7,9 @@
                     <div class="product__split product__split--bottom"></div>
                     <div class="product__mate">
                         <div class="product__shadow">
-                            <img class="product__image" src="../img/image.jpg" width="1500" height="759" alt="Map of The World 7"/>
+                            <div class="product__image" id="image-container" style="background-image: url('../img/image.jpg');" ng-style="{'height': productImageHeight}">
+                                <img class="product__image__img" id="mainPicture" src="../img/image.jpg" alt="Map of The World 7" ng-style="{'height': productImageHeight}"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -24,10 +26,9 @@
                 <div class="form__row">
                     <input type="email" required placeholder="Почта" ng-model="formEmail"/>
                 </div>
-
                 <div class="form__samples row">
                     <div class="col-xs-4" ng-repeat="product in productStates">
-                        <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="formProduct" value="{{product.id}}" ng-click="changeProduct(product)">
+                        <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="formProduct" value="{{product.id}}" ng-click="changeProduct(product)" ng-mouseup="updateImageProportions()">
                         <label for="product-{{product.id}}">
                             <small>{{product.name}}</small>
                             <img src="./img/products/product-{{product.id}}.jpg">
@@ -35,14 +36,9 @@
                     </div>
                 </div>
                 <div class="form__row form__row--size">
-                    <label for="imgSizing">Размер</label>
+                    <label for="imgSizing">Размер <span class="form__row__note m-text_info" ng-show="showProportionsNote">{{showProportionsNoteText}}</span></label>
                     <div class="select">
-                        <select id="imgSizing" name="size" required="" ng-model="formFrameSize">
-                            <option value="17|32">17" × 32" - Маленький</option>
-                            <option value="25|47">25" × 47" - Средний</option>
-                            <option value="26|49">26" × 49" - Большой</option>
-                            <option value="34|64">34" × 64" - Очень большой</option>
-                        </select>
+                        <select id="imgSizing" name="size" required="" ng-model="formFrameSize" ng-options="o.value as o.name for o in sizeOptions" ng-change="updateImageProportions()"></select>
                     </div>
                 </div>
                 <div class="form__row form__row--frame">

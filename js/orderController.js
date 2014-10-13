@@ -1,11 +1,11 @@
-app.controller("orderController", function($scope, $http, $timeout, $state){
+app.controller("orderController", function($scope, $http, $timeout, $state, $q){
     var productModefierPrefix = 'product--';
     //Default states
     $scope.formName =           '';
     $scope.formPhone =           '';
     $scope.formEmail =           '';
     $scope.formProduct =        'PO';
-    $scope.formFrameSize =      '17|32';
+    $scope.formFrameSize =      '60|180';
     $scope.formFrameType =      'none';
     $scope.formBorderType =     'none';
     $scope.formPrice =          '3200';
@@ -49,11 +49,33 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
                 {value: '630MA', name: '6 см матовые'},
                 {value: 'NOMA', name: 'Без матовых краев'}
             ]
-        }
+        },
+        sizes: [
+              {value: '20|25', name: '20см × 25см'},
+              {value: '30|30', name: '30см × 30см'},
+              {value: '30|40', name: '30см × 40см'},
+              {value: '30|45', name: '30см × 45см'},
+              {value: '40|50', name: '40см × 50см'},
+              {value: '40|60', name: '40см × 60см'},
+              {value: '45|60', name: '45см × 60см'},
+              {value: '50|60', name: '50см × 60см'},
+              {value: '60|60', name: '60см × 60см'},
+              {value: '50|75', name: '50см × 75см'},
+              {value: '60|90', name: '60см × 90см'},
+              {value: '90|90', name: '90см × 90см'},
+              {value: '95|95', name: '95см × 95см'},
+              {value: '75|100', name: '75см × 100см'},
+              {value: '45|120', name: '45см × 120см'},
+              {value: '90|135', name: '90см × 135см'},
+              {value: '60|180', name: '60см × 180см'}
+        ]
+
     };
     $scope.frameOptions = formListOptions.print.frame;
     $scope.borderOptions = formListOptions.print.borders;
+    $scope.sizeOptions = formListOptions.sizes;
 
+    $scope.updateImageProportions = updateImageProportions;
     $scope.changeProduct = function(product){
         $scope.productStates.forEach(function(item){
             item.isActive = false
@@ -81,6 +103,11 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
         }
         baseMainClass = product.class;
         changeClasses();
+        window.setTimeout(function(){
+            $scope.productImageHeight = getImageData().height;
+            $scope.$apply();
+        },0);
+        changeProportionsNoteText();
     };
     $scope.updateMainClass = function(){
         $scope.disableEdge = false;
@@ -125,8 +152,51 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
         });
         request;
     };
-    var changeClasses = function(){
+    function changeClasses (){
         $scope.mainClass = baseMainClass;
-        $scope.productClass = productModefierPrefix + baseMainClass + ' ' + productModefierPrefix + $scope.formFrameType + ' ' + productModefierPrefix + $scope.formBorderType;
-    };
+        $scope.productClass = [ productModefierPrefix + baseMainClass,
+                                productModefierPrefix + $scope.formFrameType,
+                                productModefierPrefix + $scope.formBorderType];
+    }
+    function proportions() {
+        var frameProportions = getImageData().proportions,
+            imageHeight = document.getElementById('mainPicture').naturalHeight,
+            imageWidth = document.getElementById('mainPicture').naturalWidth,
+            imageProportions = imageHeight/imageWidth,
+            result = 1;
+        if(frameProportions<imageProportions) result = -1;
+        if ( Math.round(frameProportions*100)/100 === Math.round(imageProportions*100)/100) result = 0;
+        return result
+    }
+    function getImageData () {
+        var params = $scope.formFrameSize.split('|'),
+            selectedHeight = params[0],
+            selectedWidth = params[1],
+            proportions = selectedHeight / selectedWidth,
+            mainImageWidth = document.getElementById('image-container').offsetWidth,
+            mainImageHeight = mainImageWidth * proportions;
+        return {
+            'height': mainImageHeight+ 'px',
+            'proportions': proportions
+        }
+    }
+    function updateImageProportions (){
+        $scope.productImageHeight = getImageData().height;
+
+        //show/hide proportions note
+        changeProportionsNoteText();
+    }
+    function changeProportionsNoteText () {
+        $scope.showProportionsNoteText = '';
+        $scope.showProportionsNote = false;
+        if (proportions() === -1 || proportions() === 1) {
+            $scope.showProportionsNote = true;
+            $scope.showProportionsNoteText = '(фото обрежется по краям)'
+        }
+        if (proportions() === 0) {
+            $scope.showProportionsNote = true;
+            $scope.showProportionsNoteText = '(идеальный)'
+        }
+    }
+    updateImageProportions();
 });

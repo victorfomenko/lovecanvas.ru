@@ -205,6 +205,9 @@ th {
 .m-close:hover {
   opacity: 1;
 }
+.m-hidden {
+  display: none;
+}
 .print-only .form__row--frame,
 .print-only .form__row--border {
   display: none;
@@ -1411,6 +1414,9 @@ h6 {
   margin-top: 32px;
   margin-bottom: 15px;
 }
+.form__row__note {
+  font-size: 0.7em;
+}
 .radio--image {
   position: absolute;
   opacity: 0;
@@ -2036,7 +2042,7 @@ input[type="button"].btn-block {
   left: 0;
 }
 .product {
-  display: inline-block;
+  display: block;
   position: relative;
   margin: 0 auto;
   max-width: 100%;
@@ -2099,17 +2105,26 @@ input[type="button"].btn-block {
   transform: rotateZ(135deg);
 }
 .product__image {
-  width: auto;
-  height: auto;
   position: relative;
   z-index: 1;
-  margin: 0 auto;
   max-width: 100%;
-  max-height: 500px;
   -webkit-box-shadow: 0 1px 4px 0 #99a3ad, inset 0 0 40px #eee;
   -webkit-box-shadow: 0 1px 4px 0 #99a3ad;
   -moz-box-shadow: 0 1px 4px 0 #99a3ad;
   box-shadow: 0 1px 4px 0 #99a3ad;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-color: #fff;
+}
+.product__image__img {
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
 }
 .product--print-only .product__shadow:after {
   content: "";
