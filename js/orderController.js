@@ -1,4 +1,4 @@
-app.controller("orderController", function($scope, $http, $timeout, $state, $q){
+app.controller("orderController", function($scope, $http, $timeout, $state){
     var productModefierPrefix = 'product--';
     //Default states
     $scope.formName =           '';
@@ -103,9 +103,8 @@ app.controller("orderController", function($scope, $http, $timeout, $state, $q){
         }
         baseMainClass = product.class;
         changeClasses();
-        window.setTimeout(function(){
+        $timeout(function(){
             $scope.productImageHeight = getImageData().height;
-            $scope.$apply();
         },0);
         changeProportionsNoteText();
     };
@@ -121,8 +120,10 @@ app.controller("orderController", function($scope, $http, $timeout, $state, $q){
         $scope.orderModalIsShow = false;
     };
     $scope.sendData = function(){
+        var img = document.getElementById('mainPicture').src;
         //get all data from form fields
         var data = {
+            img: img,
             name: $scope.formName,
             phone: $scope.formPhone,
             email: $scope.formEmail,
@@ -132,6 +133,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, $q){
             borderType: $scope.formBorderType,
             price: $scope.formPrice
         };
+        console.log(data);
         $scope.orderModalIsShow = true;
         var hideModal = function () {
             $scope.orderModalIsShow = false;

@@ -2,6 +2,7 @@
 	$data = (json_decode(file_get_contents("php://input")));
     $message = "";
 	$name =         $data->name;
+	$image =        $data->img;
 	$phone =        $data->phone;
 	$email =        $data->email;
 	$productType =  $data->productType;
@@ -18,6 +19,7 @@
 	$message .= "Тип рамы: " . $frameType . "<br>";
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
+	$message .= "Фото: <img src='" . $image . "'><br>";
 
 	sendEmail("victorfomenko@me.com", $subject, $message);
 

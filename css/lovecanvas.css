@@ -190,6 +190,9 @@ th {
 .m-text_info {
   color: #30beda;
 }
+.m-text_small {
+  font-size: 0.75em;
+}
 .m-padding-main {
   padding: 66px 0;
 }
@@ -1920,6 +1923,9 @@ input[type="button"].btn-block {
   background-repeat: no-repeat;
   background-position: center 30px;
   background-size: 72%;
+}
+.header__flex__item__title__name__beta {
+  opacity: 0.7;
 }
 .header__flex__item--logo,
 .header__flex__item--contacts {
