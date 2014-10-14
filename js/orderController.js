@@ -5,7 +5,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, $q){
     $scope.formPhone =           '';
     $scope.formEmail =           '';
     $scope.formProduct =        'PO';
-    $scope.formFrameSize =      '60|180';
+    $scope.formFrameSize =      '40|60';
     $scope.formFrameType =      'none';
     $scope.formBorderType =     'none';
     $scope.formPrice =          '3200';
@@ -74,8 +74,8 @@ app.controller("orderController", function($scope, $http, $timeout, $state, $q){
     $scope.frameOptions = formListOptions.print.frame;
     $scope.borderOptions = formListOptions.print.borders;
     $scope.sizeOptions = formListOptions.sizes;
-
     $scope.updateImageProportions = updateImageProportions;
+
     $scope.changeProduct = function(product){
         $scope.productStates.forEach(function(item){
             item.isActive = false
