@@ -132,6 +132,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         },0);
         changeProportionsNoteText();
         dataForSent.formProduct = product.id;
+        $scope.formPrice = appService.priceCalc();
         console.log(dataForSent);
     };
     $scope.hideOrderModal = function () {
