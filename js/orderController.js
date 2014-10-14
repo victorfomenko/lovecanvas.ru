@@ -1,19 +1,26 @@
-app.controller("orderController", function($scope, $http, $timeout, $state){
+app.controller("orderController", function($scope, $http, $timeout, $state, appService){
     var productModefierPrefix = 'product--';
+    var dataForSent = appService.dataForSent;
     //Default states
-    $scope.formName =           '';
-    $scope.formPhone =           '';
-    $scope.formEmail =           '';
-    $scope.formProduct =        'PO';
-    $scope.formFrameSize =      '40|60';
-    $scope.formFrameType =      'none';
-    $scope.formBorderType =     'none';
-    $scope.formPrice =          '3200';
+    $scope.formName =           dataForSent.formName;
+    $scope.formPhone =          dataForSent.formPhone;
+    $scope.formEmail =          dataForSent.formEmail;
+    $scope.formProduct =        dataForSent.formProduct;
+    $scope.formFrameSize =      dataForSent.formFrameSize;
+    $scope.formFrameType =      dataForSent.formFrameType;
+    $scope.formBorderType =     dataForSent.formBorderType;
+    $scope.formPrice =          appService.priceCalc();
+    $scope.formCity =           dataForSent.formCity;
+
     $scope.productClass = productModefierPrefix + "print-only";
     $scope.productStates = [
         { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
         { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
         { id: 'FP', name: 'В раме', class: "frame", isActive: false }
+    ];
+    $scope.cityOptions = [
+        {value: 'Санкт-Петербург', name: 'Санкт-Петербург'},
+        {value: 'Казань', name: 'Казань'}
     ];
     var baseMainClass = $scope.productStates[0].class;
     $scope.mainClass = baseMainClass;
@@ -75,7 +82,24 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
     $scope.borderOptions = formListOptions.print.borders;
     $scope.sizeOptions = formListOptions.sizes;
     $scope.updateImageProportions = updateImageProportions;
-
+    $scope.changeSize = function(frameSize){
+        dataForSent.formFrameSize = frameSize;
+        updateImageProportions();
+        $scope.formPrice = appService.priceCalc();
+        console.log(dataForSent);
+    };
+    $scope.changeFrame = function(frameType){
+        dataForSent.formFrameType = frameType;
+        updateMainClass();
+        $scope.formPrice = appService.priceCalc();
+        console.log(dataForSent);
+    };
+    $scope.changeBorder = function(borderType){
+        dataForSent.formBorderType = borderType;
+        updateMainClass();
+        $scope.formPrice = appService.priceCalc();
+        console.log(dataForSent);
+    };
     $scope.changeProduct = function(product){
         $scope.productStates.forEach(function(item){
             item.isActive = false
@@ -84,37 +108,31 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
         $scope.disableEdge = false;
 
         if(product.id === "PO"){
-            $scope.formFrameType = "none";
-            $scope.formBorderType = "none";
+            $scope.formFrameType = dataForSent.formFrameType = null;
+            $scope.formBorderType = dataForSent.formBorderType = null;
             $scope.borderOptions = formListOptions.print.borders;
             $scope.frameOptions = formListOptions.print.frame;
         }
         else if(product.id === "CP"){
-            $scope.formFrameType = "150";
-            $scope.formBorderType = "BB";
+            $scope.formFrameType = dataForSent.formFrameType =  "150";
+            $scope.formBorderType = dataForSent.formBorderType =  "BB";
             $scope.borderOptions = formListOptions.canvas.borders;
             $scope.frameOptions = formListOptions.canvas.frame;
         }
         else if(product.id === "FP") {
-            $scope.formFrameType = "BF";
-            $scope.formBorderType = "630MA";
+            $scope.formFrameType = dataForSent.formFrameType = "BF";
+            $scope.formBorderType = dataForSent.formFrameType = "630MA";
             $scope.borderOptions = formListOptions.inframe.borders;
             $scope.frameOptions = formListOptions.inframe.frame;
         }
         baseMainClass = product.class;
-        changeClasses();
+        updateMainClass();
         $timeout(function(){
             $scope.productImageHeight = getImageData().height;
         },0);
         changeProportionsNoteText();
-    };
-    $scope.updateMainClass = function(){
-        $scope.disableEdge = false;
-        //disable edge form if border frame selected
-        if( baseMainClass === 'canvas' && ($scope.formFrameType === "BF" || $scope.formFrameType === "WF" || $scope.formFrameType === "EF") ) {
-            $scope.disableEdge = true;
-        }
-        changeClasses();
+        dataForSent.formProduct = product.id;
+        console.log(dataForSent);
     };
     $scope.hideOrderModal = function () {
         $scope.orderModalIsShow = false;
@@ -124,14 +142,14 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
         //get all data from form fields
         var data = {
             img: img,
-            name: $scope.formName,
-            phone: $scope.formPhone,
-            email: $scope.formEmail,
-            productType: $scope.formProduct,
-            frameSize: $scope.formFrameSize,
-            frameType: $scope.formFrameType,
-            borderType: $scope.formBorderType,
-            price: $scope.formPrice
+            name: dataForSent.formName,
+            phone: dataForSent.formPhone,
+            email: dataForSent.formEmail,
+            productType: dataForSent.formProduct,
+            frameSize: dataForSent.formFrameSize,
+            frameType: dataForSent.formFrameType,
+            borderType: dataForSent.formBorderType,
+            price: dataForSent.formPrice
         };
         console.log(data);
         $scope.orderModalIsShow = true;
@@ -154,11 +172,16 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
         });
         request;
     };
-    function changeClasses (){
+    function updateMainClass () {
+        $scope.disableEdge = false;
+        //disable edge form if border frame selected
+        if( baseMainClass === 'canvas' && ($scope.formFrameType === "BF" || $scope.formFrameType === "WF" || $scope.formFrameType === "EF") ) {
+            $scope.disableEdge = true;
+        }
         $scope.mainClass = baseMainClass;
         $scope.productClass = [ productModefierPrefix + baseMainClass,
-                                productModefierPrefix + $scope.formFrameType,
-                                productModefierPrefix + $scope.formBorderType];
+                productModefierPrefix + $scope.formFrameType,
+                productModefierPrefix + $scope.formBorderType];
     }
     function proportions() {
         var frameProportions = getImageData().proportions,
@@ -182,9 +205,8 @@ app.controller("orderController", function($scope, $http, $timeout, $state){
             'proportions': proportions
         }
     }
-    function updateImageProportions (){
+    function updateImageProportions(){
         $scope.productImageHeight = getImageData().height;
-
         //show/hide proportions note
         changeProportionsNoteText();
     }
