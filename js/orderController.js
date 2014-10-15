@@ -83,13 +83,11 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         dataForSent.formFrameSize = frameSize;
         updateImageProportions();
         $scope.formPrice = appService.priceCalc();
-        console.log(dataForSent);
     };
     $scope.changeFrame = function(frameType){
         dataForSent.formFrameType = frameType;
         updateMainClass();
         $scope.formPrice = appService.priceCalc();
-        console.log(dataForSent);
     };
     $scope.changeBorder = function(borderType){
         dataForSent.formBorderType = borderType;
@@ -121,7 +119,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         }
         else if(product.id === "FP") {
             $scope.formFrameType = dataForSent.formFrameType = "BF";
-            $scope.formBorderType = dataForSent.formFrameType = "630MA";
+            $scope.formBorderType = dataForSent.formBorderType = "630MA";
             $scope.borderOptions = formListOptions.inframe.borders;
             $scope.frameOptions = formListOptions.inframe.frame;
         }
@@ -133,7 +131,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         changeProportionsNoteText();
         dataForSent.formProduct = product.id;
         $scope.formPrice = appService.priceCalc();
-        console.log(dataForSent);
+        //console.log(dataForSent);
     };
     $scope.hideOrderModal = function () {
         $scope.orderModalIsShow = false;
@@ -153,7 +151,6 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         $scope.orderLoading = true;
         var request = $http.post('ajax/order.php/', dataForSent).success(function(data){
             if(data === "ok") {
-                console.log('ok');
                 $scope.orderLoading = false;
                 $scope.orderSuccess = true;
                 $timeout(hideModal, 2000);
@@ -165,7 +162,6 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         request;
     };
     function updateMainClass () {
-        console.log(baseMainClass, $scope.formBorderType);
         $scope.mainClass = baseMainClass;
         $scope.productClass = [ productModefierPrefix + baseMainClass,
                 productModefierPrefix + $scope.formFrameType,
