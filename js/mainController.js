@@ -1,4 +1,4 @@
-app.controller("mainController", function($scope, $state){
+app.controller("mainController", function($scope, $state, appService){
     $scope.bannerNumber = Math.floor((Math.random() * 4) + 1);
 
     $scope.openLoadFile = function(){
@@ -18,6 +18,7 @@ app.controller("mainController", function($scope, $state){
             reader.onload = (function(theFile) {
                 return function(e) {
                     $state.go('order').then(function(){
+                        appService.dataForSent.image = e.target.result;
                         // Render thumbnail.
                         var imageContainer = document.getElementById('image-container');
                         imageContainer.style.backgroundImage=['url("', e.target.result ,'")'].join('');

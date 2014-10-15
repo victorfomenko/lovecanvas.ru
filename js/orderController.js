@@ -2,9 +2,6 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
     var productModefierPrefix = 'product--';
     var dataForSent = appService.dataForSent;
     //Default states
-    $scope.formName =           dataForSent.formName;
-    $scope.formPhone =          dataForSent.formPhone;
-    $scope.formEmail =          dataForSent.formEmail;
     $scope.formProduct =        dataForSent.formProduct;
     $scope.formFrameSize =      dataForSent.formFrameSize;
     $scope.formFrameType =      dataForSent.formFrameType;
@@ -12,7 +9,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
     $scope.formPrice =          appService.priceCalc();
     $scope.formCity =           dataForSent.formCity;
 
-    $scope.productClass = productModefierPrefix + "print-only";
+    $scope.productClass =       productModefierPrefix + "print-only";
     $scope.productStates = [
         { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
         { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
@@ -27,10 +24,10 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
     var formListOptions = {
         print: {
             frame: [
-                {value: "none", name: ""}
+                {value: null, name: ""}
             ],
             borders: [
-                {value: "none", name: ""}
+                {value: null, name: ""}
             ]
         },
         canvas: {
@@ -106,7 +103,10 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         });
         product.isActive = true;
         $scope.disableEdge = false;
-
+        //disable edge form if border frame selected
+        if( baseMainClass === 'canvas' && (dataForSent.formFrameType === "BF" || dataForSent.formFrameType === "WF" || dataForSent.formFrameType === "EF") ) {
+            $scope.disableEdge = true;
+        }
         if(product.id === "PO"){
             $scope.formFrameType = dataForSent.formFrameType = null;
             $scope.formBorderType = dataForSent.formBorderType = null;
@@ -139,20 +139,11 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         $scope.orderModalIsShow = false;
     };
     $scope.sendData = function(){
-        var img = document.getElementById('mainPicture').src;
         //get all data from form fields
-        var data = {
-            img: img,
-            name: dataForSent.formName,
-            phone: dataForSent.formPhone,
-            email: dataForSent.formEmail,
-            productType: dataForSent.formProduct,
-            frameSize: dataForSent.formFrameSize,
-            frameType: dataForSent.formFrameType,
-            borderType: dataForSent.formBorderType,
-            price: dataForSent.formPrice
-        };
-        console.log(data);
+        dataForSent.formName = $scope.formName;
+        dataForSent.formPhone = $scope.formPhone;
+        dataForSent.formEmail = $scope.formEmail;
+        console.log(dataForSent);
         $scope.orderModalIsShow = true;
         var hideModal = function () {
             $scope.orderModalIsShow = false;
@@ -160,9 +151,9 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
             $state.go('main');
         };
         $scope.orderLoading = true;
-        var request = $http.post('ajax/order.php/', data).success(function(data){
+        var request = $http.post('ajax/order.php/', dataForSent).success(function(data){
             if(data === "ok") {
-                    console.log('ok');
+                console.log('ok');
                 $scope.orderLoading = false;
                 $scope.orderSuccess = true;
                 $timeout(hideModal, 2000);
@@ -174,11 +165,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         request;
     };
     function updateMainClass () {
-        $scope.disableEdge = false;
-        //disable edge form if border frame selected
-        if( baseMainClass === 'canvas' && ($scope.formFrameType === "BF" || $scope.formFrameType === "WF" || $scope.formFrameType === "EF") ) {
-            $scope.disableEdge = true;
-        }
+        console.log(baseMainClass, $scope.formBorderType);
         $scope.mainClass = baseMainClass;
         $scope.productClass = [ productModefierPrefix + baseMainClass,
                 productModefierPrefix + $scope.formFrameType,

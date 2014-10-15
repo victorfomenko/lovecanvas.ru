@@ -11,7 +11,8 @@
             formFrameType:      null,
             formBorderType:     null,
             formPrice:          null,
-            formCity:           'Казань'
+            formCity:           'Казань',
+            image:              null
         };
         api.priceCalc = function (){
             var data = this.dataForSent;
