@@ -149,7 +149,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
             $state.go('main');
         };
         $scope.orderLoading = true;
-        var request = $http.post('ajax/order.php/', dataForSent).success(function(data){
+        var request = $http.post('ajax/order.php', dataForSent).success(function(data){
             if(data === "ok") {
                 $scope.orderLoading = false;
                 $scope.orderSuccess = true;
