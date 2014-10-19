@@ -154,7 +154,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
                 $scope.userName = dataForSent.formName;
                 $scope.orderLoading = false;
                 $scope.orderSuccess = true;
-                $timeout(hideModal, 2000);
+                $timeout(hideModal, 3000);
 
             }
         }).error(function(){
