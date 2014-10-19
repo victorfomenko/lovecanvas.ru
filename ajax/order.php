@@ -1,18 +1,17 @@
 <?php
 	$data = (json_decode(file_get_contents("php://input")));
-    $message = "";
-	$name =         $data->name;
-	$image =        $data->img;
-	$phone =        $data->phone;
-	$email =        $data->email;
-	$productType =  $data->productType;
-	$frameSize =    $data->frameSize;
-    $frameType =    $data->frameType;
-    $borderType =   $data->borderType;
-    $price =        $data->price;
+	$name =         $data->formName;
+	$image =        $data->image;
+	$phone =        $data->formPhone;
+	$email =        $data->formEmail;
+	$productType =  $data->formProduct;
+	$frameSize =    $data->formFrameSize;
+    $frameType =    $data->formFrameType;
+    $borderType =   $data->formBorderType;
+    $price =        $data->formPrice;
 
 	$subject = 'Заказ картины';
-	$message .= "Имя: " . $name . "<br>";
+	$message = "Имя: " . $name . "<br>";
 	$message .= "Телефон: " . $phone . "<br>";
 	$message .= "E-mail: " . $email . "<br>";
 	$message .= "Тип картины: " . $productType . "<br>";
@@ -20,7 +19,6 @@
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
 	$message .= "Фото: <img src='" . $image . "'><br>";
-
 	sendEmail("victorfomenko@me.com", $subject, $message);
 
 	function sendEmail( $email, $subject, $message ) {
