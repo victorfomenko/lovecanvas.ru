@@ -141,7 +141,6 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         dataForSent.formName = $scope.formName;
         dataForSent.formPhone = $scope.formPhone;
         dataForSent.formEmail = $scope.formEmail;
-        console.log(dataForSent);
         $scope.orderModalIsShow = true;
         var hideModal = function () {
             $scope.orderModalIsShow = false;

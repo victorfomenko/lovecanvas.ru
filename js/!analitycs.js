@@ -1,7 +1,7 @@
 var _gaq = _gaq || [];
 _gaq.push(
 ['_setAccount', 'UA-28757035-4'],
-['_setDomainName', 'victorfomenko.ru'],
+['_setDomainName', 'lovecanvas.ru'],
 ["_addOrganic", "mail.ru", "q"],
 ["_addOrganic","rambler.ru", "words"],
 ["_addOrganic","nigma.ru", "s"],
