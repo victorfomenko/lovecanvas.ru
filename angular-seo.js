@@ -17,7 +17,7 @@
             ]);
     };
     if (typeof define == 'function' && define.amd)
-        define(['angular'], getModule);
+        define(['bower_components/angular/angular'], getModule);
     else
         getModule(angular);
 }(window, document);
