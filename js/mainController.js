@@ -32,5 +32,9 @@ app.controller("mainController", function($scope, $state, appService){
             // Read in the image file as a data URL.
             reader.readAsDataURL(file[0]);
         }
-    }
+    };
+    // SEO REQUIREMENT:
+    // PhantomJS pre-rendering workflow requires the page to declare, through htmlReady(), that
+    // we are finished with this controller.
+    $scope.htmlReady();
 });
