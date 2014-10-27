@@ -1,0 +1,147 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'seoserver', '-g' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 verbose cache add [ 'seoserver', null ]
+5 verbose cache add name=undefined spec="seoserver" args=["seoserver",null]
+6 verbose parsed url { protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: 'seoserver',
+6 verbose parsed url   path: 'seoserver',
+6 verbose parsed url   href: 'seoserver' }
+7 silly lockFile b1aafa68-seoserver seoserver
+8 verbose lock seoserver /Users/VF/.npm/b1aafa68-seoserver.lock
+9 silly lockFile b1aafa68-seoserver seoserver
+10 silly lockFile b1aafa68-seoserver seoserver
+11 verbose addNamed [ 'seoserver', '' ]
+12 verbose addNamed [ null, '*' ]
+13 silly lockFile 9f2120f7-seoserver seoserver@
+14 verbose lock seoserver@ /Users/VF/.npm/9f2120f7-seoserver.lock
+15 silly addNameRange { name: 'seoserver', range: '*', hasData: false }
+16 verbose request where is /seoserver
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id 9835ac6dcdcc8051
+19 verbose url raw /seoserver
+20 verbose url resolving [ 'https://registry.npmjs.org/', './seoserver' ]
+21 verbose url resolved https://registry.npmjs.org/seoserver
+22 verbose request where is https://registry.npmjs.org/seoserver
+23 info trying registry request attempt 1 at 20:43:43
+24 http GET https://registry.npmjs.org/seoserver
+25 http 200 https://registry.npmjs.org/seoserver
+26 silly registry.get cb [ 200,
+26 silly registry.get   { date: 'Mon, 27 Oct 2014 17:43:44 GMT',
+26 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"BW5GP8J7OG4YF03UKONMEEC9X"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '20251',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     'x-served-by': 'cache-ams4141-AMS',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1414431824.025282,VS0,VE312',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 silly addNameRange number 2 { name: 'seoserver', range: '*', hasData: true }
+28 silly addNameRange versions [ 'seoserver',
+28 silly addNameRange   [ '1.0.1',
+28 silly addNameRange     '1.0.2',
+28 silly addNameRange     '1.0.3',
+28 silly addNameRange     '1.0.4',
+28 silly addNameRange     '1.0.5',
+28 silly addNameRange     '1.0.6',
+28 silly addNameRange     '1.0.7',
+28 silly addNameRange     '1.0.8',
+28 silly addNameRange     '1.0.9',
+28 silly addNameRange     '1.1.0',
+28 silly addNameRange     '1.1.1',
+28 silly addNameRange     '1.1.2',
+28 silly addNameRange     '1.1.3',
+28 silly addNameRange     '1.1.4',
+28 silly addNameRange     '1.1.5',
+28 silly addNameRange     '1.1.6' ] ]
+29 verbose addNamed [ 'seoserver', '1.1.6' ]
+30 verbose addNamed [ '1.1.6', '1.1.6' ]
+31 silly lockFile fc2c162c-seoserver-1-1-6 seoserver@1.1.6
+32 verbose lock seoserver@1.1.6 /Users/VF/.npm/fc2c162c-seoserver-1-1-6.lock
+33 silly lockFile 0c601c8f-rg-seoserver-seoserver-1-1-6-tgz https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz
+34 verbose lock https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz /Users/VF/.npm/0c601c8f-rg-seoserver-seoserver-1-1-6-tgz.lock
+35 verbose addRemoteTarball [ 'https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz',
+35 verbose addRemoteTarball   '1c65205d55fca877b9089948920dda51dbe9b583' ]
+36 info retry fetch attempt 1 at 20:43:44
+37 verbose fetch to= /var/folders/sv/4ydgk21d0gz8c9qgtw6j0qz00000gn/T/npm-26790-ww_uW0kB/registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz
+38 http GET https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz
+39 http 200 https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz
+40 silly lockFile 0c601c8f-rg-seoserver-seoserver-1-1-6-tgz https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz
+41 silly lockFile 0c601c8f-rg-seoserver-seoserver-1-1-6-tgz https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz
+42 silly lockFile fc2c162c-seoserver-1-1-6 seoserver@1.1.6
+43 silly lockFile fc2c162c-seoserver-1-1-6 seoserver@1.1.6
+44 silly lockFile 9f2120f7-seoserver seoserver@
+45 silly lockFile 9f2120f7-seoserver seoserver@
+46 silly resolved [ { name: 'seoserver',
+46 silly resolved     version: '1.1.6',
+46 silly resolved     main: 'lib/seoserver',
+46 silly resolved     bin: { seoserver: './bin/seoserver.js' },
+46 silly resolved     dependencies:
+46 silly resolved      { commander: '~1.0.2',
+46 silly resolved        'forever-monitor': '~1.1.0',
+46 silly resolved        express: '~3.0.0rc4' },
+46 silly resolved     readme: '  <h3>Welcome!</h3>\n  <p>Seo Server is a command line tool that runs a server that allows GoogleBot(and any other crawlers) to crawl your heavily Javascript built websites. The tool works with very little changes to your server or client side code.</p>\n  <p><i>This entire site is driven by Javascript(view the source or see the <a href="https://github.com/apiengine/seoserver-site">code</a>). Click the `What does Google see?` button at the bottom of each page to see Seo Server in action.</i></p>\n\n  <h3>How it works</h3>\n  <img src="http://yuml.me/5b1b60bb" /><br /><br />\n  <p>Seo Server runs <a href="http://phantomjs.org/">PhantomJs</a>(headless webkit browser) which renders the page fully and returns the fully executed code to GoogleBot.</p>\n  \n  <h3>Getting started</h3>\n  <p>1) you must install PhantomJs(<a href="http://phantomjs.org/">http://phantomjs.org/</a>) and link into your bin so that Seo Server can call it.</p>\n  <p>2) Seo Server is an NPM module so install via</p>\n  <code>sudo npm install -g seoserver</code>\n  <p>3) Now we have access to the Seo Server command line tool</p>\n  <code>seoserver start</code>\n  <p>Which starts an Express server on port 3000 or</p>\n  <code> seoserver -p 4000 start</code> \n  <p>Start it as a background process and log the output</p>\n  <code> seoserver -p 4000 start > seoserver.log &</code> \n\n  <h3>Telling GoogleBot to fetch from Seo Server</h3>\n  <p>To tell GoogleBot that we are using ajaxed content we simply add to our sites index.html file the Google specific <a href="https://developers.google.com/webmasters/ajax-crawling/docs/specification">meta tag</a>. If you view the source of this page you can see we have included the tag below. </p>\n  <code>&lt;meta name="fragment" content="!"&gt;</code>\n  <p>Now whenever GoogleBot visits any of our pages it will try to load <code>?_escaped_fragment_=pathname</code></p>\n  <p>So if we were using Apache with mod rewrite and mod proxy, we can include in our .htaccess</p>\n  <code>\n    RewriteCond %{QUERY_STRING} ^_escaped_fragment_=(.*)$<br />\n    RewriteRule (.*) http://address-of-seoserver:3000/%1? [P]\n  </code>\n  <p>Now all request from GoogleBot will be returned fully rendered. How GoogleBot sees the page can be tested with Google <a href="http://www.google.com/webmasters/">WebMasters</a>(they allow you to simulate Google crawls and see the result instantly).</p>\n\n  <h3>For other crawlers</h3>\n  <p>\n    Using mod rewrite, we can send other crawlers to Seo Server also\n  </p>\n  <code>\n    RewriteCond %{HTTP_USER_AGENT} ^DuckDuckBot/1.0;<br />\n    RewriteRule (.*) http://address-of-seoserver:3000/%1? [P]\n\n  </code>\n  <h3>FAQ</h3>\n  <p>Nothing here yet, but check out the examples on the left to see different types of ajaxed content. Also ask questions and give feedback on GitHub <a href="https://github.com/apiengine/seoserver/issues">issues</a>.',
+46 silly resolved     _id: 'seoserver@1.1.6',
+46 silly resolved     description: '<h3>Welcome!</h3>   <p>Seo Server is a command line tool that runs a server that allows GoogleBot(and any other crawlers) to crawl your heavily Javascript built websites. The tool works with very little changes to your server or client side code.</p>   <p><i>This entire site is driven by Javascript(view the source or see the <a href="https://github.com/apiengine/seoserver-site">code</a>). Click the `What does Google see?` button at the bottom of each page to see Seo Server in action.</i></p>',
+46 silly resolved     dist:
+46 silly resolved      { shasum: '1c65205d55fca877b9089948920dda51dbe9b583',
+46 silly resolved        tarball: 'http://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz' },
+46 silly resolved     maintainers: [ [Object] ],
+46 silly resolved     directories: {},
+46 silly resolved     _shasum: '1c65205d55fca877b9089948920dda51dbe9b583',
+46 silly resolved     _from: 'seoserver@',
+46 silly resolved     _resolved: 'https://registry.npmjs.org/seoserver/-/seoserver-1.1.6.tgz' } ]
+47 info install seoserver@1.1.6 into /usr/local/lib
+48 info installOne seoserver@1.1.6
+49 verbose lib/node_modules/seoserver unbuild
+50 verbose tar unpack /Users/VF/.npm/seoserver/1.1.6/package.tgz
+51 silly lockFile cf7105ab-local-lib-node-modules-seoserver tar:///usr/local/lib/node_modules/seoserver
+52 verbose lock tar:///usr/local/lib/node_modules/seoserver /Users/VF/.npm/cf7105ab-local-lib-node-modules-seoserver.lock
+53 silly lockFile 8932416f--npm-seoserver-1-1-6-package-tgz tar:///Users/VF/.npm/seoserver/1.1.6/package.tgz
+54 verbose lock tar:///Users/VF/.npm/seoserver/1.1.6/package.tgz /Users/VF/.npm/8932416f--npm-seoserver-1-1-6-package-tgz.lock
+55 silly gunzTarPerm modes [ '755', '644' ]
+56 error Error: EACCES, mkdir '/usr/local/lib/node_modules/seoserver'
+56 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/seoserver']
+56 error   errno: 3,
+56 error   code: 'EACCES',
+56 error   path: '/usr/local/lib/node_modules/seoserver',
+56 error   fstream_type: 'Directory',
+56 error   fstream_path: '/usr/local/lib/node_modules/seoserver',
+56 error   fstream_class: 'DirWriter',
+56 error   fstream_stack:
+56 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+56 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+56 error      'Object.oncomplete (fs.js:107:15)' ] }
+57 error Please try running this command again as root/Administrator.
+58 error System Darwin 14.0.0
+59 error command "node" "/usr/local/bin/npm" "install" "seoserver" "-g"
+60 error cwd /Users/VF/Sites/lovecanvas.ru
+61 error node -v v0.10.32
+62 error npm -v 1.4.28
+63 error path /usr/local/lib/node_modules/seoserver
+64 error fstream_path /usr/local/lib/node_modules/seoserver
+65 error fstream_type Directory
+66 error fstream_class DirWriter
+67 error code EACCES
+68 error errno 3
+69 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/seoserver'
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+70 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+70 error fstream_stack Object.oncomplete (fs.js:107:15)
+71 verbose exit [ 3, true ]
