@@ -1,5 +1,4 @@
 RewriteEngine on
-RewriteCond %{QUERY_STRING} ^escaped_fragment=(.)$ RewriteRule (.) http://address-of-seoserver:3000/%1? [P]
 # Don't rewrite files or directories
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
