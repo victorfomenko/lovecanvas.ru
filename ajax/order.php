@@ -15,6 +15,7 @@
 	$message .= "Телефон: " . $phone . "<br>";
 	$message .= "E-mail: " . $email . "<br>";
 	$message .= "Тип картины: " . $productType . "<br>";
+	$message .= "Размеры: " . $frameSize . "<br>";
 	$message .= "Тип рамы: " . $frameType . "<br>";
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
