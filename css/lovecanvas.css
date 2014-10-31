@@ -1845,7 +1845,8 @@ input[type="button"].btn-block {
 .banner--item-1:before,
 .banner--item-2:before,
 .banner--item-3:before,
-.banner--item-4:before {
+.banner--item-4:before,
+.banner--item-wedding:before {
   background-repeat: no-repeat;
   background-position: center center;
   opacity: 0.8;
