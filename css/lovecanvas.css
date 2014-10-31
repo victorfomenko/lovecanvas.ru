@@ -1842,6 +1842,10 @@ input[type="button"].btn-block {
   color: #fff;
   margin-top: 15px;
 }
+.banner__title__small {
+  color: #fff;
+  margin-top: -20px;
+}
 .banner--item-1:before,
 .banner--item-2:before,
 .banner--item-3:before,
