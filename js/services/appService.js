@@ -6,10 +6,10 @@
             formName:           null,
             formPhone:          null,
             formEmail:          null,
-            formProduct:        'PO',
+            formProduct:        'FP',
             formFrameSize:      '40|60',
-            formFrameType:      null,
-            formBorderType:     null,
+            formFrameType:      'BF',
+            formBorderType:     '630MA',
             formPrice:          null,
             formCity:           'Казань',
             image:              null

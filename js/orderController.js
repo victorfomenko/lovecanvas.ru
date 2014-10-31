@@ -9,7 +9,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
     $scope.formPrice =          appService.priceCalc();
     $scope.formCity =           dataForSent.formCity;
 
-    $scope.productClass =       productModefierPrefix + "print-only";
+    $scope.productClass =       productModefierPrefix + "frame " + productModefierPrefix + "630MA";
     $scope.productStates = [
         { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
         { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
@@ -19,7 +19,7 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         {value: 'Санкт-Петербург', name: 'Санкт-Петербург'},
         {value: 'Казань', name: 'Казань'}
     ];
-    var baseMainClass = $scope.productStates[0].class;
+    var baseMainClass = $scope.productStates[2].class;
     $scope.mainClass = baseMainClass;
     var formListOptions = {
         print: {
@@ -75,8 +75,8 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         ]
 
     };
-    $scope.frameOptions = formListOptions.print.frame;
-    $scope.borderOptions = formListOptions.print.borders;
+    $scope.frameOptions = formListOptions.inframe.frame;
+    $scope.borderOptions = formListOptions.inframe.borders;
     $scope.sizeOptions = formListOptions.sizes;
     $scope.updateImageProportions = updateImageProportions;
     $scope.changeSize = function(frameSize){
