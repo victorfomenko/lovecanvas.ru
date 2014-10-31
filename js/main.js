@@ -10,6 +10,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             controller: "mainController",
             data : { pageTitle: 'Главная' }
         })
+        .state('wedding', {
+            url: "/wedding",
+            templateUrl: "templates/wedding.html",
+            controller: "mainController",
+            data : { pageTitle: 'Печать свадебных фото' }
+        })
         .state('order', {
             url: "/order",
             templateUrl: "templates/order.html",
