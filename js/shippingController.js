@@ -17,7 +17,6 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
         dataForSend.formName =      $scope.formName;
         dataForSend.formPhone =     $scope.formPhone;
         dataForSend.formCity =      $scope.formCity;
-        console.log(dataForSend);
         $scope.orderModalIsShow = true;
         var hideModal = function () {
             $scope.orderModalIsShow = false;
@@ -25,7 +24,6 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
             $state.go('main');
         };
         $scope.orderLoading = true;
-        console.log(dataForSend);
         var request = $http.post('ajax/order.php', dataForSend).success(function(data){
             if(data === "ok") {
                 $scope.orderLoading = false;
