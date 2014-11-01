@@ -1,6 +1,8 @@
 <?php
 	$data = (json_decode(file_get_contents("php://input")));
 	$name =         $data->formName;
+	$city =         $data->formCity;
+	$postal =       $data->formPostal;
 	$image =        $data->image;
 	$phone =        $data->formPhone;
 	$email =        $data->formEmail;
@@ -14,6 +16,8 @@
 	$message = "Имя: " . $name . "<br>";
 	$message .= "Телефон: " . $phone . "<br>";
 	$message .= "E-mail: " . $email . "<br>";
+	$message .= "Город: " . $city . "<br>";
+	$message .= "Индекс: " . $postal . "<br>";
 	$message .= "Тип картины: " . $productType . "<br>";
 	$message .= "Размеры: " . $frameSize . "<br>";
 	$message .= "Тип рамы: " . $frameType . "<br>";
@@ -24,7 +28,7 @@
 
 	function sendEmail( $email, $subject, $message ) {
 
-		//$subject = 	"=?UTF-8?B?".base64_encode($subject)."?=";
+		$subject = 	"=?UTF-8?B?".base64_encode($subject)."?=";
 		//$message = 	iconv( 'CP1251', 'UTF-8', $message );
 
 		$headers  = "Content-Type: text/html; charset=utf-8\r\n";

@@ -214,6 +214,9 @@ th {
 .m-rubble {
   font-family: ruble;
 }
+.m-break {
+  margin-bottom: 30px;
+}
 .print-only .form__row--frame,
 .print-only .form__row--border {
   display: none;
@@ -1343,7 +1346,7 @@ hr {
 body {
   min-height: 100%;
   background: #fff;
-  color: #6e7b8e;
+  color: #8a95a5;
   font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   overflow-x: hidden;
@@ -1381,7 +1384,7 @@ h6 {
   -moz-border-radius: 3px;
   border-radius: 3px;
   font-size: 14px;
-  margin: 0 0 5.5px 0;
+  margin: 0;
   padding: 11.75px 17.6px;
   width: 100%;
   -webkit-appearance: button;
@@ -1403,7 +1406,7 @@ h6 {
   right: 22px;
 }
 .form__row {
-  margin-bottom: 15px;
+  margin-bottom: 22px;
   overflow: hidden;
 }
 .form__row [type='text'],
@@ -1412,16 +1415,21 @@ h6 {
   display: block;
   width: 100%;
   height: 46px;
-  border: 1px solid #e0e3e8;
+  border: 1px solid #c7cdd1;
   padding: 6px 18px;
   font-weight: normal;
   font-size: 18px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+  outline: none;
+}
+.form__row--is_required label:after {
+  content: "*";
+  margin-left: 2px;
+  color: #f66b6a;
 }
 .form__samples {
-  margin-top: 32px;
   margin-bottom: 15px;
 }
 .form__row__note {

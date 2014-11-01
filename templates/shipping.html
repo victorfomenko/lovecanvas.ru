@@ -1,0 +1,72 @@
+<section class="container m-padding-main">
+    <form ng-submit="sendData()" class="form">
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="form__row form__row--is_required">
+                            <label for="name">Имя</label>
+                            <input id="name" type="text" ng-model="formName" required/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="form__row form__row--is_required">
+                            <label for="phone">Номер телефона</label>
+                            <input id="phone" type="tel" ng-model="formPhone" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="form__row form__row--is_required">
+                            <label for="city">Город</label>
+                            <div class="select">
+                                <select id="city" name="street" ng-model="formCity" ng-options="o.value as o.name for o in cityOptions" required></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="form__row form__row--is_required">
+                            <label for="email">Почта</label>
+                            <input id="email" type="email" ng-model="formEmail" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-break">
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="form__row form__row--is_required">
+                            <label for="address">Адрес</label>
+                            <input id="address" placeholder="Улица, дом, квартира" type="text" ng-model="formAddress" required/>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="form__row form__row--is_required">
+                            <label for="postalcode">Индекс</label>
+                            <input id="postalcode" type="text" placeholder="Почтовый индекс" ng-model="formPostal" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <input class="btn btn-info btn-lg" type="submit" style="display: block; width: 100%" value="Купить">
+                        <small class="m-text_info">100% гарантия возврата средств</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                Заказ на сумму: {{price}}<span class="form__price__rouble m-rubble">i</span>
+            </div>
+
+        </div>
+    </form>
+</section>
+
+<div class="modal" ng-show="orderModalIsShow">
+    <div class="modal__close"><i class="m-close" ng-click="hideOrderModal()"></i></div>
+    <div class="modal__container">
+        <div class="modal__data" >
+            <img ng-show="orderLoading" src="./img/loading.gif" alt="Loading"/>
+            <h2 ng-show="orderSuccess" class="m-text_center">Спасибо, {{formName}}! Ваш заказ принят!</h2>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@
             formName:           null,
             formPhone:          null,
             formEmail:          null,
+            formPostal:         null,
             formProduct:        'FP',
             formFrameSize:      '40|60',
             formFrameType:      'BF',

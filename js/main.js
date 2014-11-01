@@ -16,10 +16,16 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             controller: "mainController",
             data : { pageTitle: 'Печать свадебных фото' }
         })
-        .state('order', {
-            url: "/order",
-            templateUrl: "templates/order.html",
-            controller: "orderController",
+        .state('canvas', {
+            url: "/canvas",
+            templateUrl: "templates/canvas.html",
+            controller: "canvasController",
+            data : { pageTitle: 'Картина' }
+        })
+        .state('shipping', {
+            url: "/shipping",
+            templateUrl: "templates/shipping.html",
+            controller: "shippingController",
             data : { pageTitle: 'Заказ' }
         });
 });

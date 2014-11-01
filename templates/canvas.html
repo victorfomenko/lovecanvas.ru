@@ -16,25 +16,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-5 col-lg-4 ">
-            <form ng-submit="sendData()" class="form">
-                <div class="form__row">
-                    <input type="text" placeholder="Имя" ng-model="formName" required/>
-                </div>
-                <div class="form__row">
-                    <input type="tel" placeholder="Телефон" ng-model="formPhone" required/>
-                </div>
-                <!--<div class="form__row">
-                    <label for="city">Город</label>
-                    <div class="select">
-                        <select id="city" name="street" required="" ng-model="formCity" ng-options="o.value as o.name for o in cityOptions"></select>
-                    </div>
-                </div>
-                <div class="form__row">
-                    <input type="text" placeholder="Адрес" ng-model="formAddress" required/>
-                </div>
-                <div class="form__row">
-                    <input type="email" required placeholder="Почта" ng-model="formEmail"/>
-                </div>-->
+            <form ng-submit="goToShipping()" class="form">
                 <div class="form__samples row">
                     <div class="col-xs-4" ng-repeat="product in productStates">
                         <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="formProduct" value="{{product.id}}" ng-click="changeProduct(product)" ng-mouseup="updateImageProportions()">
@@ -64,19 +46,9 @@
                 </div>
                 <div class="form__price">{{formPrice}}<span class="form__price__rouble m-rubble">i</span></div>
                 <!--<a style="display: block" class="btn btn-info btn-lg" href="javascript: void(0)" ng-click="sendData()">Купить</a>-->
-                <input class="btn btn-info btn-lg" type="submit" style="display: block; width: 100%" value="Купить">
+                <input class="btn btn-info btn-lg" type="submit" style="display: block; width: 100%" value="Оформить доставку">
                 <small class="m-text_info">100% гарантия возврата средств</small>
             </form>
         </div>
     </div>
 </section>
-<div class="modal" ng-show="orderModalIsShow">
-    <div class="modal__close"><i class="m-close" ng-click="hideOrderModal()"></i></div>
-    <div class="modal__container">
-        <div class="modal__data" >
-            <img ng-show="orderLoading" src="./img/loading.gif" alt="Loading"/>
-            <h2 ng-show="orderSuccess" class="m-text_center">Спасибо, {{userName}}! Ваш заказ принят. <br/>
-                Скоро мы с вами свяжемся для уточнения контактных данных.</h2>
-        </div>
-    </div>
-</div>

@@ -17,7 +17,7 @@ app.controller("mainController", function($scope, $state, appService){
             // Closure to capture the file information.
             reader.onload = (function(theFile) {
                 return function(e) {
-                    $state.go('order').then(function(){
+                    $state.go('canvas').then(function(){
                         appService.dataForSent.image = e.target.result;
                         // Render thumbnail.
                         var imageContainer = document.getElementById('image-container');

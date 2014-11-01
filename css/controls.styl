@@ -13,7 +13,7 @@
 		border 1px solid #C7CDD1
 		border-radius 3px
 		font-size 14px
-		margin 0 0 5.5px 0
+		margin 0
 		padding 11.75px 17.6px
 		width 100%
 		-webkit-appearance button
@@ -37,7 +37,7 @@
 
 
 .form__row
-	margin-bottom  15px
+	margin-bottom  22px
 	overflow hidden
 
 	[type='text'],
@@ -51,9 +51,15 @@
 		font-weight normal
 		font-size 18px
 		border-radius(3px)
+		outline: none
+
+.form__row--is_required
+	label:after
+		content: "*";
+		margin-left: 2px;
+		color: #f66b6a;
 
 .form__samples
-	margin-top 32px
 	margin-bottom 15px
 
 .form__row__note
@@ -76,7 +82,6 @@
 
 .radio--image:checked+label img
 	border-color COLOR_SELECTED
-
 
 .form__price
 	font-size 30px

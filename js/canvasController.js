@@ -1,4 +1,4 @@
-app.controller("orderController", function($scope, $http, $timeout, $state, appService){
+app.controller("canvasController", function($scope, $http, $timeout, $state, appService){
     var productModefierPrefix = 'product--';
     var dataForSent = appService.dataForSent;
     //Default states
@@ -7,17 +7,11 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
     $scope.formFrameType =      dataForSent.formFrameType;
     $scope.formBorderType =     dataForSent.formBorderType;
     $scope.formPrice =          appService.priceCalc();
-    $scope.formCity =           dataForSent.formCity;
-
     $scope.productClass =       productModefierPrefix + "frame " + productModefierPrefix + "630MA";
     $scope.productStates = [
         { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
         { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
         { id: 'FP', name: 'В раме', class: "frame", isActive: false }
-    ];
-    $scope.cityOptions = [
-        {value: 'Санкт-Петербург', name: 'Санкт-Петербург'},
-        {value: 'Казань', name: 'Казань'}
     ];
     var baseMainClass = $scope.productStates[2].class;
     $scope.mainClass = baseMainClass;
@@ -125,41 +119,13 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
         }
         baseMainClass = product.class;
         updateMainClass();
-        $timeout(function(){
-            $scope.productImageHeight = getImageData().height;
-        },0);
         changeProportionsNoteText();
         dataForSent.formProduct = product.id;
         $scope.formPrice = appService.priceCalc();
         //console.log(dataForSent);
     };
-    $scope.hideOrderModal = function () {
-        $scope.orderModalIsShow = false;
-    };
-    $scope.sendData = function(){
-        //get all data from form fields
-        dataForSent.formName = $scope.formName;
-        dataForSent.formPhone = $scope.formPhone;
-        dataForSent.formEmail = $scope.formEmail;
-        $scope.orderModalIsShow = true;
-        var hideModal = function () {
-            $scope.orderModalIsShow = false;
-            $timeout.cancel();
-            $state.go('main');
-        };
-        $scope.orderLoading = true;
-        var request = $http.post('ajax/order.php', dataForSent).success(function(data){
-            if(data === "ok") {
-                $scope.userName = dataForSent.formName;
-                $scope.orderLoading = false;
-                $scope.orderSuccess = true;
-                $timeout(hideModal, 3000);
-
-            }
-        }).error(function(){
-            console.log('error');
-        });
-        request;
+    $scope.goToShipping = function(){
+        $state.go('shipping');
     };
     function updateMainClass () {
         $scope.mainClass = baseMainClass;
@@ -192,6 +158,9 @@ app.controller("orderController", function($scope, $http, $timeout, $state, appS
     function updateImageProportions(){
         $scope.productImageHeight = getImageData().height;
         //show/hide proportions note
+        $timeout(function(){
+            $scope.productImageHeight = getImageData().height;
+        },0);
         changeProportionsNoteText();
     }
     function changeProportionsNoteText () {
