@@ -6,7 +6,21 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
     $scope.cityOptions = [
         {value: 'Москва', name: 'Москва'},
         {value: 'Санкт-Петербург', name: 'Санкт-Петербург'},
-        {value: 'Казань', name: 'Казань'}
+        {value: 'Екатеринбург', name: 'Екатеринбург'},
+        {value: 'Иркутск', name: 'Иркутск'},
+        {value: 'Ижевск', name: 'Ижевск'},
+        {value: 'Казань', name: 'Казань'},
+        {value: 'Киев', name: 'Киев'},
+        {value: 'Краснодар', name: 'Краснодар'},
+        {value: 'Минск', name: 'Минск'},
+        {value: 'Нижний Новгород', name: 'Нижний Новгород'},
+        {value: 'Новосибирск', name: 'Новосибирск'},
+        {value: 'Пермь', name: 'Пермь'},
+        {value: 'Ростов-на-Дону', name: 'Ростов-на-Дону'},
+        {value: 'Самара', name: 'Самара'},
+        {value: 'Тверь', name: 'Тверь'},
+        {value: 'Чебоксары', name: 'Чебоксары'},
+        {value: 'Челябинск', name: 'Челябинск'}
     ];
     $scope.hideOrderModal = function () {
         $scope.orderModalIsShow = false;
