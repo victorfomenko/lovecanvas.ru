@@ -119,6 +119,9 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
         }
         baseMainClass = product.class;
         updateMainClass();
+        $timeout(function(){
+            $scope.productImageHeight = getImageData().height;
+        },0);
         changeProportionsNoteText();
         dataForSent.formProduct = product.id;
         $scope.formPrice = appService.priceCalc();
