@@ -1853,6 +1853,7 @@ input[type="button"].btn-block {
 .banner__title__small {
   color: #fff;
   margin-top: -20px;
+  font-size: 1em;
 }
 .banner--item-1:before,
 .banner--item-2:before,
