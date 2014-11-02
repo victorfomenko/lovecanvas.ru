@@ -8,7 +8,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             url: "/",
             templateUrl: "templates/home.html",
             controller: "mainController",
-            data : { pageTitle: 'Интернет-магазин картин. Печать фото на холсте.' }
+            data : { pageTitle: 'Интернет-магазин картин. Печать фото на холсте' }
         })
         .state('wedding', {
             url: "/wedding",
