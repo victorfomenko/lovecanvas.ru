@@ -87,7 +87,6 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
         dataForSent.formBorderType = borderType;
         updateMainClass();
         $scope.formPrice = appService.priceCalc();
-        console.log(dataForSent);
     };
     $scope.changeProduct = function(product){
         $scope.productStates.forEach(function(item){
