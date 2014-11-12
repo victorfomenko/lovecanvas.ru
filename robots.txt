@@ -29,4 +29,3 @@ Disallow: /*&filter_sub_category=
 Disallow: /*?filter_description=
 Disallow: /*&filter_description=
 Host: lovecanvas.ru
-Sitemap: http://lovecanvas.ru/sitemap.xml
