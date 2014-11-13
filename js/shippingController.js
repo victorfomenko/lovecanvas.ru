@@ -39,6 +39,7 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
         };
         $scope.orderLoading = true;
         var request = $http.post('ajax/order.php', dataForSend).success(function(data){
+            console.log(data);
             if(data === "ok") {
                 $scope.orderLoading = false;
                 $scope.orderSuccess = true;
