@@ -22,6 +22,7 @@
             var frameSizeWH = data.formFrameSize.split('|'),
                 frameSizeSquare = frameSizeWH[0] * frameSizeWH[1],
                 frameLength = (frameSizeWH[0]*1 + frameSizeWH[1]*1)/100,
+                POCoast = 700,
                 CPCoast = 1000,
                 mounts = 50,
                 underFrameCoast1 = 80,
@@ -29,8 +30,7 @@
 
             //calculate if print only
             if( data.formProduct === "PO" &&  !data.formFrameType && !data.formBorderType ) {
-                var printOnlySquareItem = 2.7; //1 rub is 2.7 sm2
-                price = Math.round((frameSizeSquare/printOnlySquareItem)/10)*10
+                price = 2*Math.round((frameSizeSquare*POCoast/10000)/10)*10 + 100
             }
             //calculate if canvas print
             else if( data.formProduct === "CP" &&  data.formFrameType && data.formBorderType ) {
