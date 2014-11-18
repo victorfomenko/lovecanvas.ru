@@ -20,13 +20,18 @@
             if( !data.formProduct || !data.formFrameSize ) return;
             var price = 0;
             var frameSizeWH = data.formFrameSize.split('|'),
-                frameSizeSquare = frameSizeWH[0] * frameSizeWH[1],
-                frameLength = (frameSizeWH[0]*1 + frameSizeWH[1]*1)/100,
+                frameSizeSquare = (frameSizeWH[0] * frameSizeWH[1])/10000,
+                frameSizeSquareInner = ((frameSizeWH[0]-3) * (frameSizeWH[1]-3))/10000,
+                frameLength = (frameSizeWH[0]*2 + frameSizeWH[1]*2)/100,
                 POCoast = 700,
                 CPCoast = 1000,
+                FPCoast = 1000,
                 mounts = 50,
                 underFrameCoast1 = 80,
-                underFrameCoast2 = 160;
+                underFrameCoast2 = 160,
+                frameCoast = 250,
+                penokartonCoast = 450,
+                paspartuCoast = 700;
 
             //calculate if print only
             if( data.formProduct === "PO" &&  !data.formFrameType && !data.formBorderType ) {
@@ -46,16 +51,17 @@
                         break;
                 }
 
-                price = frameSizeSquare*CPCoast/10000 + (frameSizeWH[0]*1+frameSizeWH[1]*1)*underFrameCoast/50 + mounts;
+                price = frameSizeSquare*CPCoast + (frameSizeWH[0]*1+frameSizeWH[1]*1)*underFrameCoast/50 + mounts;
                 price = 2*Math.round(price/10)*10 + 100; // add 100% and 100 rub for deals
 
             }
             //calculate if frame print
             else if( data.formProduct === "FP" &&  data.formFrameType && data.formBorderType ) {
-                var frameSquareItem = 2.7; //1 rub is 2.7 sm2
-                var frameCoast = frameLength*500;
-                price = Math.round((frameSizeSquare/frameSquareItem)/10)*10 + frameCoast;
-                if ( data.formBorderType === "630MA") price += 1000;
+                if (data.formBorderType === 'NOMA'){
+                    paspartuCoast = 0
+                }
+                price = frameSizeSquareInner*FPCoast + frameLength*frameCoast + frameSizeSquareInner*paspartuCoast + frameSizeSquareInner*penokartonCoast + mounts;
+                price = 2*Math.round(price/10)*10 + 100;// add 100% and 100 rub for deals
 
             }
             this.dataForSent.formPrice = price;
