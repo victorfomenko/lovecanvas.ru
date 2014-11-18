@@ -21,7 +21,11 @@
             var price = 0;
             var frameSizeWH = data.formFrameSize.split('|'),
                 frameSizeSquare = frameSizeWH[0] * frameSizeWH[1],
-                frameLength = (frameSizeWH[0]*1 + frameSizeWH[1]*1)/100;
+                frameLength = (frameSizeWH[0]*1 + frameSizeWH[1]*1)/100,
+                CPCoast = 1000,
+                mounts = 50,
+                underFrameCoast1 = 80,
+                underFrameCoast2 = 160;
 
             //calculate if print only
             if( data.formProduct === "PO" &&  !data.formFrameType && !data.formBorderType ) {
@@ -30,10 +34,21 @@
             }
             //calculate if canvas print
             else if( data.formProduct === "CP" &&  data.formFrameType && data.formBorderType ) {
-                var canvasSquareItem = 3.7; //1 rub is 3.7 sm2
-                price = Math.round((frameSizeSquare/canvasSquareItem)/10)*10;
-                if ( data.formFrameType === "150") price += 880;
-                if ( data.formFrameType === "300") price += 1880;
+
+                var underFrameCoast;
+                switch (data.formFrameType){
+                    default:
+                    case '150':
+                        underFrameCoast = underFrameCoast1;
+                        break;
+                    case '300':
+                        underFrameCoast = underFrameCoast2;
+                        break;
+                }
+
+                price = frameSizeSquare*CPCoast/10000 + (frameSizeWH[0]*1+frameSizeWH[1]*1)*underFrameCoast/50 + mounts;
+                price = 2*Math.round(price/10)*10; // add 100%
+
             }
             //calculate if frame print
             else if( data.formProduct === "FP" &&  data.formFrameType && data.formBorderType ) {
