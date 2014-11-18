@@ -47,7 +47,7 @@
                 }
 
                 price = frameSizeSquare*CPCoast/10000 + (frameSizeWH[0]*1+frameSizeWH[1]*1)*underFrameCoast/50 + mounts;
-                price = 2*Math.round(price/10)*10; // add 100%
+                price = 2*Math.round(price/10)*10 + 100; // add 100% and 100 rub for deals
 
             }
             //calculate if frame print
