@@ -24,7 +24,7 @@
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
 	$message .= "Фото: <img src='" . $image . "'><br>";
-	sendEmail("info@lovecanvas.com", $subject, $message);
+	sendEmail("info@lovecanvas.ru", $subject, $message);
 	sendEmail("veselovskiievgenii@gmail.com", $subject, $message);
 
 	function sendEmail( $email, $subject, $message ) {
