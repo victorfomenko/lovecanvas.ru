@@ -11,12 +11,14 @@ app.controller("mainController", function($scope, $state, appService){
             if (!file[0].type.match('image.*')) {
                 return;
             }
-
             var reader = new FileReader();
 
             // Closure to capture the file information.
             reader.onload = (function(theFile) {
                 return function(e) {
+                    var image = new Image();
+                    image.src = e.target.result;
+                    appService.imageProp = image.width/image.height;
                     $state.go('canvas').then(function(){
                         appService.dataForSent.image = e.target.result;
                         // Render thumbnail.
@@ -25,7 +27,6 @@ app.controller("mainController", function($scope, $state, appService){
                         imageContainer.innerHTML = ['<img class="product__image__img" id="mainPicture" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
                     });
-
                 };
             })(file[0]);
 

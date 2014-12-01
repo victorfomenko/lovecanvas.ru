@@ -2,19 +2,89 @@
     var moduleId = 'app';
     app.factory(moduleId + 'Service', function() {
         var api = {};
+        api.optionsList = {
+            print: {
+                frame: [
+                    {value: null, name: ""}
+                ],
+                borders: [
+                    {value: null, name: ""}
+                ]
+            },
+            canvas: {
+                frame: [
+                    {value: '150', name: '1.5 см в толщину'},
+                    {value: '300', name: '3 см в толщину'}/*,
+                     {value: 'BF', name: 'Древесная черная'},
+                     {value: 'WF', name: 'Древесная белая'},
+                     {value: 'EF', name: 'Древесная кофейная'}*/
+                ],
+                borders: [
+                    {value: 'BB', name: 'Черный край'},
+                    {value: 'WB', name: 'Белый край'}
+                ]
+            },
+            inframe: {
+                frame: [
+                    {value: 'BF', name: 'Древесная черная'},
+                    {value: 'WF', name: 'Древесная белая'},
+                    {value: 'EF', name: 'Древесная кофейная'}
+                ],
+                borders: [
+                    {value: '630MA', name: '6 см матовые'},
+                    {value: 'NOMA', name: 'Без матовых краев'}
+                ]
+            },
+            sizesH: [
+                {value: '20|25', name: '20см × 25см'},
+                {value: '30|30', name: '30см × 30см'},
+                {value: '30|40', name: '30см × 40см'},
+                {value: '30|45', name: '30см × 45см'},
+                {value: '40|50', name: '40см × 50см'},
+                {value: '40|60', name: '40см × 60см'},
+                {value: '45|60', name: '45см × 60см'},
+                {value: '50|60', name: '50см × 60см'},
+                {value: '60|60', name: '60см × 60см'},
+                {value: '50|75', name: '50см × 75см'},
+                {value: '60|90', name: '60см × 90см'},
+                {value: '90|90', name: '90см × 90см'},
+                {value: '95|95', name: '95см × 95см'},
+                {value: '75|100', name: '75см × 100см'},
+                {value: '45|120', name: '45см × 120см'},
+                {value: '90|135', name: '90см × 135см'},
+                {value: '60|180', name: '60см × 180см'}
+            ],
+            sizesV: [
+                {value: '25|20', name: '25см × 20см'},
+                {value: '30|30', name: '30см × 30см'},
+                {value: '40|30', name: '40см × 30см'},
+                {value: '45|30', name: '45см × 30см'},
+                {value: '50|40', name: '50см × 40см'},
+                {value: '60|40', name: '60см × 40см'},
+                {value: '60|45', name: '60см × 45см'},
+                {value: '60|50', name: '60см × 50см'},
+                {value: '60|60', name: '60см × 60см'},
+                {value: '75|50', name: '75см × 50см'},
+                {value: '90|60', name: '90см × 60см'},
+                {value: '90|90', name: '90см × 90см'},
+                {value: '95|95', name: '95см × 95см'},
+                {value: '100|75', name: '100см × 75см'}
+            ]
+        };
         api.dataForSent = {
             formName:           null,
             formPhone:          null,
             formEmail:          null,
             formPostal:         null,
             formProduct:        'FP',
-            formFrameSize:      '40|60',
+            formFrameSize:      api.optionsList.sizesH[5].value,
             formFrameType:      'BF',
             formBorderType:     '630MA',
             formPrice:          null,
             formCity:           'Казань',
             image:              null
         };
+        api.imageProp = 1.5; //default horizontal prop
         api.priceCalc = function (){
             var data = this.dataForSent;
             if( !data.formProduct || !data.formFrameSize ) return;

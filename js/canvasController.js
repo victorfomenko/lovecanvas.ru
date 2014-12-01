@@ -3,7 +3,7 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
     var dataForSent = appService.dataForSent;
     //Default states
     $scope.formProduct =        dataForSent.formProduct;
-    $scope.formFrameSize =      dataForSent.formFrameSize;
+    $scope.formFrameSize =      appService.optionsList.sizesH[5].value;
     $scope.formFrameType =      dataForSent.formFrameType;
     $scope.formBorderType =     dataForSent.formBorderType;
     $scope.formPrice =          appService.priceCalc();
@@ -14,64 +14,15 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
         { id: 'FP', name: 'В раме', class: "frame", isActive: false }
     ];
     var baseMainClass = $scope.productStates[2].class;
+    var formListOptions = appService.optionsList;
     $scope.mainClass = baseMainClass;
-    var formListOptions = {
-        print: {
-            frame: [
-                {value: null, name: ""}
-            ],
-            borders: [
-                {value: null, name: ""}
-            ]
-        },
-        canvas: {
-            frame: [
-                {value: '150', name: '1.5 см в толщину'},
-                {value: '300', name: '3 см в толщину'}/*,
-                {value: 'BF', name: 'Древесная черная'},
-                {value: 'WF', name: 'Древесная белая'},
-                {value: 'EF', name: 'Древесная кофейная'}*/
-            ],
-            borders: [
-                {value: 'BB', name: 'Черный край'},
-                {value: 'WB', name: 'Белый край'}
-            ]
-        },
-        inframe: {
-            frame: [
-                {value: 'BF', name: 'Древесная черная'},
-                {value: 'WF', name: 'Древесная белая'},
-                {value: 'EF', name: 'Древесная кофейная'}
-            ],
-            borders: [
-                {value: '630MA', name: '6 см матовые'},
-                {value: 'NOMA', name: 'Без матовых краев'}
-            ]
-        },
-        sizes: [
-              {value: '20|25', name: '20см × 25см'},
-              {value: '30|30', name: '30см × 30см'},
-              {value: '30|40', name: '30см × 40см'},
-              {value: '30|45', name: '30см × 45см'},
-              {value: '40|50', name: '40см × 50см'},
-              {value: '40|60', name: '40см × 60см'},
-              {value: '45|60', name: '45см × 60см'},
-              {value: '50|60', name: '50см × 60см'},
-              {value: '60|60', name: '60см × 60см'},
-              {value: '50|75', name: '50см × 75см'},
-              {value: '60|90', name: '60см × 90см'},
-              {value: '90|90', name: '90см × 90см'},
-              {value: '95|95', name: '95см × 95см'},
-              {value: '75|100', name: '75см × 100см'},
-              {value: '45|120', name: '45см × 120см'},
-              {value: '90|135', name: '90см × 135см'},
-              {value: '60|180', name: '60см × 180см'}
-        ]
-
-    };
     $scope.frameOptions = formListOptions.inframe.frame;
     $scope.borderOptions = formListOptions.inframe.borders;
-    $scope.sizeOptions = formListOptions.sizes;
+    $scope.sizeOptions = formListOptions.sizesH;
+    if(appService.imageProp < 1 ) {
+        $scope.formFrameSize =      appService.optionsList.sizesV[5].value;
+        $scope.sizeOptions = formListOptions.sizesV;
+    }
     $scope.updateImageProportions = updateImageProportions;
     $scope.changeSize = function(frameSize){
         dataForSent.formFrameSize = frameSize;
