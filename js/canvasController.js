@@ -105,11 +105,11 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
             mainImageHeight = mainImageWidth * proportions;
         return {
             'height': mainImageHeight+ 'px',
+            'width': mainImageWidth+ 'px',
             'proportions': proportions
         }
     }
     function updateImageProportions(){
-        $scope.productImageHeight = getImageData().height;
         //show/hide proportions note
         $timeout(function(){
             $scope.productImageHeight = getImageData().height;

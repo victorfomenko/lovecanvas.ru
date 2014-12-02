@@ -26,6 +26,7 @@
 	$message .= "Фото: <img src='" . $image . "'><br>";
 	sendEmail("info@lovecanvas.ru", $subject, $message);
 	sendEmail("veselovskiievgenii@gmail.com", $subject, $message);
+	sendEmail("lesya.yusupova@gmail.com", $subject, $message);
 
 	function sendEmail( $email, $subject, $message ) {
 

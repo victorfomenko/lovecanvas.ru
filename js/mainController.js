@@ -19,6 +19,7 @@ app.controller("mainController", function($scope, $state, appService){
                     var image = new Image();
                     image.src = e.target.result;
                     appService.imageProp = image.width/image.height;
+                    console.log('imageProp:', appService.imageProp);
                     $state.go('canvas').then(function(){
                         appService.dataForSent.image = e.target.result;
                         // Render thumbnail.
