@@ -13,6 +13,7 @@
   "dependencies": {
     "angular": ">=1.2",
     "normalize.styl": "~3.0.0",
-    "angular-ui-router": ">=0.2.11"
+    "angular-ui-router": ">=0.2.11",
+    "jquery": "~2.1.1"
   }
 }

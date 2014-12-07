@@ -12,20 +12,31 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         })
         .state('wedding', {
             url: "/wedding",
-            templateUrl: "templates/wedding.html",
+            templateUrl: "/templates/wedding.html",
             controller: "mainController",
             data : { pageTitle: 'Печать свадебных фото' }
         })
         .state('canvas', {
             url: "/canvas",
-            templateUrl: "templates/canvas.html",
+            templateUrl: "/templates/canvas.html",
             controller: "canvasController",
             data : { pageTitle: 'Картина' }
         })
         .state('shipping', {
             url: "/shipping",
-            templateUrl: "templates/shipping.html",
+            templateUrl: "/templates/shipping.html",
             controller: "shippingController",
             data : { pageTitle: 'Заказ' }
+        })
+        .state('gallery', {
+            url: "/gallery",
+            templateUrl: "/templates/gallery.html",
+            controller: "galleryController",
+            data : { pageTitle: 'Галлерея' }
+        })
+        .state('product', {
+            url: "/gallery/:productId",
+            templateUrl: "/templates/product.html",
+            controller: "productController"
         });
 });

@@ -4,10 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="fragment" content="!" />
-    <link rel="stylesheet" type="text/css" href="css/lovecanvas.css" />
+    <link rel="stylesheet" type="text/css" href="/css/lovecanvas.css" />
 	<!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" />-->
-    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-    <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 	<title update-title>Love Canvas</title>
 	<meta name="author" content="Victor Fomenko"/>
 	<meta name="keywords" content="купить картину, купить принты, принты в казани картины в казани, картина на холсте, картина в раме, печать на холсте, холст, фото, печать, картина, печать картин"/>
@@ -18,7 +19,7 @@
 		<div class="container header__container">
 			<div class="header__flex">
 				<div class="header__flex__item col-md-4 col-xs-4 header__flex__item--logo">
-					<a href="/"><img class="header__flex__item__logo" src="img/logo.png" alt="Love Canvas"/></a>
+					<a href="/"><img class="header__flex__item__logo" src="/img/logo.png" alt="Love Canvas"/></a>
 					<div class="header__flex__item__title">
 						<span class="header__flex__item__title__name"><a href="/">Love Canvas</a><!--<sup class="m-text_small header__flex__item__title__name__beta"> beta</sup>--></span><br/>
 						<span class="header__flex__item__title__note">Создание принтов</span>
@@ -42,11 +43,20 @@
     </footer>
     <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter26717241 = new Ya.Metrika({id:26717241, webvisor:true, clickmap:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/26717241" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
 </body>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/directives/updateTitle.js"></script>
-<script type="text/javascript" src="js/services/appService.js"></script>
-<script type="text/javascript" src="js/mainController.js"></script>
-<script type="text/javascript" src="js/canvasController.js"></script>
-<script type="text/javascript" src="js/shippingController.js"></script>
-<script type="text/javascript" src="js/!analitycs.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+<script type="text/javascript" src="/js/directives/updateTitle.js"></script>
+<script type="text/javascript" src="/js/services/appService.js"></script>
+<script type="text/javascript" src="/js/mainController.js"></script>
+<script type="text/javascript" src="/js/canvasController.js"></script>
+<script type="text/javascript" src="/js/shippingController.js"></script>
+<script type="text/javascript" src="/js/galleryController.js"></script>
+<script type="text/javascript" src="/js/productController.js"></script>
+
+<!-- gallery connect -->
+<script type="text/javascript" src="/js/gallery/jquery.collageCaption.js"></script>
+<script type="text/javascript" src="/js/gallery/jquery.collagePlus.js"></script>
+<script type="text/javascript" src="/js/gallery/jquery.removeWhitespace.js"></script>
+
+<!-- analitycs -->
+<script type="text/javascript" src="/js/!analitycs.js"></script>
 </html>

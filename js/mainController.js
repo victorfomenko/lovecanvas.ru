@@ -1,4 +1,4 @@
-app.controller("mainController", function($scope, $state, appService){
+app.controller("mainController", function($scope, $http, $state, appService){
     $scope.bannerNumber = Math.floor((Math.random() * 4) + 1);
 
     $scope.openLoadFile = function(){
@@ -35,4 +35,42 @@ app.controller("mainController", function($scope, $state, appService){
             reader.readAsDataURL(file[0]);
         }
     };
+
+    $scope.$on("$stateChangeSuccess", function(){
+        $(window).resize();
+        setTimeout(collageCaption, 200);
+    });
+
+    if(appService.pictures.length === 0) {
+        appService.getImageList(40).then(function(){
+            $scope.pictures = appService.pictures;
+        });
+    }
+    else {
+        $scope.pictures = appService.pictures;
+    }
+
+
+    // This is just for the case that the browser window is resized
+    var resizeTimer = null;
+    $(window).bind('resize', function() {
+        // hide all the images until we resize them
+        $('.gallery .Image_Wrapper').css("opacity", 0);
+        // set a timer to re-apply the plugin
+        if (resizeTimer) clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(collage, 200);
+    });
+
+    // Here we apply the actual CollagePlus plugin
+    function collage() {
+        $('.gallery').collagePlus(
+            {
+                'fadeSpeed'     : 1000,
+                'targetHeight'  : 200
+            }
+        );
+    }
+    function collageCaption(){
+        $('.gallery').collageCaption();
+    }
 });

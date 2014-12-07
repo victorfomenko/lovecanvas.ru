@@ -1,6 +1,6 @@
 (function(){
     var moduleId = 'app';
-    app.factory(moduleId + 'Service', function() {
+    app.factory(moduleId + 'Service', function($http) {
         var api = {};
         api.optionsList = {
             print: {
@@ -71,6 +71,7 @@
                 {value: '100|75', name: '100см × 75см'}
             ]
         };
+        api.pictures = [];
         api.dataForSent = {
             formName:           null,
             formPhone:          null,
@@ -136,6 +137,20 @@
             }
             this.dataForSent.formPrice = price;
             return price;
+        };
+        api.getImageList = function (limit) {
+            var result;
+            return $http.post('/ajax/getListOfPic.php', limit)
+                .success(function(data){
+                    if (typeof  data === 'object') {
+                        result = data;
+                    }
+                })
+                .error(function(){
+                    result = "Something went wrong. AJAX ERROR.";
+                }).then(function(){
+                    api.pictures = result;
+                });
         };
         return api;
     })

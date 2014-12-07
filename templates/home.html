@@ -3,6 +3,20 @@
     <input class="m-hidden" value="Загрузить фото" type="file" id="load-file">
     <h1 class="banner__title">Превращаем фотографии в картины</h1>
 </section>
+
+<section class="container">
+    <div class="gallery-section">
+        <h2 class="gallery-section__title m-text_center">Галлерея готовых работ</h2>
+        <div class="gallery">
+            <a href="/gallery/{{pic.seourl}}" class="gallery__wrapper" ng-repeat="pic in pictures" data-caption="<strong class='caption__content__name'>{{pic.name}}</strong><span class='caption__content__author'>{{pic.author}}</span><span class='caption__content__price'>От 190 <span class='form__price__rouble m-rubble'>i</span></span>">
+
+                <i class='heart'></i>
+                <img src="{{pic.preview}}" alt="{{pic.name}}"/>
+            </a>
+        </div>
+    </div>
+</section>
+
 <section class="pluses">
     <div class="container">
         <div class="row pluses__row">
@@ -47,7 +61,7 @@
 </section>
 <section class="samples">
     <div class="container">
-        <h1 class="m-text_center samples__title">Картины на холсте</h1>
+        <h2 class="m-text_center samples__title">Картины на холсте</h2>
         <div class="row">
             <div class="col-md-6 col-xs-12">
                 <div class="square-box square-box--small square-box--item-1"></div>
