@@ -1,3 +1,13 @@
 <section class="container m-padding-main">
-    <h2>Gallery</h2>
+    <div class="container">
+        <div class="gallery-section">
+            <div class="gallery">
+                <a href="/gallery/{{pic.seourl}}" class="gallery__wrapper" ng-repeat="pic in pictures" data-caption="<strong class='caption__content__name'>{{pic.name}}</strong><span class='caption__content__author'>{{pic.author}}</span>">
+
+                    <i class='heart'></i>
+                    <img src="{{pic.preview}}" alt="{{pic.name}}"/>
+                </a>
+            </div>
+        </div>
+    </div>
 </section>

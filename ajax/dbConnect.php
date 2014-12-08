@@ -12,6 +12,10 @@
         $dataReader = dbArray($result);
         return $dataReader;
     }
+    function insertDataToDB ( $q ) {
+        $result = mysqli_query($_SERVER['connection'], $q);
+        return $result;
+    }
     function dbArray( $recordset ) {
             if ( ! $recordset ) { return false; }
 

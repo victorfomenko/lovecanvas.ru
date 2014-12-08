@@ -19,9 +19,9 @@ app.controller("mainController", function($scope, $http, $state, appService){
                     var image = new Image();
                     image.src = e.target.result;
                     appService.imageProp = image.width/image.height;
-                    console.log('imageProp:', appService.imageProp);
                     $state.go('canvas').then(function(){
-                        appService.dataForSent.image = e.target.result;
+                        appService.dataForSent.image = null;
+                        appService.dataForSent.imagebase64 = e.target.result;
                         // Render thumbnail.
                         var imageContainer = document.getElementById('image-container');
                         imageContainer.style.backgroundImage=['url("', e.target.result ,'")'].join('');
@@ -42,7 +42,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
     });
 
     if(appService.pictures.length === 0) {
-        appService.getImageList(40).then(function(){
+        appService.getImageList(20).then(function(){
             $scope.pictures = appService.pictures;
         });
     }

@@ -1,9 +1,13 @@
 <?php
+
+    include('dbConnect.php');
 	$data = (json_decode(file_get_contents("php://input")));
+
 	$name =         $data->formName;
 	$city =         $data->formCity;
 	$postal =       $data->formPostal;
 	$image =        $data->image;
+	$imagebase64 =  $data->imagebase64;
 	$phone =        $data->formPhone;
 	$email =        $data->formEmail;
 	$productType =  $data->formProduct;
@@ -11,6 +15,15 @@
     $frameType =    $data->formFrameType;
     $borderType =   $data->formBorderType;
     $price =        $data->formPrice;
+
+    $q =   "INSERT INTO orders (id, name, phone, email, city, postalcode, producttype, framesize, frametype, bordertype, price, image)
+            VALUES (NULL, '" . $name . "', '". $phone ."',
+                          '" . $email . "', '" . $city . "',
+                          '" . $postal . "', '" . $productType . "',
+                          '" . $frameSize . "', '" . $frameType . "',
+                          '" . $borderType . "', '" . $price . "',
+                          '" . $image . "')";
+    insertDataToDB($q);
 
 	$subject = 'Заказ картины';
 	$message = "Имя: " . $name . "<br>";
@@ -23,7 +36,7 @@
 	$message .= "Тип рамы: " . $frameType . "<br>";
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
-	$message .= "Фото: <img src='" . $image . "'><br>";
+	$message .= "Фото: <img src='" . $image ? $image : $imagebase64 . "'><br>";
 	sendEmail("victorfomenko@me.com", $subject, $message);
 	sendEmail("veselovskiievgenii@gmail.com", $subject, $message);
 	sendEmail("lesya.yusupova@gmail.com", $subject, $message);

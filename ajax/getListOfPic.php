@@ -2,14 +2,15 @@
 	include('dbConnect.php');
 	$url = $_REQUEST["url"];
 
-    $limit = 20;
-    if ( $url==='gallery' ) $limit=50;
+    $limit = file_get_contents('php://input');
+	if( !$limit ) $limit = 20;
 
     $q =    "SELECT SQL_CALC_FOUND_ROWS
                     name, author, rate, fee, filename, seourl
                     FROM pictures
                     WHERE deleted=0
-                    ORDER BY rate DESC";
+                    ORDER BY rate DESC
+                    LIMIT " . $limit;
 
     $listOfPic = array();
 

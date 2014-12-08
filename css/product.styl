@@ -9,17 +9,16 @@ whiteFrameColor = #F7FCFF
 	left: 0;
 
 .product
-	display block
+	display inline-block
 	position relative
 	margin 0 auto
 	max-width 100%
 	margin-bottom 60px
-	/*max-height 500px*/
 
 .product__frame,
 .product__shadow,
 .product__mate
-	display block
+	display inline-block !important
 	position relative
 
 .product__split
@@ -82,13 +81,14 @@ whiteFrameColor = #F7FCFF
 	background-color #ffffff
 
 .product__image__img
-	visibility hidden
 	height auto
 	width auto
 	max-width 100%
 	position relative
 	z-index 1
 	margin 0 auto
+	max-height 500px
+	vertical-align bottom
 
 .product--print-only
 	.product__shadow:after
@@ -207,6 +207,17 @@ whiteFrameColor = #F7FCFF
 			border-left-color: #DBDBDB;
 			border-right-color: #DDD;
 
+.product--loaded
+	display block
+
+	.product__image__img
+		visibility hidden
+		display inline
+
+	.product__frame,
+	.product__shadow,
+	.product__mate
+		display block !important
 @css {
 .product--canvas .product__frame {
 	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), 0 23px 20px rgba(0, 0, 0, 0.2), -10px 3px 18px 3px rgba(0, 0, 0, 0.1);

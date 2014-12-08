@@ -1847,17 +1847,27 @@ input[type="button"].btn-block {
   background-position: center center;
   z-index: 1;
   background-size: cover;
-  padding: 215px 0;
+  padding: 220px 0;
+  color: #fff;
 }
 .banner__title {
   font-size: 40px;
   color: #fff;
-  margin-top: 15px;
+  margin-top: 0px;
+}
+.banner__title a {
+  color: #fff;
+  text-decoration: underline;
 }
 .banner__title__small {
   color: #fff;
-  margin-top: -20px;
   font-size: 1em;
+  text-decoration: underline;
+}
+.banner__title a:hover,
+.banner__title__small:hover,
+.banner__title__small:active {
+  color: #e6e6e6;
 }
 .banner--item-1:before,
 .banner--item-2:before,
@@ -2064,7 +2074,7 @@ input[type="button"].btn-block {
   bottom: 16px;
   left: 50%;
   margin-left: -150px;
-  padding: 17px 90px;
+  padding: 17px 63px;
   font-size: 18px !important;
 }
 .absoluteContent,
@@ -2078,17 +2088,16 @@ input[type="button"].btn-block {
   left: 0;
 }
 .product {
-  display: block;
+  display: inline-block;
   position: relative;
   margin: 0 auto;
   max-width: 100%;
   margin-bottom: 60px;
-/*max-height 500px*/
 }
 .product__frame,
 .product__shadow,
 .product__mate {
-  display: block;
+  display: inline-block !important;
   position: relative;
 }
 .product__split {
@@ -2155,13 +2164,14 @@ input[type="button"].btn-block {
   background-color: #fff;
 }
 .product__image__img {
-  visibility: hidden;
   height: auto;
   width: auto;
   max-width: 100%;
   position: relative;
   z-index: 1;
   margin: 0 auto;
+  max-height: 500px;
+  vertical-align: bottom;
 }
 .product--print-only .product__shadow:after {
   content: "";
@@ -2284,6 +2294,18 @@ input[type="button"].btn-block {
   border-left-color: #dbdbdb;
   border-right-color: #ddd;
 }
+.product--loaded {
+  display: block;
+}
+.product--loaded .product__image__img {
+  visibility: hidden;
+  display: inline;
+}
+.product--loaded .product__frame,
+.product--loaded .product__shadow,
+.product--loaded .product__mate {
+  display: block !important;
+}
 
 .product--canvas .product__frame {
 	-webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), 0 23px 20px rgba(0, 0, 0, 0.2), -10px 3px 18px 3px rgba(0, 0, 0, 0.1);
@@ -2383,9 +2405,10 @@ input[type="button"].btn-block {
 .caption__content__name,
 .caption__content__author,
 .caption__content__price {
-  max-width: 90%;
   white-space: nowrap;
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .caption__content__name {
   font-size: 21px;
