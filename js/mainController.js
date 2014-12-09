@@ -37,7 +37,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
     };
 
     $scope.$on("$stateChangeSuccess", function(){
-        setTimeout(collageCaption, 1);
+        setTimeout(collageCaption, 300);
     });
 
     if(appService.pictures.length === 0) {
