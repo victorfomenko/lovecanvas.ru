@@ -38,7 +38,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
 
     $scope.$on("$stateChangeSuccess", function(){
         $(window).resize();
-        setTimeout(collageCaption, 200);
+        setTimeout(collageCaption, 300);
     });
 
     if(appService.pictures.length === 0) {
@@ -58,7 +58,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
         $('.gallery .Image_Wrapper').css("opacity", 0);
         // set a timer to re-apply the plugin
         if (resizeTimer) clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(collage, 200);
+        resizeTimer = setTimeout(collage, 300);
     });
 
     // Here we apply the actual CollagePlus plugin
