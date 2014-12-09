@@ -37,13 +37,13 @@ app.controller("mainController", function($scope, $http, $state, appService){
     };
 
     $scope.$on("$stateChangeSuccess", function(){
-        setTimeout(collageCaption, 300);
+        setTimeout(collageCaption, 1);
     });
 
     if(appService.pictures.length === 0) {
         appService.getImageList(20).then(function(){
             $scope.pictures = appService.pictures;
-            setTimeout(collageCaption, 1);
+            setTimeout(collageCaption, 1000)
         });
     }
     else {
@@ -71,7 +71,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
         );
     }
     function collageCaption(){
-        $(window).resize();
         $('.gallery').collageCaption();
+        $(window).resize();
     }
 });
