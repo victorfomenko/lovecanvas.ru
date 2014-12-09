@@ -37,13 +37,13 @@ app.controller("mainController", function($scope, $http, $state, appService){
     };
 
     $scope.$on("$stateChangeSuccess", function(){
-        $(window).resize();
-        setTimeout(collageCaption, 300);
+        setTimeout(collageCaption, 1);
     });
 
     if(appService.pictures.length === 0) {
         appService.getImageList(20).then(function(){
             $scope.pictures = appService.pictures;
+            setTimeout(collageCaption, 1);
         });
     }
     else {
@@ -58,7 +58,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
         $('.gallery .Image_Wrapper').css("opacity", 0);
         // set a timer to re-apply the plugin
         if (resizeTimer) clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(collage, 300);
+        resizeTimer = setTimeout(collage, 200);
     });
 
     // Here we apply the actual CollagePlus plugin
@@ -71,6 +71,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
         );
     }
     function collageCaption(){
+        $(window).resize();
         $('.gallery').collageCaption();
     }
 });
