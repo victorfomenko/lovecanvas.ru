@@ -94,15 +94,16 @@
                 frameSizeSquare = (frameSizeWH[0] * frameSizeWH[1])/10000,
                 frameSizeSquareInner = ((frameSizeWH[0]-3) * (frameSizeWH[1]-3))/10000,
                 frameLength = (frameSizeWH[0]*2 + frameSizeWH[1]*2)/100,
-                POCoast = 700,
+                POCoast = 1000,
                 CPCoast = 1000,
                 FPCoast = 1000,
-                mounts = 50,
-                underFrameCoast1 = 80,
+                mounts = 60,
+                underFrameCoast1 = 70,
                 underFrameCoast2 = 160,
                 frameCoast = 250,
-                penokartonCoast = 450,
-                paspartuCoast = 700;
+                penokartonCoast = 310,
+                paspartuCoast = 700,
+                glassCoast =    1000;
 
             //calculate if print only
             if( data.formProduct === "PO" &&  !data.formFrameType && !data.formBorderType ) {
@@ -131,7 +132,7 @@
                 if (data.formBorderType === 'NOMA'){
                     paspartuCoast = 0
                 }
-                price = frameSizeSquareInner*FPCoast + frameLength*frameCoast + frameSizeSquareInner*paspartuCoast + frameSizeSquareInner*penokartonCoast + mounts;
+                price = frameSizeSquareInner*FPCoast + frameSizeSquareInner*glassCoast + frameLength*frameCoast + frameSizeSquareInner*paspartuCoast + frameSizeSquareInner*penokartonCoast + mounts;
                 price = 2*Math.round(price/10)*10 + 100;// add 100% and 100 rub for deals
 
             }
