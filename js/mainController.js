@@ -40,16 +40,11 @@ app.controller("mainController", function($scope, $http, $state, appService){
         setTimeout(collageCaption, 1);
     });
 
-    if(appService.pictures.length === 0) {
-        appService.getImageList(12).then(function(){
-            $scope.pictures = appService.pictures;
-        }).then(function(){
-            setTimeout(collageCaption, 1)
-        });
-    }
-    else {
+    appService.getImageList(13).then(function(){
         $scope.pictures = appService.pictures;
-    }
+    }).then(function(){
+        setTimeout(collageCaption, 1)
+    });
 
 
     // This is just for the case that the browser window is resized
