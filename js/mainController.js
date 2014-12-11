@@ -41,7 +41,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
     });
 
     if(appService.pictures.length === 0) {
-        appService.getImageList(20).then(function(){
+        appService.getImageList(12).then(function(){
             $scope.pictures = appService.pictures;
         }).then(function(){
             setTimeout(collageCaption, 1)

@@ -102,7 +102,7 @@
                 underFrameCoast2 = 160,
                 frameCoast = 250,
                 penokartonCoast = 310,
-                paspartuCoast = 700,
+                paspartuCoast = 600,
                 glassCoast =    1000;
 
             //calculate if print only
