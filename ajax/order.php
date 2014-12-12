@@ -6,8 +6,8 @@
 	$name =         $data->formName;
 	$city =         $data->formCity;
 	$postal =       $data->formPostal;
-	$image =        $data->image;
-	$imagebase64 =  $data->imagebase64;
+	$imageurl =     $data->image;
+	$imageBase64 =  $data->imageBase64;
 	$phone =        $data->formPhone;
 	$email =        $data->formEmail;
 	$productType =  $data->formProduct;
@@ -16,13 +16,37 @@
     $borderType =   $data->formBorderType;
     $price =        $data->formPrice;
 
+    if ( $imageBase64 != null ) { // upload original file if base64
+        $levelUp =                  "..";
+        $photo_path = 				"/data";
+        $fileExtension =            '.jpg';
+        $fileFolder = 				'/uploaded/';
+        $fileName = 			    generateRandomString(12);
+
+        $fullFileName =             $fileName . $fileExtension;
+        $file_server_folder = 		$levelUp . $photo_path . $fileFolder;
+        $file_url_folder =          $photo_path . $fileFolder;
+
+        if ( ! file_exists( $file_server_folder ) ) {
+            mkdir($file_server_folder, 0777, true);
+        }
+
+        list($type, $imageBase64) = explode(';', $imageBase64);
+        list(, $imageBase64)      = explode(',', $imageBase64);
+        $file_image =               base64_decode($imageBase64);
+
+        file_put_contents($file_server_folder . $fullFileName, $file_image);
+
+        $imageurl = $file_url_folder . $fullFileName;
+    }
+
     $q =   "INSERT INTO orders (id, name, phone, email, city, postalcode, producttype, framesize, frametype, bordertype, price, image)
             VALUES (NULL, '" . $name . "', '". $phone ."',
                           '" . $email . "', '" . $city . "',
                           '" . $postal . "', '" . $productType . "',
                           '" . $frameSize . "', '" . $frameType . "',
                           '" . $borderType . "', '" . $price . "',
-                          '" . $image . "')";
+                          '" . $imageurl . "')";
     insertDataToDB($q);
 
 	$subject = 'Заказ картины';
@@ -36,10 +60,8 @@
 	$message .= "Тип рамы: " . $frameType . "<br>";
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
-	$message .= "Фото: <img src='" . $image ? $image : $imagebase64 . "'><br>";
-	sendEmail("victorfomenko@me.com", $subject, $message);
-	sendEmail("veselovskiievgenii@gmail.com", $subject, $message);
-	sendEmail("lesya.yusupova@gmail.com", $subject, $message);
+	$message .= "Фото: <a href='http://lovecanvas.ru" . $imageurl . "</a>'><br>";
+	sendEmail("info@lovecanvas.ru", $subject, $message);
 
 	function sendEmail( $email, $subject, $message ) {
 
@@ -58,6 +80,15 @@
 
 		mail( $email, $subject, $message, $headers );
 	}
+    function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
 	print("ok");
 	exit;
 

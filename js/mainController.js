@@ -21,7 +21,7 @@ app.controller("mainController", function($scope, $http, $state, appService){
                     appService.imageProp = image.width/image.height;
                     $state.go('canvas').then(function(){
                         appService.dataForSent.image = null;
-                        appService.dataForSent.imagebase64 = e.target.result;
+                        appService.dataForSent.imageBase64 = e.target.result;
                         // Render thumbnail.
                         var imageContainer = document.getElementById('image-container');
                         imageContainer.style.backgroundImage=['url("', e.target.result ,'")'].join('');

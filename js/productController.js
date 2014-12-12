@@ -88,7 +88,7 @@ app.controller("productController", function($scope, $state, $http, appService){
             $scope.pic = picData;
             if(picData.sizes.length > 0) {
                 dataForSent.formFrameSize = picData.sizes[0].value;
-                dataForSent.imagebase64 = null;
+                dataForSent.imageBase64 = null;
                 dataForSent.image = picData.full;
                 $scope.formFrameSize =      dataForSent.formFrameSize;
                 $scope.sizeOptions =        picData.sizes;

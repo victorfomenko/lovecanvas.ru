@@ -83,6 +83,7 @@
             formBorderType:     '630MA',
             formPrice:          null,
             formCity:           'Казань',
+            imageBase64:        null,
             image:              null
         };
         api.imageProp = 1.5; //default horizontal prop
