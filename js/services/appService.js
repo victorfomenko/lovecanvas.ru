@@ -82,9 +82,11 @@
             formFrameType:      'BF',
             formBorderType:     '630MA',
             formPrice:          null,
+            formShippingPrice:  0,
             formCity:           'Казань',
             imageBase64:        null,
             image:              null
+
         };
         api.imageProp = 1.5; //default horizontal prop
         api.priceCalc = function (){
@@ -105,10 +107,9 @@
                 penokartonCoast = 310,
                 paspartuCoast = 600,
                 glassCoast =    1000;
-
             //calculate if print only
             if( data.formProduct === "PO" &&  !data.formFrameType && !data.formBorderType ) {
-                price = 2*Math.round((frameSizeSquare*POCoast/10000)/10)*10 + 100
+                price = 2*Math.round((frameSizeSquare*POCoast)/10)*10 + 100;
             }
             //calculate if canvas print
             else if( data.formProduct === "CP" &&  data.formFrameType && data.formBorderType ) {

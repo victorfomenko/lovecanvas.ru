@@ -21,7 +21,7 @@
                         <div class="form__row form__row--is_required">
                             <label for="city">Город</label>
                             <div class="select">
-                                <select id="city" name="street" ng-model="formCity" ng-options="o.value as o.name for o in cityOptions" required></select>
+                                <select id="city" name="street" ng-model="formCity" ng-options="o.value as o.name for o in cityOptions" ng-change="changeCity(formCity)" required></select>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,23 @@
                 </div>
             </div>
             <div class="col-xs-4">
-                Заказ на сумму: {{price}}<span class="form__price__rouble m-rubble">i</span>
+                <div class="order-info">
+                    <h2 class="order-info__title">Сумма заказа</h2>
+                    <table class="order-info__table">
+                        <tr class="order-info__table__row">
+                            <td class="order-info__table__row__cell">Подитог:</td>
+                            <td class="order-info__table__row__cell">{{price}}<span class="form__price__rouble m-rubble">i</span></td>
+                        </tr>
+                        <tr class="order-info__table__row order-info__table__row--shipping">
+                            <td class="order-info__table__row__cell">Доставка:</td>
+                            <td class="order-info__table__row__cell">{{shippingPrice}}<span class="form__price__rouble m-rubble">i</span></td>
+                        </tr>
+                        <tr class="order-info__table__row order-info__table__row--summary">
+                            <td class="order-info__table__row__cell">Итог:</td>
+                            <td class="order-info__table__row__cell">{{summaryPrice}}<span class="form__price__rouble m-rubble">i</span></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
 
         </div>

@@ -3,6 +3,7 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
     var dataForSend =           appService.dataForSent;
     $scope.formCity =           dataForSend.formCity;
     $scope.price =              dataForSend.formPrice;
+    calculatePrice(dataForSend.formCity);
     $scope.cityOptions = [
         {value: 'Москва', name: 'Москва'},
         {value: 'Санкт-Петербург', name: 'Санкт-Петербург'},
@@ -25,6 +26,18 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
     $scope.hideOrderModal = function () {
         $scope.orderModalIsShow = false;
     };
+    $scope.changeCity = function(city){
+        calculatePrice(city);
+        console.log(dataForSend.formShippingPrice)
+    };
+    function calculatePrice (city){
+        $scope.shippingPrice =      dataForSend.formShippingPrice = 0;
+        $scope.summaryPrice =       dataForSend.formPrice + dataForSend.formShippingPrice;
+        if(city !== 'Казань') {
+            $scope.shippingPrice =      dataForSend.formShippingPrice = 350;
+            $scope.summaryPrice =       dataForSend.formPrice + dataForSend.formShippingPrice;
+        }
+    }
     $scope.sendData = function(){
         dataForSend.formEmail =     $scope.formEmail;
         dataForSend.formPostal =    $scope.formPostal;
