@@ -2439,15 +2439,12 @@ input[type="button"].btn-block {
 .heart {
   opacity: 0;
   display: inline-block;
-  background: url("../img/gallery/heart.png") no-repeat;
+/*background: url("../img/gallery/heart.png") no-repeat;*/
   height: 36px;
   width: 36px;
   position: absolute;
   right: 10px;
   margin-top: 10px;
-}
-.heart:hover {
-  background: url("../img/gallery/heart_hover.png") no-repeat;
 }
 .gallery>div:hover .heart {
   opacity: 1;
