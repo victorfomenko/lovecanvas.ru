@@ -1,19 +1,17 @@
 app.controller("galleryController", function($scope,$timeout, appService){
-    $scope.$on("$stateChangeSuccess", function(){
-        $(window).resize();
-        setTimeout(collageCaption, 200);
-    });
 
     appService.getImageList(40).then(function(){
         $scope.pictures = appService.pictures;
-    }).then(function(){
-        $timeout(function(){
-            $(window).load(function () {
-                collage();
-                collageCaption();
-            });
-        }, 250);
     });
+
+    $scope.initPlugin = function(){
+        imageInit()
+    };
+    var imageInit = _.debounce(function(){
+        console.log('123');
+        collage();
+        collageCaption();
+    }, 500);
 
     // This is just for the case that the browser window is resized
     var resizeTimer = null;

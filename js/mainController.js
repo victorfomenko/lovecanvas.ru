@@ -38,15 +38,14 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
 
     appService.getImageList(13).then(function(){
         $scope.pictures = appService.pictures;
-    }).then(function(){
-        $timeout(function(){
-            $(window).load(function () {
-                collage();
-                collageCaption();
-            });
-        }, 250);
     });
-
+    $scope.initPlugin = function(){
+        imageInit()
+    };
+    var imageInit = _.debounce(function(){
+        collage();
+        collageCaption();
+    }, 500);
 
     // This is just for the case that the browser window is resized
     var resizeTimer = null;

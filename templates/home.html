@@ -10,9 +10,8 @@
         <h2 class="gallery-section__title m-text_center">Галерея готовых работ</h2>
         <div class="gallery">
             <a href="/gallery/{{pic.seourl}}" class="gallery__wrapper" ng-repeat="pic in pictures" data-caption="<strong class='caption__content__name'>{{pic.name}}</strong><span class='caption__content__author'>{{pic.author}}</span><span class='caption__content__price'>От 190 <span class='form__price__rouble m-rubble'>i</span></span>">
-
                 <i class='heart'></i>
-                <img src="{{pic.preview}}" alt="{{pic.name}}"/>
+                <img src="{{pic.preview}}" imageonload="initPlugin()" alt="{{pic.name}}"/>
             </a>
         </div>
     </div>
