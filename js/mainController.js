@@ -1,4 +1,4 @@
-app.controller("mainController", function($scope, $http, $state, appService){
+app.controller("mainController", function($scope, $http, $state, appService, $timeout){
     $scope.bannerNumber = Math.floor((Math.random() * 4) + 1);
 
     $scope.openLoadFile = function(){
@@ -36,14 +36,13 @@ app.controller("mainController", function($scope, $http, $state, appService){
         }
     };
 
-    $scope.$on("$stateChangeSuccess", function(){
-        setTimeout(collageCaption, 1);
-    });
-
     appService.getImageList(13).then(function(){
         $scope.pictures = appService.pictures;
     }).then(function(){
-        setTimeout(collageCaption, 1)
+        $timeout(function(){
+            collage();
+            collageCaption();
+        }, 250);
     });
 
 
@@ -68,6 +67,5 @@ app.controller("mainController", function($scope, $http, $state, appService){
     }
     function collageCaption(){
         $('.gallery').collageCaption();
-        $(window).resize();
     }
 });
