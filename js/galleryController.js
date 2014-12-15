@@ -8,8 +8,10 @@ app.controller("galleryController", function($scope,$timeout, appService){
         $scope.pictures = appService.pictures;
     }).then(function(){
         $timeout(function(){
-            collage();
-            collageCaption();
+            $(window).load(function () {
+                collage();
+                collageCaption();
+            });
         }, 250);
     });
 

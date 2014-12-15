@@ -40,8 +40,10 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
         $scope.pictures = appService.pictures;
     }).then(function(){
         $timeout(function(){
-            collage();
-            collageCaption();
+            $(window).load(function () {
+                collage();
+                collageCaption();
+            });
         }, 250);
     });
 
