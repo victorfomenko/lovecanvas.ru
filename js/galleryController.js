@@ -1,4 +1,4 @@
-app.controller("galleryController", function($scope, appService){
+app.controller("galleryController", function($scope,$timeout, appService){
     $scope.$on("$stateChangeSuccess", function(){
         $(window).resize();
         setTimeout(collageCaption, 200);
@@ -6,6 +6,11 @@ app.controller("galleryController", function($scope, appService){
 
     appService.getImageList(40).then(function(){
         $scope.pictures = appService.pictures;
+    }).then(function(){
+        $timeout(function(){
+            collage();
+            collageCaption();
+        }, 250);
     });
 
     // This is just for the case that the browser window is resized
