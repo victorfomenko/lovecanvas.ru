@@ -8,7 +8,8 @@ if ($handle = opendir($imageFolder)) {
     while (false !== ($file = readdir($handle))) {
         if ($file != "." && $file != "..") {
             $sizeInfo = getimagesize($imageFolder . $file);
-
+            print_r($file);
+            exit;
             $q =    "UPDATE pictures " .
                     "SET width=" . $sizeInfo[0] . ", height=" . $sizeInfo[1] . " " .
                     "WHERE filename = '" . explode('.', $file )[0] . "'";
