@@ -2,16 +2,8 @@ app.controller("galleryController", function($scope,$timeout, appService){
 
     appService.getImageList(40).then(function(){
         $scope.pictures = appService.pictures;
+        $timeout(collage, 200);
     });
-
-    $scope.initPlugin = function(){
-        imageInit()
-    };
-    var imageInit = _.debounce(function(){
-        console.log('123');
-        collage();
-        collageCaption();
-    }, 500);
 
     // This is just for the case that the browser window is resized
     var resizeTimer = null;
@@ -30,9 +22,6 @@ app.controller("galleryController", function($scope,$timeout, appService){
                 'fadeSpeed'     : 1000,
                 'targetHeight'  : 200
             }
-        );
-    }
-    function collageCaption(){
-        $('.gallery').collageCaption();
+        ).collageCaption();
     }
 });

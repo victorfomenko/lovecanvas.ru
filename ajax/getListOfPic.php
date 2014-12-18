@@ -6,7 +6,7 @@
 	if( !$limit ) $limit = 20;
 
     $q =    "SELECT SQL_CALC_FOUND_ROWS
-                    name, author, rate, fee, filename, seourl
+                    name, author, rate, fee, filename, seourl, width, height
                     FROM pictures
                     WHERE deleted=0
                     ORDER BY rate DESC
@@ -28,6 +28,8 @@
             $pic["seourl"] =    $data['seourl'];
             $pic["full"] =    "/data/full/" . $pic["filename"] . '.jpg';
             $pic["preview"] = "/data/preview/" . $pic["filename"] . '.jpg';
+            $pic["width"] =     $data['width'];
+            $pic["height"] =    $data['height'];
             array_push($listOfPic, $pic);
         }
     }

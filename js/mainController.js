@@ -38,14 +38,8 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
 
     appService.getImageList(13).then(function(){
         $scope.pictures = appService.pictures;
+        $timeout(collage, 200);
     });
-    $scope.initPlugin = function(){
-        imageInit()
-    };
-    var imageInit = _.debounce(function(){
-        collage();
-        collageCaption();
-    }, 500);
 
     // This is just for the case that the browser window is resized
     var resizeTimer = null;
@@ -61,12 +55,9 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
     function collage() {
         $('.gallery').collagePlus(
             {
-                'fadeSpeed'     : 1000,
+                'fadeSpeed'     : 500,
                 'targetHeight'  : 200
             }
-        );
-    }
-    function collageCaption(){
-        $('.gallery').collageCaption();
+        ).collageCaption();
     }
 });

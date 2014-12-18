@@ -16,8 +16,8 @@
     $pic["fee"] =       $data['fee'];
     $pic["filename"] =  $data['filename'];
     $pic["seourl"] =    $data['seourl'];
-    $pic["full"] =    "/data/full/" . $pic["filename"] . '.jpg';
-    $pic["preview"] = "/data/preview/" . $pic["filename"] . '.jpg';
+    $pic["full"] =      "/data/full/" . $pic["filename"] . '.jpg';
+    $pic["preview"] =   "/data/preview/" . $pic["filename"] . '.jpg';
 
     $q2 =  "SELECT sizes.value
             FROM sizes
