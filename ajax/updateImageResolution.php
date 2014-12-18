@@ -1,9 +1,10 @@
 <?php
 include('dbConnect.php');
-
+echo 'start';
 $imageFolder = '../data/full/';
 $images = array();
 if ($handle = opendir($imageFolder)) {
+    echo 'Читаем файлы в каталоге <br>';
     //Читаем файлы в каталоге
     while (false !== ($file = readdir($handle))) {
         if ($file != "." && $file != "..") {
