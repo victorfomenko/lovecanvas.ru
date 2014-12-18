@@ -8,11 +8,10 @@ if ($handle = opendir($imageFolder)) {
     while (false !== ($file = readdir($handle))) {
         if ($file != "." && $file != "..") {
             $sizeInfo = getimagesize($imageFolder . $file);
-            print_r($file);
-            exit;
+            $fileName = explode('.', $file )[0];
             $q =    "UPDATE pictures " .
                     "SET width=" . $sizeInfo[0] . ", height=" . $sizeInfo[1] . " " .
-                    "WHERE filename = '" . explode('.', $file )[0] . "'";
+                    "WHERE filename = '" . $fileName . "'";
             insertDataToDB($q);
         }
     }
