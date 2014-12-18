@@ -1,6 +1,7 @@
 <?php
 include('dbConnect.php');
 echo 'start';
+exit;
 $imageFolder = '../data/full/';
 $images = array();
 if ($handle = opendir($imageFolder)) {
