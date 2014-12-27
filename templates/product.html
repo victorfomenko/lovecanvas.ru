@@ -14,7 +14,13 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-5 col-lg-4 ">
-            <form ng-submit="goToShipping()" class="form">
+            <div class="product-info">
+                <div class="product-info__header">
+                    <h1 class="product-info__header__title">{{pic.name}}</h1>
+                    <p class="product-info__header__author">Автор: {{pic.author}}</p>
+                </div>
+                <hr/>
+                <form ng-submit="goToShipping()" class="form">
                 <div class="form__samples row">
                     <div class="col-xs-4" ng-repeat="product in productStates">
                         <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="formProduct" value="{{product.id}}" ng-click="changeProduct(product)" ng-mouseup="updateImageProportions()">
@@ -47,6 +53,7 @@
                 <input class="btn btn-info btn-lg" type="submit" style="display: block; width: 100%" value="Оформить доставку">
                 <small class="m-text_info">100% гарантия возврата средств</small>
             </form>
+            </div>
         </div>
     </div>
 </section>
