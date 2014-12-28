@@ -39,6 +39,7 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
     appService.getImageList(13).then(function(){
         $scope.pictures = appService.pictures;
         $timeout(collage, 200);
+        $timeout(caption, 0);
     });
 
     // This is just for the case that the browser window is resized
@@ -58,6 +59,9 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
                 'fadeSpeed'     : 500,
                 'targetHeight'  : 200
             }
-        ).collageCaption();
+        );
+    }
+    function caption() {
+        $('.gallery').collageCaption();
     }
 });
