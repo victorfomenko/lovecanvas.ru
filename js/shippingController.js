@@ -7,6 +7,7 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
     $scope.cityOptions = [
         {value: 'Москва', name: 'Москва'},
         {value: 'Санкт-Петербург', name: 'Санкт-Петербург'},
+        {value: 'Альметьевск', name: 'Альметьевск'},
         {value: 'Екатеринбург', name: 'Екатеринбург'},
         {value: 'Иркутск', name: 'Иркутск'},
         {value: 'Ижевск', name: 'Ижевск'},
