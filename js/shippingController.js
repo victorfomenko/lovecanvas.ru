@@ -15,6 +15,7 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
         {value: 'Краснодар', name: 'Краснодар'},
         {value: 'Минск', name: 'Минск'},
         {value: 'Нижний Новгород', name: 'Нижний Новгород'},
+        {value: 'Набережные Челны', name: 'Набережные Челны'},
         {value: 'Новосибирск', name: 'Новосибирск'},
         {value: 'Пермь', name: 'Пермь'},
         {value: 'Ростов-на-Дону', name: 'Ростов-на-Дону'},
