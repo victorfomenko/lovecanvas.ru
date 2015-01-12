@@ -77,10 +77,10 @@
     </form>
 </section>
 
-<div class="modal" ng-show="orderModalIsShow">
-    <div class="modal__close"><i class="m-close" ng-click="hideOrderModal()"></i></div>
-    <div class="modal__container">
-        <div class="modal__data" >
+<div class="modal-order-confirm" ng-show="orderModalIsShow">
+    <div class="modal-order-confirm__close"><i class="m-close" ng-click="hideOrderModal()"></i></div>
+    <div class="modal-order-confirm__container">
+        <div class="modal-order-confirm__data" >
             <img ng-show="orderLoading" src="/img/loading.gif" alt="Loading"/>
             <h2 ng-show="orderSuccess" class="m-text_center">Спасибо, {{formName}}! Ваш заказ принят!</h2>
         </div>
