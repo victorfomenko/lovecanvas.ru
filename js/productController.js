@@ -11,11 +11,16 @@ app.controller("productController", function($scope, $state, $http, appService){
         { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
         { id: 'FP', name: 'В раме', class: "frame", isActive: false }
     ];
+    $scope.tabs = [
+        { title:'Dynamic Title 1', content:'Dynamic content 1' },
+        { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
+    ];
     var baseMainClass = $scope.productStates[2].class;
     var formListOptions = appService.optionsList;
     $scope.mainClass = baseMainClass;
     $scope.frameOptions = formListOptions.inframe.frame;
     $scope.borderOptions = formListOptions.inframe.borders;
+    $scope.samplesIsShow = false;
 
     $scope.changeSize = function(frameSize){
         dataForSent.formFrameSize = frameSize;
