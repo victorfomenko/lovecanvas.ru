@@ -62,11 +62,22 @@
 	flex-shrink 0
 
 .header__flex__item--logo
-	padding-left 95px
-	a
+	padding-left 80px
+
+	.header__flex__item__link
 		display inline-block
 
-	.header__flex__item__logo
-		margin-left -80px
+	.header__flex__item__link__logo
+		margin-left -70px
 		padding-right 10px
 		width 70px
+
+
+
+@media (max-width: 768px)
+
+	.header__flex__item--logo
+		padding-left 0
+
+	.header__flex__item__link
+		display none !important
