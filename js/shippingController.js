@@ -66,4 +66,5 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
         });
         request;
     };
+    $("body").animate({scrollTop: 0}, 1);
 });

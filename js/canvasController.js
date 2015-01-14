@@ -129,4 +129,5 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
         }
     }
     updateImageProportions();
+    $("body").animate({scrollTop: 0}, 1);
 });
