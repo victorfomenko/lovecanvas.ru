@@ -5,6 +5,7 @@
 	overflow hidden
 	z-index 20
 	width 100%
+	position fixed
 
 .header__container
 	height 100%
@@ -16,6 +17,10 @@
 .header__flex__item
 	align-self(center)
 	flex-grow(1)
+
+.header__flex__item__title
+	vertical-align middle
+	display inline-block
 
 .header__flex__item__phone a,
 .header__flex__item__title__name a
@@ -58,8 +63,10 @@
 
 .header__flex__item--logo
 	padding-left 95px
+	a
+		display inline-block
 
 	.header__flex__item__logo
 		margin-left -80px
 		padding-right 10px
-		float left
+		width 70px
