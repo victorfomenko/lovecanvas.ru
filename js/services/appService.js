@@ -95,7 +95,9 @@
             if( !data.formProduct || !data.formFrameSize ) return;
             var price = 0;
             var frameSizeWH = data.formFrameSize.split('|'),
+                canvasBackstretch = 4, // запас для натяжки на подрамник
                 frameSizeSquare = (frameSizeWH[0] * frameSizeWH[1])/10000,
+                frameCanvasSizeSquare = ((frameSizeWH[0]*1+canvasBackstretch) * (frameSizeWH[1]*1+canvasBackstretch))/10000,
                 frameSizeSquareInner = ((frameSizeWH[0]-3) * (frameSizeWH[1]-3))/10000,
                 frameLength = (frameSizeWH[0]*2 + frameSizeWH[1]*2)/100,
                 POCoast = 1000,
@@ -125,8 +127,7 @@
                         underFrameCoast = underFrameCoast2;
                         break;
                 }
-
-                price = frameSizeSquare*CPCoast + (frameSizeWH[0]*1+frameSizeWH[1]*1)*underFrameCoast/50 + mounts;
+                price = frameCanvasSizeSquare*CPCoast + (frameSizeWH[0]*1+frameSizeWH[1]*1)*underFrameCoast/50 + mounts;
                 price = 2*Math.round(price/10)*10 + 100; // add 100% and 100 rub for deals
 
             }
