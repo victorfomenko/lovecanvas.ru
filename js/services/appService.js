@@ -21,7 +21,8 @@
                 ],
                 borders: [
                     {value: 'BB', name: 'Черный край'},
-                    {value: 'WB', name: 'Белый край'}
+                    {value: 'WB', name: 'Белый край'},
+                    {value: 'LB', name: 'Заливка фоном'}
                 ]
             },
             inframe: {
