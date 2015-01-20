@@ -45,6 +45,7 @@ app.controller("shippingController", function($scope, $http, $timeout, $state, a
         dataForSend.formPostal =    $scope.formPostal;
         dataForSend.formName =      $scope.formName;
         dataForSend.formPhone =     $scope.formPhone;
+        dataForSend.formAddress =   $scope.formAddress;
         dataForSend.formCity =      $scope.formCity;
         $scope.orderModalIsShow = true;
         var hideModal = function () {

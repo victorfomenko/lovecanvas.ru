@@ -85,6 +85,7 @@
             formPrice:          null,
             formShippingPrice:  0,
             formCity:           'Казань',
+            formAddress:        null,
             imageBase64:        null,
             image:              null
 

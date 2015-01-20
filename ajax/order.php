@@ -5,6 +5,7 @@
 
 	$name =         $data->formName;
 	$city =         $data->formCity;
+	$address =      $data->formAddress;
 	$postal =       $data->formPostal;
 	$imageurl =     $data->image;
 	$imageBase64 =  $data->imageBase64;
@@ -40,13 +41,13 @@
         $imageurl = $file_url_folder . $fullFileName;
     }
 
-    $q =   "INSERT INTO orders (id, name, phone, email, city, postalcode, producttype, framesize, frametype, bordertype, price, image)
+    $q =   "INSERT INTO orders (id, name, phone, email, city, address, postalcode, producttype, framesize, frametype, bordertype, price, image)
             VALUES (NULL, '" . $name . "', '". $phone ."',
                           '" . $email . "', '" . $city . "',
-                          '" . $postal . "', '" . $productType . "',
-                          '" . $frameSize . "', '" . $frameType . "',
-                          '" . $borderType . "', '" . $price . "',
-                          '" . $imageurl . "')";
+                          '" . $address . "', '" . $postal . "',
+                          '" . $productType . "', '" . $frameSize . "',
+                          '" . $frameType . "', '" . $borderType . "',
+                          '" . $price . "', '" . $imageurl . "')";
     insertDataToDB($q);
 
 	$subject = 'Заказ картины';
@@ -54,13 +55,14 @@
 	$message .= "Телефон: " . $phone . "<br>";
 	$message .= "E-mail: " . $email . "<br>";
 	$message .= "Город: " . $city . "<br>";
+	$message .= "Адрес: " . $address . "<br>";
 	$message .= "Индекс: " . $postal . "<br>";
 	$message .= "Тип картины: " . $productType . "<br>";
 	$message .= "Размеры: " . $frameSize . "<br>";
 	$message .= "Тип рамы: " . $frameType . "<br>";
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
-	$message .= "Фото: <a href='http://lovecanvas.ru" . $imageurl . "</a>'><br>";
+	$message .= "Фото: <a href='https://lovecanvas.ru" . $imageurl . "</a>'><br>";
 	sendEmail("info@lovecanvas.ru", $subject, $message);
 
 	function sendEmail( $email, $subject, $message ) {
