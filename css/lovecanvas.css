@@ -2520,6 +2520,9 @@ input[type="button"].btn-block {
   vertical-align: middle;
   display: inline-block;
 }
+.header__flex__item__title__name {
+  margin-top: 4px;
+}
 .header__flex__item__phone a,
 .header__flex__item__title__name a {
   color: #fff;
