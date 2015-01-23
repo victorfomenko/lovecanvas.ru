@@ -2832,6 +2832,12 @@ input[type="button"].btn-block {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#e3e6ea), to(#eef3f6));
   background-image: linear-gradient(top, #e3e6ea 0, #eef3f6 100%);
 }
+.product--canvas.product--LB:before,
+.product--canvas.product--LB:after {
+  background-position: 0px 0px;
+  background-size: 100%;
+  opacity: 0.5;
+}
 .product--canvas.product--150:before,
 .product--canvas.product--150:after {
   height: 5px;
