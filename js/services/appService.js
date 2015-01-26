@@ -73,7 +73,7 @@
             ],
             sizes: []
         };
-        for(var i=25; i<=160; i++){ //generate canvas sizes from 20 sm to 160 sm
+        for(var i=25; i<=180; i++){ //generate canvas sizes from 20 sm to 160 sm
             var newSize = {
                 value: i.toString(),
                 name: i + 'см'
