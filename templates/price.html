@@ -1,0 +1,101 @@
+<div class="price-bg price-bg--show" >
+    <section class="container price-title">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-lg-5">
+                <h1>Цены</h1>
+                <h4>Эта страница создана специально для того, чтоб вы могли легко посчитать стоимость картины. Выберете параметры вручную и узнайте цену, или найдите цены стандартных размеров в таблице ниже.</h4>
+            </div>
+        </div>
+    </section>
+    <section class="container price-calc m-padding-main">
+        <h2>Калькулятор цен</h2>
+        <div class="box">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-lg-8">
+                    <div class="row">
+                        <div class="col-xs-4" ng-repeat="product in productStates">
+                            <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="formProduct" value="{{product.id}}" ng-click="changeProduct(product)" ng-mouseup="updateImageProportions()">
+                            <label for="product-{{product.id}}">
+                                <small>{{product.name}}</small>
+                                <img src="/img/products/product-{{product.id}}.jpg">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row price-calc__params">
+                        <div class="col-xs-4">
+                            <label class="m-text_small" for="imgWidth">Ширина</label>
+                            <div class="select">
+                                <select id="imgWidth" name="size" required="" ng-model="width" ng-options="o.value as o.name for o in sizeOptions" ng-change="calcPrice()"></select>
+                                <span class="select__width-separator">&nbsp;x&nbsp;</span>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-4">
+                            <label class="m-text_small" for="imgHeight">Высота</label>
+                            <div class="select">
+                                <select id="imgHeight" name="size" required="" ng-model="height" ng-options="o.value as o.name for o in sizeOptions" ng-change="calcPrice()"></select>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div ng-show="formProduct === 'CP'">
+                                <label class="m-text_small" for="imgFrame">Толщина</label>
+                                <div class="select">
+                                    <select id="imgFrame" name="frame" required="" ng-model="formFrameType" ng-options="o.value as o.name for o in frameOptions" ng-change="calcPrice()"></select>
+                                </div>
+                            </div>
+                            <div ng-show="formProduct === 'FP'">
+                                <label class="m-text_small" for="imgFrame">Края</label>
+                                <div class="select" >
+                                    <select id="imgEdge" name="edge" required="" ng-model="formBorderType" ng-options="o.value as o.name for o in borderOptions" ng-change="calcPrice()" ng-disabled="disableEdge"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-lg-4">
+                    <div class="price-calc__summary m-text_center">
+                        <span>Размеры: {{width}} см x {{height}} см</span> <br/>
+                        <span class="price-calc__summary__coast">{{price}}<span class="form__price__rouble m-rubble">i</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--
+        <div class="m-text_center">
+            <a href="/canvas" class="btn btn-buy btn-lg">Создать картину с этими параметрами</a>
+        </div>-->
+    </section>
+    <section class="container m-padding-main">
+        <h2>Таблица стандартных размеров</h2>
+        <table class="table table-striped table--price">
+            <thead>
+                <tr class="table--no-border">
+                    <th class="w20">размеры <br/> в см</th>
+                    <th class="w20">печать</th>
+                    <th class="w20">холст <br/> толщина 1,5см</th>
+                    <th class="w20">холст <br/> толщина 3см</th>
+                    <th class="w20">в раме</th>
+                    <th class="w20">в раме <br/> матовые края</th>
+                </tr>
+               <!-- <tr>
+                    <th class="w20">в см</th>
+                    <th class="w20"></th>
+                    <th class="w20"></th>
+                    <th class="w20"></th>
+                    <th class="w20"></th>
+                    <th class="w20"></th>
+                </tr>-->
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in tableArr">
+                    <td>{{row.sizeName}}</td>
+                    <td>{{row.printCoast}} <span class="form__price__rouble m-rubble">i</span></td>
+                    <td>{{row.canvas150Coast}} <span class="form__price__rouble m-rubble">i</span></td>
+                    <td>{{row.canvas300Coast}} <span class="form__price__rouble m-rubble">i</span></td>
+                    <td>{{row.frameNOMACoast}} <span class="form__price__rouble m-rubble">i</span></td>
+                    <td>{{row.frame630MACoast}} <span class="form__price__rouble m-rubble">i</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

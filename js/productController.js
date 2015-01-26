@@ -5,32 +5,28 @@ app.controller("productController", function($scope, $state, $http, appService){
     $scope.formProduct =        dataForSent.formProduct;
     $scope.formFrameType =      dataForSent.formFrameType;
     $scope.formBorderType =     dataForSent.formBorderType;
-    $scope.productClass =       productModefierPrefix + "frame " + productModefierPrefix + "630MA";
-    $scope.productStates = [
-        { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
-        { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
-        { id: 'FP', name: 'В раме', class: "frame", isActive: false }
-    ];
-    var baseMainClass = $scope.productStates[2].class;
+    $scope.productClass =       productModefierPrefix + "canvas " + productModefierPrefix + "150";
+    $scope.productStates =      appService.productStates;
+    var baseMainClass = $scope.productStates[1].class;
     var formListOptions = appService.optionsList;
     $scope.mainClass = baseMainClass;
-    $scope.frameOptions = formListOptions.inframe.frame;
-    $scope.borderOptions = formListOptions.inframe.borders;
+    $scope.frameOptions = formListOptions.canvas.frame;
+    $scope.borderOptions = formListOptions.canvas.borders;
     $scope.samplesIsShow = false;
 
     $scope.changeSize = function(frameSize){
         dataForSent.formFrameSize = frameSize;
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeFrame = function(frameType){
         dataForSent.formFrameType = frameType;
         updateMainClass();
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeBorder = function(borderType){
         dataForSent.formBorderType = borderType;
         updateMainClass();
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeProduct = function(product){
         $scope.productStates.forEach(function(item){
@@ -63,7 +59,7 @@ app.controller("productController", function($scope, $state, $http, appService){
         baseMainClass = product.class;
         updateMainClass();
         dataForSent.formProduct = product.id;
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
         //console.log(dataForSent);
     };
     $scope.goToShipping = function(){
@@ -94,7 +90,7 @@ app.controller("productController", function($scope, $state, $http, appService){
                 $scope.formFrameSize =      dataForSent.formFrameSize;
                 $scope.sizeOptions =        picData.sizes;
             }
-            $scope.formPrice =          appService.priceCalc();
+            $scope.formPrice =          appService.calcPriceSaveForSent();
         });
     $("body").animate({scrollTop: 0}, 1);
 });

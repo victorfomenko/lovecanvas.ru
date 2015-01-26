@@ -6,38 +6,34 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
     $scope.formFrameSize =      appService.optionsList.sizesH[5].value;
     $scope.formFrameType =      dataForSent.formFrameType;
     $scope.formBorderType =     dataForSent.formBorderType;
-    $scope.formPrice =          appService.priceCalc();
-    $scope.productClass =       productModefierPrefix + "frame " + productModefierPrefix + "630MA";
-    $scope.productStates = [
-        { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
-        { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
-        { id: 'FP', name: 'В раме', class: "frame", isActive: false }
-    ];
-    var baseMainClass = $scope.productStates[2].class;
+    $scope.formPrice =          appService.calcPriceSaveForSent();
+    $scope.productClass =       productModefierPrefix + "canvas " + productModefierPrefix + "150";
+    $scope.productStates =      appService.productStates;
+    var baseMainClass = $scope.productStates[1].class;
     var formListOptions = appService.optionsList;
     $scope.mainClass = baseMainClass;
-    $scope.frameOptions = formListOptions.inframe.frame;
-    $scope.borderOptions = formListOptions.inframe.borders;
+    $scope.frameOptions = formListOptions.canvas.frame;
+    $scope.borderOptions = formListOptions.canvas.borders;
     $scope.sizeOptions = formListOptions.sizesH;
     if(appService.imageProp < 1 ) {
         $scope.formFrameSize =      appService.optionsList.sizesV[5].value;
-        $scope.sizeOptions = formListOptions.sizesV;
+        $scope.sizeOptions =        formListOptions.sizesV;
     }
     $scope.updateImageProportions = updateImageProportions;
     $scope.changeSize = function(frameSize){
         dataForSent.formFrameSize = frameSize;
         updateImageProportions();
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeFrame = function(frameType){
         dataForSent.formFrameType = frameType;
         updateMainClass();
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeBorder = function(borderType){
         dataForSent.formBorderType = borderType;
         updateMainClass();
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeProduct = function(product){
         $scope.productStates.forEach(function(item){
@@ -74,7 +70,7 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
         },0);
         changeProportionsNoteText();
         dataForSent.formProduct = product.id;
-        $scope.formPrice = appService.priceCalc();
+        $scope.formPrice = appService.calcPriceSaveForSent();
         //console.log(dataForSent);
     };
     $scope.goToShipping = function(){

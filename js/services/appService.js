@@ -70,18 +70,31 @@
                 {value: '90|90', name: '90см × 90см'},
                 {value: '95|95', name: '95см × 95см'},
                 {value: '100|75', name: '100см × 75см'}
-            ]
+            ],
+            sizes: []
         };
+        for(var i=25; i<=160; i++){ //generate canvas sizes from 20 sm to 160 sm
+            var newSize = {
+                value: i.toString(),
+                name: i + 'см'
+            };
+            api.optionsList.sizes.push(newSize)
+        }
+        api.productStates = [
+            { id: 'PO', name: 'Печать', class: "print-only", isActive: true },
+            { id: 'CP', name: 'На холсте', class: "canvas", isActive: false },
+            { id: 'FP', name: 'В раме', class: "frame", isActive: false }
+        ];
         api.pictures = [];
         api.dataForSent = {
             formName:           null,
             formPhone:          null,
             formEmail:          null,
             formPostal:         null,
-            formProduct:        'FP',
+            formProduct:        'CP',
             formFrameSize:      api.optionsList.sizesH[5].value,
-            formFrameType:      'BF',
-            formBorderType:     '630MA',
+            formFrameType:      '150',
+            formBorderType:     'BB',
             formPrice:          null,
             formShippingPrice:  0,
             formCity:           'Казань',
@@ -91,16 +104,14 @@
 
         };
         api.imageProp = 1.5; //default horizontal prop
-        api.priceCalc = function (){
-            var data = this.dataForSent;
-            if( !data.formProduct || !data.formFrameSize ) return;
+        api.calcPrice = function(width, height, productType, borderType){
+            if( !productType || !width || !height ) return;
             var price = 0;
-            var frameSizeWH = data.formFrameSize.split('|'),
-                canvasBackstretch = 4, // запас для натяжки на подрамник
-                frameSizeSquare = (frameSizeWH[0] * frameSizeWH[1])/10000,
-                frameCanvasSizeSquare = ((frameSizeWH[0]*1+canvasBackstretch) * (frameSizeWH[1]*1+canvasBackstretch))/10000,
-                frameSizeSquareInner = ((frameSizeWH[0]-3) * (frameSizeWH[1]-3))/10000,
-                frameLength = (frameSizeWH[0]*2 + frameSizeWH[1]*2)/100,
+            var canvasBackstretch = 4, // запас для натяжки на подрамник
+                frameSizeSquare = (width * height)/10000,
+                frameCanvasSizeSquare = ((width*1+canvasBackstretch) * (height*1+canvasBackstretch))/10000,
+                frameSizeSquareInner = ((width-3) * (height-3))/10000,
+                frameLength = (width*2 + height*2)/100,
                 POCoast = 1000,
                 CPCoast = 1000,
                 FPCoast = 1000,
@@ -112,14 +123,14 @@
                 paspartuCoast = 600,
                 glassCoast =    1000;
             //calculate if print only
-            if( data.formProduct === "PO" &&  !data.formFrameType && !data.formBorderType ) {
+            if( productType === "PO" &&  !borderType ) {
                 price = 2*Math.round((frameSizeSquare*POCoast)/10)*10 + 100;
             }
             //calculate if canvas print
-            else if( data.formProduct === "CP" &&  data.formFrameType && data.formBorderType ) {
+            else if( productType === "CP" &&  borderType ) {
 
                 var underFrameCoast;
-                switch (data.formFrameType){
+                switch (borderType){
                     default:
                     case '150':
                         underFrameCoast = underFrameCoast1;
@@ -128,19 +139,39 @@
                         underFrameCoast = underFrameCoast2;
                         break;
                 }
-                price = frameCanvasSizeSquare*CPCoast + (frameSizeWH[0]*1+frameSizeWH[1]*1)*underFrameCoast/50 + mounts;
+                price = frameCanvasSizeSquare*CPCoast + (width*1+height*1)*underFrameCoast/50 + mounts;
                 price = 2*Math.round(price/10)*10 + 100; // add 100% and 100 rub for deals
 
             }
             //calculate if frame print
-            else if( data.formProduct === "FP" &&  data.formFrameType && data.formBorderType ) {
-                if (data.formBorderType === 'NOMA'){
+            else if( productType === "FP" &&  borderType ) {
+                if (borderType === 'NOMA'){
                     paspartuCoast = 0
                 }
                 price = frameSizeSquareInner*FPCoast + frameSizeSquareInner*glassCoast + frameLength*frameCoast + frameSizeSquareInner*paspartuCoast + frameSizeSquareInner*penokartonCoast + mounts;
                 price = 2*Math.round(price/10)*10 + 100;// add 100% and 100 rub for deals
 
             }
+            return price;
+        };
+        api.calcPriceSaveForSent = function (){
+            var data =          this.dataForSent,
+                frameSizeWH =   data.formFrameSize.split('|'),
+                width = frameSizeWH[0],
+                height = frameSizeWH[1],
+                productType = data.formProduct,
+                borderType = '';
+
+            switch (productType){
+                default:
+                case 'CP':
+                    borderType = data.formFrameType;
+                    break;
+                case 'FP':
+                    borderType = data.formBorderType;
+                    break;
+            }
+            var price = api.calcPrice(width, height, productType, borderType);
             this.dataForSent.formPrice = price;
             return price;
         };

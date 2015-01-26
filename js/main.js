@@ -28,6 +28,15 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             controller: "shippingController",
             data : { pageTitle: 'Заказ' }
         })
+        .state('price', {
+            url: "/price",
+            templateUrl: "/templates/price.html",
+            controller: "priceController",
+            data : {
+                pageTitle: 'Цены',
+                className: 'price-bg'
+            }
+        })
         .state('gallery', {
             url: "/gallery",
             templateUrl: "/templates/gallery.html",
