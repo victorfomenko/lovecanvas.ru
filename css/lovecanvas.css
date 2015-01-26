@@ -3463,8 +3463,7 @@ input[type="button"].btn-block {
 }
 @media (min-width: 768px) {
   .price-calc__summary {
-    padding-top: 50%;
-    margin-top: -32px;
+    padding-top: 30%;
   }
 }
 .price-calc__summary__coast {
