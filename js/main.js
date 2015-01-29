@@ -28,6 +28,12 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             controller: "shippingController",
             data : { pageTitle: 'Заказ' }
         })
+        .state('delivery', {
+            url: "/delivery",
+            templateUrl: "/templates/delivery.html",
+            controller: "deliveryController",
+            data : { pageTitle: 'Доставка' }
+        })
         .state('price', {
             url: "/price",
             templateUrl: "/templates/price.html",
