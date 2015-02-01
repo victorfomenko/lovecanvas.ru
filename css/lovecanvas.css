@@ -235,6 +235,9 @@ th {
   padding-left: 30px;
   padding-right: 30px;
 }
+.m-padding-bottom {
+  padding-bottom: 70px;
+}
 .print-only .form__row--frame,
 .print-only .form__row--border {
   display: none;
@@ -1445,6 +1448,10 @@ h6 {
 }
 p {
   margin: 0 0 22px;
+}
+a,
+a:hover {
+  color: #30beda;
 }
 @font-face {
   font-family: 'ruble';
