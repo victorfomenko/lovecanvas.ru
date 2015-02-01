@@ -3542,6 +3542,6 @@ input[type="button"].btn-block {
 .delivery--bg {
   background-image: url("/img/delivery/box.png");
   background-repeat: no-repeat;
-  background-position: 103% 10%;
-  background-size: 50%;
+  background-position: 90% 215px;
+  background-size: 33%;
 }
