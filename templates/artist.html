@@ -1,0 +1,25 @@
+<section class="container m-main-title artist">
+    <div class="row">
+        <div class="col-xs-6 col-sm-2 col-md-3 col-lg-2 m-text_center">
+            <img class="artist__avatar" src="{{artist.avatar}}">
+        </div>
+        <div class="col-xs-6 col-sm-10 col-md-9 col-lg-10">
+            <h1 class="artist__header">{{artist.name}}</h1>
+            <p class="m-text_small" ng-bind-html="artist.about"></p>
+        </div>
+    </div>
+</section>
+
+<section class="container m-padding-main">
+    <div class="container">
+        <div class="gallery-section">
+            <div class="gallery">
+                <a href="/gallery/{{pic.seourl}}" class="gallery__wrapper" ng-repeat="pic in pictures" data-caption="<strong class='caption__content__name'>{{pic.name}}</strong><span class='caption__content__author'>{{pic.author}}</span>">
+
+                    <!--<i class='heart'></i>-->
+                    <img src="{{pic.preview}}" width="{{pic.width}}" height="{{pic.height}}" alt="{{pic.name}}"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

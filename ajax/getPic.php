@@ -2,16 +2,17 @@
 	include('dbConnect.php');
 	$url = file_get_contents('php://input');
 
-    $q1 =    "SELECT id, name, author, rate, fee, filename, seourl
-                    FROM pictures
-                    WHERE seourl = '" . $url . "' AND deleted = 0";
+    $q1 =   "SELECT p.id, p.name, p.rate, p.fee, p.seourl, p.filename, a.artname, a.urlname
+             FROM pictures AS p, artists AS a
+             WHERE p.seourl = '" . $url . "' AND p.deleted = 0 AND p.authorid = a.id";
 
     $dataReader = getDataFromDB($q1);
     $data =         $dataReader[0];
 
     $pic = array();
     $pic["name"] =      $data['name'];
-    $pic["author"] =    $data['author'];
+    $pic["urlname"] =   $data['urlname'];
+    $pic["author"] =    $data['artname'];
     $pic["rate"] =      $data['rate'];
     $pic["fee"] =       $data['fee'];
     $pic["filename"] =  $data['filename'];

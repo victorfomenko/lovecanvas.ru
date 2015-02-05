@@ -236,7 +236,16 @@ th {
   padding-right: 30px;
 }
 .m-padding-bottom {
-  padding-bottom: 70px;
+  padding-bottom: 30px;
+}
+.m-padding-left_clear {
+  padding-left: 0px !important;
+}
+.m-padding-right_clear {
+  padding-right: 0px !important;
+}
+.m-section-last {
+  padding-bottom: 100px;
 }
 .print-only .form__row--frame,
 .print-only .form__row--border {
@@ -2941,6 +2950,7 @@ input[type="button"].btn-block {
   -ms-flex-grow: 1;
   -o-flex-grow: 1;
   flex-grow: 1;
+  -webkit-flex-grow: 1;
 }
 .header__flex__item__title {
   vertical-align: middle;
@@ -2990,7 +3000,7 @@ input[type="button"].btn-block {
   flex-shrink: 0;
 }
 .header__flex__item--logo {
-  padding-left: 80px;
+  padding-left: 70px;
 }
 .header__flex__item--logo .header__flex__item__link {
   display: inline-block;
@@ -3369,6 +3379,7 @@ input[type="button"].btn-block {
 .gallery {
 /*This is where you set the padding you want between the images*/
   padding: 10px;
+  margin: -10px;
 }
 .gallery img {
   margin: 0;
@@ -3544,4 +3555,24 @@ input[type="button"].btn-block {
   background-repeat: no-repeat;
   background-position: 90% 215px;
   background-size: 33%;
+}
+.artist {
+  border-bottom: 1px solid #eee;
+}
+.artist__header {
+  font-weight: 700;
+  color: #33383f;
+  line-height: 24px;
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 19px;
+}
+.artist__avatar {
+  width: 75px;
+  height: 75px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+  margin-bottom: 20px;
+  margin-top: 3px;
 }

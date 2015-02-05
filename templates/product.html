@@ -17,7 +17,7 @@
             <div class="product-info">
                 <div class="product-info__header">
                     <h1 class="product-info__header__title">{{pic.name}}</h1>
-                    <p class="product-info__header__author">Автор: {{pic.author}}</p>
+                    <p class="product-info__header__author">Автор: <a href="/{{pic.urlname}}">{{pic.author}}</a></p>
                 </div>
                 <hr/>
                 <form ng-submit="goToShipping()" class="form">

@@ -1,7 +1,7 @@
 <?php
 include('dbConnect.php');
 
-$imageFolder = '../data/full/';
+$imageFolder = '../data/preview/';
 $images = array();
 if ($handle = opendir($imageFolder)) {
     //Читаем файлы в каталоге

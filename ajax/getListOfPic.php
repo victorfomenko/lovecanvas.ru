@@ -6,9 +6,9 @@
 	if( !$limit ) $limit = 20;
 
     $q =    "SELECT SQL_CALC_FOUND_ROWS
-                    name, author, rate, fee, filename, seourl, width, height
-                    FROM pictures
-                    WHERE deleted=0
+                    p.name, p.rate, p.fee, p.filename, p.seourl, p.width, p.height, a.artname
+                    FROM pictures AS p, artists AS a
+                    WHERE deleted=0 AND p.authorid = a.id
                     ORDER BY rate DESC
                     LIMIT " . $limit;
 
@@ -21,7 +21,7 @@
 
             $pic = array();
             $pic["name"] =      $data['name'];
-            $pic["author"] =    $data['author'];
+            $pic["author"] =    $data['artname'];
             $pic["rate"] =      $data['rate'];
             $pic["fee"] =       $data['fee'];
             $pic["filename"] =  $data['filename'];

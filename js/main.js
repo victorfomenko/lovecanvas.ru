@@ -1,8 +1,22 @@
-var app = angular.module('app', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngSanitize']);
+app.factory('httpRequestInterceptor', function ($q, $location) {
+    return {
+        'responseError': function(rejection) {
+            // do something on error
+            if(rejection.status === 404){
+                $location.path('/404/');
+                return $q.reject(rejection);
+            }
+        }
+    };
+});
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
     $locationProvider.hashPrefix('!'); //Hashbang goes for compatibility with browsers that do not support html5 urls.
-    $urlRouterProvider.otherwise("");
+    $urlRouterProvider.when('', '/');
     $stateProvider
         .state('main', {
             url: "/",
@@ -47,11 +61,21 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             url: "/gallery",
             templateUrl: "/templates/gallery.html",
             controller: "galleryController",
-            data : { pageTitle: 'Галлерея' }
+            data : { pageTitle: 'Галерея' }
         })
         .state('product', {
             url: "/gallery/:productId",
             templateUrl: "/templates/product.html",
             controller: "productController"
+        })
+        .state('artist', {
+            url: "/:artistId",
+            templateUrl: "/templates/artist.html",
+            controller: "artistController"
         });
+
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+        $injector.invoke(['$state', function ($state) { $state.go('artist'); }]);
+        return true;
+    });
 });
