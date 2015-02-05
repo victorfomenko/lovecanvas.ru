@@ -21,7 +21,8 @@ app.controller("galleryController", function($scope,$timeout, appService){
         $('.gallery').collagePlus(
             {
                 'fadeSpeed'     : 1000,
-                'targetHeight'  : 200
+                'targetHeight':   250,
+                'allowPartialLastRow': true
             }
         );
     }
