@@ -25,8 +25,6 @@ app.controller("productController", function($scope, $state, $http, appService){
         $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeBorder = function(borderType){
-        addCssRule('#productImage:after', 'background-image: url("")');
-        addCssRule('#productImage:before', 'background-image: url("")');
         dataForSent.formBorderType = borderType;
         updateMainClass();
         $scope.formPrice = appService.calcPriceSaveForSent();
@@ -69,6 +67,8 @@ app.controller("productController", function($scope, $state, $http, appService){
         $state.go('shipping');
     };
     function updateMainClass () {
+        appService.addCssRule('#productImage:after', 'background-image: url("1")');
+        appService.addCssRule('#productImage:before', 'background-image: url("1")');
         $scope.mainClass = baseMainClass;
         $scope.productClass = [ productModefierPrefix + baseMainClass,
             productModefierPrefix + $scope.formFrameType,
