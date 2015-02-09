@@ -57,7 +57,8 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
         $('.gallery').collagePlus(
             {
                 'fadeSpeed'     : 500,
-                'targetHeight'  : 200
+                'targetHeight'  : 200,
+                'allowPartialLastRow': true
             }
         );
     }
