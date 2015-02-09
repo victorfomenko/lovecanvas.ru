@@ -14,6 +14,7 @@ app.controller("productController", function($scope, $state, $http, appService){
     $scope.borderOptions = formListOptions.canvas.borders;
     $scope.samplesIsShow = false;
 
+
     $scope.changeSize = function(frameSize){
         dataForSent.formFrameSize = frameSize;
         $scope.formPrice = appService.calcPriceSaveForSent();
@@ -24,6 +25,8 @@ app.controller("productController", function($scope, $state, $http, appService){
         $scope.formPrice = appService.calcPriceSaveForSent();
     };
     $scope.changeBorder = function(borderType){
+        addCssRule('#productImage:after', 'background-image: url("")');
+        addCssRule('#productImage:before', 'background-image: url("")');
         dataForSent.formBorderType = borderType;
         updateMainClass();
         $scope.formPrice = appService.calcPriceSaveForSent();
@@ -70,8 +73,12 @@ app.controller("productController", function($scope, $state, $http, appService){
         $scope.productClass = [ productModefierPrefix + baseMainClass,
             productModefierPrefix + $scope.formFrameType,
             productModefierPrefix + $scope.formBorderType];
+        if ($scope.formBorderType === 'LB') {
+            var picUrl = 'url("' + picData.full + '")';
+            appService.addCssRule('#productImage:after', 'background-image: ' + picUrl );
+            appService.addCssRule('#productImage:before', 'background-image: ' + picUrl );
+        }
     }
-
     var picData;
     $http.post('/ajax/getPic.php', $state.params.productId)
         .success(function(data){
@@ -89,6 +96,7 @@ app.controller("productController", function($scope, $state, $http, appService){
                 dataForSent.image = picData.full;
                 $scope.formFrameSize =      dataForSent.formFrameSize;
                 $scope.sizeOptions =        picData.sizes;
+                updateMainClass();
             }
             $scope.formPrice =          appService.calcPriceSaveForSent();
         });

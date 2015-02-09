@@ -81,6 +81,13 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
         $scope.productClass = [ productModefierPrefix + baseMainClass,
                 productModefierPrefix + $scope.formFrameType,
                 productModefierPrefix + $scope.formBorderType];
+
+        if ($scope.formBorderType === 'LB') {
+            var picUrl = 'url("' + appService.dataForSent.imageBase64 + '")';
+            /*console.log(picUrl);
+            appService.addCssRule('#productImage:after', 'background-image: ' + picUrl );
+            appService.addCssRule('#productImage:before', 'background-image: ' + picUrl );*/
+        }
     }
     function proportions() {
         var frameProportions = getImageData().proportions,

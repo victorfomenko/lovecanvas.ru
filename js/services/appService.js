@@ -189,6 +189,32 @@
                     api.pictures = result;
                 });
         };
+        api.addCssRule = function (selector, rule) {
+            if (document.styleSheets) {
+                if (!document.styleSheets.length) {
+                    var head = document.getElementsByTagName('head')[0];
+                    head.appendChild(bc.createEl('style'));
+                }
+
+                var i = document.styleSheets.length-5;
+                var ss = document.styleSheets[i];
+
+                var l=0;
+                if (ss.cssRules) {
+                    l = ss.cssRules.length;
+                } else if (ss.rules) {
+                    // IE
+                    l = ss.rules.length;
+                }
+
+                if (ss.insertRule) {
+                    ss.insertRule(selector + ' {' + rule + '}', l);
+                } else if (ss.addRule) {
+                    // IE
+                    ss.addRule(selector, rule, l);
+                }
+            }
+        };
         return api;
     })
 }).call(this);
