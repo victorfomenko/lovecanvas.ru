@@ -14,7 +14,7 @@ app.controller("artistController", function($scope, $state, $http, $timeout){
                 artistData.about = 'Автор ничего не написал о себе ;('
             }
             if(!artistData.avatar) {
-                artistData.avatar = '/img/noavatar.jpg';
+                artistData.avatar = 'img/noavatar';
             }
             $timeout(collage, 200);
             $timeout(caption, 0);
