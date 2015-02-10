@@ -3221,8 +3221,8 @@ input[type="button"].btn-block {
   -moz-box-shadow: inset;
   box-shadow: inset;
 }
-.product--canvas:before,
-.product--canvas:after {
+.product--canvas .product__before,
+.product--canvas .product__after {
   content: "";
   position: absolute;
   height: 10px;
@@ -3232,7 +3232,7 @@ input[type="button"].btn-block {
   background: #1a1c1d;
   z-index: 1;
 }
-.product--canvas:before {
+.product--canvas .product__before {
   left: 10px;
   right: 40px;
   z-index: 5;
@@ -3241,7 +3241,7 @@ input[type="button"].btn-block {
   -webkit-transform: skewX(-64deg);
   transform: skewX(-64deg);
 }
-.product--canvas:after {
+.product--canvas .product__after {
   left: 40px;
   right: 10px;
   -webkit-transform: skewX(64deg);
@@ -3249,8 +3249,8 @@ input[type="button"].btn-block {
   -webkit-transform: skewX(64deg);
   transform: skewX(64deg);
 }
-.product--canvas.product--WB:before,
-.product--canvas.product--WB:after {
+.product--canvas.product--WB .product__before,
+.product--canvas.product--WB .product__after {
   background: #eef3f6;
   -webkit-box-shadow: inset 1px 1px 2px 0 rgba(0,0,0,0.05);
   -webkit-box-shadow: inset;
@@ -3260,23 +3260,23 @@ input[type="button"].btn-block {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#e3e6ea), to(#eef3f6));
   background-image: linear-gradient(top, #e3e6ea 0, #eef3f6 100%);
 }
-.product--canvas.product--LB:before,
-.product--canvas.product--LB:after {
+.product--canvas.product--LB .product__before,
+.product--canvas.product--LB .product__after {
   background-position: 0px 0px;
   background-size: 100%;
   opacity: 1;
   background-color: transparent;
 }
-.product--canvas.product--150:before,
-.product--canvas.product--150:after {
+.product--canvas.product--150 .product__before,
+.product--canvas.product--150 .product__after {
   height: 5px;
   top: -5px;
 }
-.product--canvas.product--150:before {
+.product--canvas.product--150 .product__before {
   left: 5px;
   right: 20px;
 }
-.product--canvas.product--150:after {
+.product--canvas.product--150 .product__after {
   left: 20px;
   right: 5px;
 }

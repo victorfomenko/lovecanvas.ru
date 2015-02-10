@@ -67,16 +67,16 @@ app.controller("productController", function($scope, $state, $http, appService){
         $state.go('shipping');
     };
     function updateMainClass () {
-        appService.addCssRule('#productImage:after', 'background-image: url("1")');
-        appService.addCssRule('#productImage:before', 'background-image: url("1")');
+        $('.product__before').css({'background-image': 'none'});
+        $('.product__after').css({'background-image': 'none'});
         $scope.mainClass = baseMainClass;
         $scope.productClass = [ productModefierPrefix + baseMainClass,
             productModefierPrefix + $scope.formFrameType,
             productModefierPrefix + $scope.formBorderType];
         if ($scope.formBorderType === 'LB') {
             var picUrl = 'url("' + picData.full + '")';
-            appService.addCssRule('#productImage:after', 'background-image: ' + picUrl );
-            appService.addCssRule('#productImage:before', 'background-image: ' + picUrl );
+            $('.product__before').css({'background-image': picUrl});
+            $('.product__after').css({'background-image': picUrl});
         }
     }
     var picData;
