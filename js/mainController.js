@@ -36,7 +36,7 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
         }
     };
 
-    appService.getImageList(13).then(function(){
+    appService.getImageList(15).then(function(){
         $scope.pictures = appService.pictures;
         $timeout(collage, 200);
         $timeout(caption, 0);
@@ -57,8 +57,7 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
         $('.gallery').collagePlus(
             {
                 'fadeSpeed'     : 500,
-                'targetHeight'  : 200,
-                'allowPartialLastRow': true
+                'targetHeight'  : 200
             }
         );
     }
