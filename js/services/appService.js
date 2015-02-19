@@ -107,7 +107,7 @@
         api.calcPrice = function(width, height, productType, borderType){
             if( !productType || !width || !height ) return;
             var price = 0;
-            var canvasBackstretch = 4, // запас для натяжки на подрамник
+            var canvasBackstretch = 8, // запас для натяжки на подрамник
                 frameSizeSquare = (width * height)/10000,
                 frameCanvasSizeSquare = ((width*1+canvasBackstretch) * (height*1+canvasBackstretch))/10000,
                 frameSizeSquareInner = ((width-3) * (height-3))/10000,
