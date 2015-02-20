@@ -35,7 +35,6 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
             reader.readAsDataURL(file[0]);
         }
     };
-
     appService.getImageList(15).then(function(){
         $scope.pictures = appService.pictures;
         $timeout(collage, 200);
