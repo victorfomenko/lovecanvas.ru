@@ -183,8 +183,8 @@
                         result = data;
                     }
                 })
-                .error(function(){
-                    result = "Something went wrong. AJAX ERROR.";
+                .error(function(data){
+                    console.log(data);
                 }).then(function(){
                     api.pictures = result;
                 });

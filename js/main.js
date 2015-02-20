@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngSanitize']);
+var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'ngCookies' ]);
 app.factory('httpRequestInterceptor', function ($q, $location) {
     return {
         'responseError': function(rejection) {
@@ -67,6 +67,11 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             url: "/gallery/:productId",
             templateUrl: "/templates/product.html",
             controller: "productController"
+        })
+        .state('login', {
+            url: "/login",
+            templateUrl: "/templates/login.html",
+            controller: "loginController"
         })
         .state('artist', {
             url: "/:artistId",
