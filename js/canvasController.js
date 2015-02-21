@@ -3,7 +3,6 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
     var dataForSent = appService.dataForSent;
     //Default states
     $scope.formProduct =        dataForSent.formProduct;
-    $scope.formFrameSize =      appService.optionsList.sizesH[5].value;
     $scope.formFrameType =      dataForSent.formFrameType;
     $scope.formBorderType =     dataForSent.formBorderType;
     $scope.formPrice =          appService.calcPriceSaveForSent();
@@ -14,10 +13,12 @@ app.controller("canvasController", function($scope, $http, $timeout, $state, app
     $scope.mainClass = baseMainClass;
     $scope.frameOptions = formListOptions.canvas.frame;
     $scope.borderOptions = formListOptions.canvas.borders;
-    $scope.sizeOptions = formListOptions.sizesH;
-    if(appService.imageProp < 1 ) {
-        $scope.formFrameSize =      appService.optionsList.sizesV[5].value;
-        $scope.sizeOptions =        formListOptions.sizesV;
+    $scope.formFrameSize =      appService.optionsList.sizesV[5].value;
+    $scope.sizeOptions =        formListOptions.sizesV;
+
+    if(appService.imageProp > 1 ) {
+        $scope.formFrameSize =      appService.optionsList.sizesH[5].value;
+        $scope.sizeOptions = formListOptions.sizesH;
     }
     $scope.updateImageProportions = updateImageProportions;
     $scope.changeSize = function(frameSize){

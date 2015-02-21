@@ -2,8 +2,8 @@
 include('dbConnect.php');
 	$urlname = file_get_contents('php://input');
 
-    $q =   "SELECT id, artname, avatar, about
-           FROM artists
+    $q =   "SELECT id, username, avatar, about
+           FROM users
            WHERE urlname = '" . $urlname . "'";
 
     $dataReader =   getDataFromDB($q);
@@ -11,18 +11,17 @@ include('dbConnect.php');
     if($data['id']) {
         $artist = array();
         $artist["id"] =         $data['id'];
-        $artist["name"] =       $data['artname'];
+        $artist["name"] =       $data['username'];
         $artist["avatar"] =     $data['avatar'];
         $artist["about"] =      $data['about'];
 
-        if( !$limit ) $limit = 20;
+        //if( !$limit ) $limit = 20;
 
         $q2 =   "SELECT SQL_CALC_FOUND_ROWS
                 name, rate, fee, filename, seourl, width, height
                 FROM pictures
                 WHERE deleted=0 AND authorid = '" . $artist["id"] . "'
-                ORDER BY rate DESC
-                LIMIT " . $limit;
+                ORDER BY rate DESC";
 
         $listOfPic = array();
 

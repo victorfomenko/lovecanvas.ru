@@ -3,8 +3,8 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
 
     $scope.openLoadFile = function(){
         var fileButton = document.getElementById('load-file');
+        addEvent('change', fileButton, handleFileSelect);
         fileButton.click();
-        fileButton.addEventListener('change', handleFileSelect, false);
         function handleFileSelect(evt) {
             var file = evt.target.files; // FileList object
             // Only process image files.
@@ -51,7 +51,16 @@ app.controller("mainController", function($scope, $http, $state, appService, $ti
         if (resizeTimer) clearTimeout(resizeTimer);
         resizeTimer = setTimeout(collage, 200);
     });
-
+    function addEvent(evnt, elem, func) {
+        if (elem.addEventListener)  // W3C DOM
+            elem.addEventListener(evnt,func,false);
+        else if (elem.attachEvent) { // IE DOM
+            elem.attachEvent("on"+evnt, func);
+        }
+        else { // No much to do
+            elem[evnt] = func;
+        }
+    }
     // Here we apply the actual CollagePlus plugin
     function collage() {
         $('.gallery').collagePlus(

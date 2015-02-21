@@ -1464,15 +1464,11 @@ a:hover {
 }
 @font-face {
   font-family: 'ruble';
-  src: url("../fonts/rouble.otf") format('opentype'), url("../fonts/rouble.ttf") format('truetype');
-}
-@font-face {
-  font-family: 'reis';
-  src: url("../fonts/REIS.otf") format('opentype'), url("../fonts/REIS.ttf") format('truetype');
+  src: url("../fonts/rouble.woff") format('woff'), url("../fonts/rouble.ttf") format('truetype'), url("../fonts/rouble.otf") format('opentype');
 }
 @font-face {
   font-family: 'nautilus';
-  src: url("../fonts/nautilus.otf") format('opentype');
+  src: url("../fonts/nautilus.woff") format('woff'), url("../fonts/nautilus.ttf") format('truetype'), url("../fonts/nautilus.otf") format('opentype');
 }
 @font-face {
   font-family: "icons";
@@ -1621,6 +1617,8 @@ a:hover {
   border: 3px solid #f3f5f5;
   max-width: 100%;
   height: auto;
+  position: relative;
+  z-index: -1;
 }
 .radio--image:checked+label img {
   border-color: #30beda;
@@ -1888,6 +1886,8 @@ table th[class*="col-"] {
   -moz-border-radius: 5px;
   border-radius: 5px;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
 /*
  * Bootstrap v3.3.1 (http://getbootstrap.com)
