@@ -12,7 +12,12 @@
 </section>
 <section class="container">
     <div class="gallery-section">
-        <h2 class="gallery-section__title m-text_center">Галерея готовых работ</h2>
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="m-text_center">Галерея готовых работ</h2>
+                <div class="m-separator m-separator--after-title"></div>
+            </div>
+        </div>
         <div class="gallery">
             <a href="/gallery/{{pic.seourl}}" class="gallery__wrapper" ng-repeat="pic in pictures" data-caption="<strong class='caption__content__name'>{{pic.name}}</strong><span class='caption__content__author'>{{pic.author}}</span><span class='caption__content__price'>От 190 <span class='form__price__rouble m-rubble'>i</span></span>">
                 <i class='heart'></i>
@@ -23,51 +28,55 @@
     <p class="m-text_center"><a href="/gallery" class="btn btn-lg btn-helper">Посмотреть еще</a></p>
 </section>
 
-<section class="pluses">
-    <div class="container">
-        <div class="row pluses__row">
-            <div class="col-md-6 col-xs-12 m-text_center">
-                <img src="./img/pluses/item1.png" alt="100% возврат"/>
-                <h2 class="pluses__row__title">100% возврат</h2>
-                    <span>
-                        Мы настолько уверены в качестве своих картин, <br/>
-                        что можем себе это позволить в случае, <br/>
-                        если вам что-то не понравится.
-                    </span>
-            </div>
-            <div class="col-md-6 col-xs-12 m-text_center">
-                <img src="./img/pluses/item2.png" alt="просто"/>
-                <h2 class="pluses__row__title">просто</h2>
-                    <span>
-                        Напечатать картину никогда не было так просто. <br/>
-                        Загрузите фото и отправьте нам заявку <br/>
-                        и мы все сделаем за вас
-                    </span>
-            </div>
+<section class="container pluses">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="m-text_center">Гарантируем, что вам понравится</h2>
+            <div class="m-separator m-separator--after-title"></div>
         </div>
-        <div class="row pluses__row">
-            <div class="col-md-6 col-xs-12 m-text_center">
-                <img src="./img/pluses/item3.png" alt="качествено"/>
-                <h2 class="pluses__row__title">качественно</h2>
-                    <span>
-                        Качество на первом месте. <br/>
-                        Краска, рама, холсты — все только лучшее.
-                    </span>
-            </div>
-            <div class="col-md-6 col-xs-12 m-text_center">
-                <img src="./img/pluses/item4.png" alt="с любовью"/>
-                <h2 class="pluses__row__title">с любовью</h2>
-                    <span>
-                        Нам нравится то, что мы делаем. <br/>
-                        И это значит, что мы сделаем это правильно и хорошо.
-                    </span>
-            </div>
+    </div>
+    <div class="row pluses__row">
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <img src="./img/pluses/item1.png" alt="100% возврат"/>
+            <h3 class="pluses__row__title">100% возврат</h3>
+                <span>
+                    Мы настолько уверены в качестве своих картин, <br/>
+                    что можем себе это позволить в случае, <br/>
+                    если вам что-то не понравится.
+                </span>
+        </div>
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <img src="./img/pluses/item2.png" alt="просто"/>
+            <h3 class="pluses__row__title">просто</h3>
+                <span>
+                    Напечатать картину никогда не было так просто. <br/>
+                    Загрузите фото и отправьте нам заявку <br/>
+                    и мы все сделаем сами.
+                </span>
+        </div>
+    </div>
+    <div class="row pluses__row">
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <img src="./img/pluses/item3.png" alt="качествено"/>
+            <h3 class="pluses__row__title">качественно</h3>
+                <span>
+                    Качество на первом месте. <br/>
+                    Краска, рама, холсты — все только лучшее.
+                </span>
+        </div>
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <img src="./img/pluses/item4.png" alt="с любовью"/>
+            <h3 class="pluses__row__title">с любовью</h3>
+                <span>
+                    Нам нравится то, что мы делаем. <br/>
+                    И это значит, что мы сделаем это правильно и хорошо.
+                </span>
         </div>
     </div>
 </section>
 <section class="samples">
     <div class="container">
-        <h2 class="m-text_center samples__title">Картины на холсте</h2>
+        <h2 class="m-text_center">Картины на холсте</h2>
         <div class="row">
             <div class="col-md-6 col-xs-12">
                 <div class="square-box square-box--small square-box--item-1"></div>
@@ -78,18 +87,56 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12">
-                <div class="square-box square-box--xs square-box--item-4"></div>
-            </div>
+        <div class="col-xs-12">
+            <div class="square-box square-box--xs square-box--item-4"></div>
         </div>
+    </div>
     </div>
 </section>
-<section class="load">
-    <div class="container m-text_center">
-        <div class="load__owl">
-            <a class="btn btn-info btn-lg load__owl__button" ng-click="openLoadFile()">Загрузить своё фото</a>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2 class="m-text_center">Мы нравимся нашим клиентам</h2>
+            <div class="m-separator m-separator--after-title"></div>
         </div>
-        <h2 class="load__title">Оформить заказ – проще простого!</h2>
-        <p class="load__note">Просто выберете то, что вам нравится и отправьте заказ.</p>
     </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <blockquote class="customer-review">
+                <p class="customer-review__text">"Отличный подарок для родственников или друзей, спасибо за оперативность и профессионализм. Думаю, это не последняя картина которую я у вас заказал. Спасибо огромное!"</p>
+                <footer><cite>— Андрей Д.</cite></footer>
+            </blockquote>
+        </div>
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <blockquote class="customer-review">
+                <p class="customer-review__text">"Спасибо большое команде Love Canvas за мою чудесную картину!!! Она превзошла все мои ожидания) очень красивая)) понравилось качество работы, приятные люди и удобная доставка."</p>
+                <footer><cite>— Ада К.</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <blockquote class="customer-review">
+                <p class="customer-review__text">"Спасибо большое за работу!!! Качество, текстура холста, доставка — все на высшем уровне! Нам очень понравилась ваша идея и то ,как вы ее воплотили!!! Теперь это настоящее украшение для нашего дома)"</p>
+                <footer><cite>— Катя С.</cite></footer>
+            </blockquote>
+        </div>
+        <div class="col-md-6 col-xs-12 m-text_center">
+            <blockquote class="customer-review">
+                <p class="customer-review__text">"Были очень рады с супругой, увидев это чудо! С расстояния в один метр можно уверенно говорить, что она написана рукой :) Привлекает внимание, напоминая о важном событии и удивляет гостей) Спасибо всей команде за сервис и старание!!! "</p>
+                <footer><cite>— Михаил Н.</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 m-text_center">
+            <div class="load__owl">
+                <a class="btn btn-info btn-lg load__owl__button" ng-click="openLoadFile()">Загрузить своё фото</a>
+            </div>
+            <h2 class="load__title">Оформить заказ – проще простого!</h2>
+            <p class="load__note">Просто выберете то, что вам нравится и отправьте заказ.</p>
+        </div>
+    </div>
+
 </section>

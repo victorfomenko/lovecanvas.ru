@@ -247,9 +247,20 @@ th {
 .m-section-last {
   padding-bottom: 100px;
 }
+.m-separator {
+  border-bottom: 1px solid #e1e1e1;
+  display: block;
+}
+.m-separator--after-title {
+  margin-bottom: 30px;
+  margin-bottom: 2rem;
+}
 .print-only .form__row--frame,
 .print-only .form__row--border {
   display: none;
+}
+section {
+  margin-bottom: 80px;
 }
 /*
  * Bootstrap v3.2.0 (http://getbootstrap.com)
@@ -1437,15 +1448,16 @@ hr {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html,
 body {
-  min-height: 100%;
-  background: #fff;
   color: #8a95a5;
   font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   overflow-x: hidden;
   line-height: 1.46667;
   font-size: 15px;
+  min-height: 100%;
+  background: #fff;
 }
 h1,
 h2,
@@ -1454,6 +1466,7 @@ h4,
 h5,
 h6 {
   font-weight: normal;
+  margin: 10px 0;
 }
 p {
   margin: 0 0 22px;
@@ -1461,6 +1474,18 @@ p {
 a,
 a:hover {
   color: #30beda;
+}
+h2 {
+  font-size: 32px;
+  font-size: 2.14rem;
+  margin-bottom: 18px;
+  margin-bottom: 1.25rem;
+}
+h3 {
+  font-size: 22px;
+  font-size: 1.47rem;
+  margin-bottom: 14px;
+  margin-bottom: 0.95rem;
 }
 @font-face {
   font-family: 'ruble';
@@ -2843,7 +2868,6 @@ input[type="button"].btn-block {
   background-size: cover;
   padding: 260px 0 190px 0;
   color: #fff;
-  margin-bottom: 80px;
   margin-top: -90px;
 }
 .banner__title {
@@ -3008,10 +3032,6 @@ input[type="button"].btn-block {
     display: none !important;
   }
 }
-.pluses {
-  padding: 70px 0;
-  border-bottom: 1px solid #e4e4e4;
-}
 .pluses__row [class^="col-"] {
   padding: 30px 0;
 }
@@ -3021,6 +3041,7 @@ input[type="button"].btn-block {
   margin-bottom: 6px;
 }
 .samples {
+  border-top: 1px solid #e4e4e4;
   background: #f1f1f1; /* Old browsers */
   background: -moz-linear-gradient(top, #f1f1f1 0%, #fff 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f1f1f1), color-stop(100%, #fff)); /* Chrome,Safari4+ */
@@ -3031,9 +3052,6 @@ input[type="button"].btn-block {
 }
 .samples [class^="col-"] {
   padding: 0px 3px 0px 3px !important;
-}
-.samples__title {
-  margin: 30px 0 40px;
 }
 .square-box {
   position: relative;
@@ -3366,11 +3384,6 @@ input[type="button"].btn-block {
 /*margin-top 80px*/
   margin-bottom: 30px;
 }
-.gallery-section__title {
-  font-size: 32px;
-  margin-top: 0;
-  margin-bottom: 10px;
-}
 .gallery {
 /*This is where you set the padding you want between the images*/
   padding: 10px;
@@ -3576,4 +3589,38 @@ input[type="button"].btn-block {
   border-radius: 500px;
   margin-bottom: 20px;
   margin-top: 3px;
+}
+.customer-review {
+  margin: 100px 0 30px;
+  position: relative;
+}
+.customer-review:before {
+  background: url("../img/quotation-mark.png") no-repeat top center;
+  content: "";
+  position: absolute;
+  top: -37px;
+  width: 27px;
+  height: 18px;
+  -webkit-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+.customer-review__avatar {
+  width: 75px;
+  height: 75px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+  margin-bottom: 20px;
+  margin-top: 3px;
+}
+.customer-review__text {
+  font-weight: 400;
+  font-size: 17px;
+  font-size: 1.1rem;
+  line-height: 25px;
+  line-height: 1.67rem;
 }
