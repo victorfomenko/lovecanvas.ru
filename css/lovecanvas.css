@@ -3613,8 +3613,13 @@ input[type="button"].btn-block {
 }
 .customer-review__avatar {
   vertical-align: middle;
+  width: 30px;
   width: 2rem;
+  height: 30px;
   height: 2rem;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
   -webkit-border-radius: 10rem;
   -moz-border-radius: 10rem;
   border-radius: 10rem;
