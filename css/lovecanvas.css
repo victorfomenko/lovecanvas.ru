@@ -1638,14 +1638,11 @@ h3 {
   display: block;
   cursor: pointer;
 }
-.radio--image+label small {
-  position: relative;
-  z-index: 1;
-}
 .radio--image+label img {
   border: 3px solid #f3f5f5;
   max-width: 100%;
   height: auto;
+  pointer-events: none;
 }
 .radio--image:checked+label img {
   border-color: #30beda;
