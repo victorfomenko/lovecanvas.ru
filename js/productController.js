@@ -66,6 +66,9 @@ app.controller("productController", function($scope, $state, $http, appService){
     $scope.goToShipping = function(){
         $state.go('shipping');
     };
+    $scope.clickOnLabel = function(product){ //For IE
+        document.getElementById('product-' + product.id).click()
+    };
     function updateMainClass () {
         $('.product__before').css({'background-image': 'none'});
         $('.product__after').css({'background-image': 'none'});
