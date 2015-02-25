@@ -5,7 +5,7 @@
                 <a href="/gallery/{{pic.seourl}}" class="gallery__wrapper" ng-repeat="pic in pictures" data-caption="<strong class='caption__content__name'>{{pic.name}}</strong><span class='caption__content__author'>{{pic.author}}</span>">
 
                     <!--<i class='heart'></i>-->
-                    <img src="{{pic.preview}}" width="{{pic.width}}" height="{{pic.height}}" alt="{{pic.name}}"/>
+                    <img ng-src="{{pic.preview}}" width="{{pic.width}}" height="{{pic.height}}" alt="{{pic.name}}"/>
                 </a>
             </div>
         </div>

@@ -8,7 +8,7 @@
                     <div class="product__split product__split--bottom"></div>
                     <div class="product__mate">
                         <div class="product__shadow">
-                            <img class="product__image__img" id="mainPicture" src="{{pic.full}}" alt="{{pic.name}}"/>
+                            <img class="product__image__img" id="mainPicture" ng-src="{{pic.full}}" alt="{{pic.name}}"/>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                         <input id="product-{{product.id}}" type="radio" name="product_code" class="radio radio--image" ng-model="formProduct" value="{{product.id}}" ng-click="changeProduct(product)" ng-mouseup="updateImageProportions()">
                         <label for="product-{{product.id}}">
                             <small>{{product.name}}</small>
-                            <img src="/img/products/product-{{product.id}}.jpg" ng-click="clickOnLabel(product)">
+                            <img ng-src="/img/products/product-{{product.id}}.jpg" alt="Тип продукта">
                         </label>
                     </div>
                 </div>
