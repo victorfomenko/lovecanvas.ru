@@ -9,6 +9,7 @@ class AjaxRequest
     public $actions = array();
 
     public $data;
+    public $user;
     public $code;
     public $message;
     public $status;
@@ -45,6 +46,11 @@ class AjaxRequest
         $this->data[$key] = $value;
     }
 
+    public function setUserData($arr)
+    {
+        $this->user = $arr;
+    }
+
 
     public function setFieldError($name, $message = "")
     {
@@ -57,10 +63,12 @@ class AjaxRequest
     public function renderToString()
     {
         $this->json = array(
+            "id" => session_id(),
             "status" => $this->status,
             "code" => $this->code,
             "message" => $this->message,
             "data" => $this->data,
+            "user" => $this->user,
         );
         return json_encode($this->json, ENT_NOQUOTES);
     }

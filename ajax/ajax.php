@@ -15,6 +15,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         "login" => "login",
         "logout" => "logout",
         "register" => "register",
+        "profile" => "profile",
     );
 
     public function login()
@@ -51,10 +52,36 @@ class AuthorizationAjaxRequest extends AjaxRequest
         }
 
         $this->status = "ok";
-        $this->setResponse("redirect", ".");
+        $this->setUserData($user->getAuthorizedUserInfo());
+        $this->setResponse('redirect', '.');
         $this->message = sprintf("Hello, %s! Access granted.", $email);
     }
+    public function profile () {
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            // Method Not Allowed
+            http_response_code(405);
+            header("Allow: POST");
+            $this->setFieldError("main", "Method Not Allowed");
+            return;
+        }
+        if(empty($_SESSION["user_id"])) {
+            $this->setFieldError("session", "No session on the server");
+            return;
+        }
+        $user = new Auth\User();
 
+        $this->status = "ok";
+        $role = 'user';
+        if($_SESSION['is_admin']) $role = 'admin';
+        $this->setUserData(array(
+            'id' => $_SESSION['user_id'],
+            'name' => $_SESSION['user_name'],
+            'url' => $_SESSION['url_name'],
+            'role' => $role
+        ));
+        //$this->setResponse('redirect', '.');
+        //$this->message = sprintf("Hello, %s! Access granted.");
+    }
     public function logout()
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {

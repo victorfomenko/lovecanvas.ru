@@ -1,28 +1,21 @@
 var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'ngCookies' ]);
-app.factory('httpRequestInterceptor', function ($q, $location) {
-    return {
-        'responseError': function(rejection) {
-            // do something on error
-            if(rejection.status === 404){
-                $location.path('/404/');
-                return $q.reject(rejection);
-            }
-        }
-    };
-});
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
+app.config(function($stateProvider, $urlRouterProvider, $locationProvider, USER_ROLES){
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
     });
     $locationProvider.hashPrefix('!'); //Hashbang goes for compatibility with browsers that do not support html5 urls.
     $urlRouterProvider.when('', '/');
+
     $stateProvider
         .state('main', {
             url: "/",
             templateUrl: "templates/home.html",
             controller: "mainController",
-            data : { pageTitle: 'Интернет-магазин картин. Печать фото на холсте' }
+            data : {
+                pageTitle: 'Интернет-магазин картин. Печать фото на холсте',
+                authorizedRoles: [USER_ROLES.all]
+            }
         })
         .state('wedding', {
             url: "/wedding",
@@ -61,22 +54,33 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
             url: "/gallery",
             templateUrl: "/templates/gallery.html",
             controller: "galleryController",
-            data : { pageTitle: 'Галерея' }
+            data : {
+                pageTitle: 'Галерея'
+            }
         })
         .state('product', {
             url: "/gallery/:productId",
             templateUrl: "/templates/product.html",
-            controller: "productController"
+            controller: "productController",
+            data: {
+                authorizedRoles: [USER_ROLES.all]
+            }
         })
         .state('login', {
             url: "/login",
             templateUrl: "/templates/login.html",
-            controller: "loginController"
+            controller: "loginController",
+            data: {
+                authorizedRoles: [USER_ROLES.all]
+            }
         })
         .state('artist', {
             url: "/:artistId",
             templateUrl: "/templates/artist.html",
-            controller: "artistController"
+            controller: "artistController",
+            data: {
+                authorizedRoles: [USER_ROLES.all, USER_ROLES.user]
+            }
         });
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
@@ -84,3 +88,53 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider){
         return true;
     });
 });
+app.constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+});
+app.constant('USER_ROLES', {
+    all: '*',
+    admin: 'admin',
+    user: 'user',
+    guest: 'guest'
+});
+app.run(function ($rootScope, AUTH_EVENTS, USER_ROLES, AuthService) {
+    $rootScope.$on('$stateChangeStart', function (event, next) {
+        var authorizedRoles = next.data.authorizedRoles,
+            anon = false;
+        if(!authorizedRoles) return;
+
+        _.forEach(authorizedRoles, function(item){
+            if ( item === USER_ROLES.all) anon = true;
+        });
+        if (anon) return;
+
+
+        if (!AuthService.isAuthorized(authorizedRoles)) {
+            event.preventDefault();
+            if (AuthService.isAuthenticated()) {
+                // user is not allowed
+                $rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+            } else {
+                // user is not logged in
+                $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+            }
+        }
+    });
+});
+/*
+app.factory('httpRequestInterceptor', function ($q, $location) {
+    return {
+        'responseError': function(rejection) {
+            // do something on error
+            if(rejection.status === 404){
+                $location.path('/404/');
+                return $q.reject(rejection);
+            }
+        }
+    };
+});*/

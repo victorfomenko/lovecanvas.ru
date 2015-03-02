@@ -17,7 +17,7 @@
 	<meta name="keywords" content="купить картину, купить принты, принты в казани картины в казани, картина на холсте, картина в раме, печать на холсте, холст, фото, печать, картина, печать картин"/>
 	<meta name="description" content="Продажа картин. Создание высококачественных картин. С Love Canvas вы можете превратить свою фотографию в картину."/>
 </head>
-<body class="body">
+<body class="body" ng-controller="ApplicationController">
 	<header class="header">
 		<div class="container header__container">
 			<div class="header__flex">
@@ -56,12 +56,16 @@
         </div>
     </footer>
 </body>
+<script type="text/javascript" src="/js/ajax-form.js"></script>
 <script type="text/javascript" src="/js/main.js"></script>
 <script type="text/javascript" src="/js/modal.js"></script>
 <script type="text/javascript" src="/js/directives/updateTitle.js"></script>
 <script type="text/javascript" src="/js/directives/addClassUiView.js"></script>
 <script type="text/javascript" src="/js/directives/ui-bootstrap-custom-0.12.0.js"></script>
+<script type="text/javascript" src="/js/services/sessionService.js"></script>
+<script type="text/javascript" src="/js/services/authService.js"></script>
 <script type="text/javascript" src="/js/services/appService.js"></script>
+<script type="text/javascript" src="/js/applicationController.js"></script>
 <script type="text/javascript" src="/js/loginController.js"></script>
 <script type="text/javascript" src="/js/mainController.js"></script>
 <script type="text/javascript" src="/js/canvasController.js"></script>
@@ -70,6 +74,7 @@
 <script type="text/javascript" src="/js/productController.js"></script>
 <script type="text/javascript" src="/js/priceController.js"></script>
 <script type="text/javascript" src="/js/artistController.js"></script>
+<script type="text/javascript" src="/js/deliveryController.js"></script>
 
 <!-- gallery connect -->
 <script type="text/javascript" src="/js/gallery/jquery.collageCaption.js"></script>
