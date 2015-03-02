@@ -8,6 +8,7 @@ app.controller("artistController", function($scope, $state, $http, $timeout){
         .error(function(){
             console.log("Something went wrong. AJAX ERROR.");
         }).then(function(){
+            window.document.title = artistData.name + ' | Love Canvas'; //Set titles
             $scope.artist = artistData;
             $scope.pictures = artistData.pictures;
             if(!artistData.about) {

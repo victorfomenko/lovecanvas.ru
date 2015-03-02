@@ -89,6 +89,7 @@ app.controller("productController", function($scope, $state, $http, appService){
         .error(function(){
             console.log("Something went wrong. AJAX ERROR.");
         }).then(function(){
+            window.document.title = picData.name + ' от ' + picData.author + ' | Love Canvas'; //Set titles
             $scope.pic = picData;
             if(picData.sizes.length > 0) {
                 dataForSent.formFrameSize = picData.sizes[0].value;
