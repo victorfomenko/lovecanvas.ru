@@ -7,15 +7,17 @@ class User
     private $id;
     private $email;
     private $db;
-    private $user_id;
-    private $is_admin;
-
     private $db_host = "localhost";
     private $db_name = "lovecanvas";
     private $db_user = "root";
     private $db_pass = "TwofRag83";
 
     private $is_authorized = false;
+
+    private $user_id;
+    private $is_admin;
+    private $user_name;
+    private $url_name;
 
     public function __construct($email = null, $password = null)
     {
@@ -80,7 +82,7 @@ class User
 
     public function authorize($email, $password, $remember=false)
     {
-        $query = "select id, email, admin from users where
+        $query = "select id, username, urlname, email, admin from users where
                   email = :email and password = :password limit 1";
         $sth = $this->db->prepare($query);
         $salt = $this->getSalt($email);
@@ -103,23 +105,40 @@ class User
         } else {
             $this->is_authorized = true;
             $this->user_id = $this->user['id'];
+            $this->user_name = $this->user['username'];
+            $this->url_name = $this->user['urlname'];
             $this->is_admin = $this->user['admin'];
             $this->saveSession($remember);
         }
 
         return $this->is_authorized;
     }
-
+    public function getAuthorizedUserInfo (){
+        if (!$this->is_authorized) return;
+        $role = 'user';
+        if($this->is_admin) $role = 'admin';
+        return array(
+            'id' => $this->user_id,
+            'name' => $this->user_name,
+            'url' => $this->url_name,
+            'role' => $role
+        );
+    }
     public function logout()
     {
         if (!empty($_SESSION["user_id"])) {
             unset($_SESSION["user_id"]);
+            unset($_SESSION["user_name"]);
+            unset($_SESSION["url_name"]);
+            unset($_SESSION["is_admin"]);
         }
     }
 
-    public function saveSession($remember = false, $http_only = true, $days = 7)
+    public function saveSession($remember = false, $http_only = false, $days = 7)
     {
         $_SESSION["user_id"] = $this->user_id;
+        $_SESSION["user_name"] = $this->user_name;
+        $_SESSION["url_name"] = $this->url_name;
         $_SESSION["is_admin"] = $this->is_admin;
 
         if ($remember) {

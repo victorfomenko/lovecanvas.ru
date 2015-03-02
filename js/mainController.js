@@ -1,4 +1,6 @@
-app.controller("mainController", function($scope, $http, $state, appService, $timeout){
+app.controller("mainController", function($scope, $http, $state, appService, $timeout ){
+
+    //banner
     $scope.bannerNumber = Math.floor((Math.random() * 5) + 1);
 
     $scope.openLoadFile = function(){
