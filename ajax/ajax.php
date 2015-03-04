@@ -119,13 +119,13 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $password1 = $this->getRequestParam("password");
         $password2 = $password1; //$this->getRequestParam("password2");
 
-        if (empty($username)) {
-            $this->setFieldError("username", "Введите имя");
+        if (empty($URLName)) {
+            $this->setFieldError("urlname", "Введите ссылку на профиль");
             return;
         }
 
-        if (empty($URLName)) {
-            $this->setFieldError("urlname", "Введите ссылку на профиль");
+        if (empty($username)) {
+            $this->setFieldError("username", "Введите имя");
             return;
         }
 
