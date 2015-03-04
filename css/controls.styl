@@ -45,9 +45,13 @@
 	margin-bottom  22px
 	overflow hidden
 
+	input
+		color #33383f
+
 	[type='text'],
 	[type='email'],
-	[type='tel']
+	[type='tel'],
+	[type='password']
 		display block
 		width 100%
 		height 46px
@@ -63,6 +67,25 @@
 		content: "*";
 		margin-left: 2px;
 		color: #f66b6a;
+
+.form__row--prefix
+	position relative
+	padding-top 1px
+	margin-bottom 33px
+
+.form__row--prefix__label
+	pointer-events: none;
+	position: absolute;
+	z-index: 1;
+	top: 12.75px;
+	top: .74688rem;
+	left: 15.5px;
+	left: .96875rem;
+	font-size: 14px;
+	font-size: 1.2rem;
+
+.form__row--prefix--love
+	text-indent: 9.8em;
 
 .form__samples
 	margin-bottom 15px

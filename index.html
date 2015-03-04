@@ -28,18 +28,31 @@
 						<span class="header__flex__item__title__note">Создание принтов</span>
 					</div>
 				</div>
-				<div class="header__flex__item col-md-4 col-xs-4 m-text_right">
+				<div class="header__flex__item col-md-5 col-xs-5 m-text_right">
                     <ul class="menu">
                         <!--<li class="menu__item"><a href="/shipping" class="menu__item__link">Доставка</a></li>-->
                         <li class="menu__item"><a href="/gallery" class="menu__item__link">Галерея</a></li>
                         <li class="menu__item"><a href="/delivery" class="menu__item__link">Доставка</a></li>
                         <li class="menu__item"><a href="/price" class="menu__item__link">Цены</a></li>
+                        <!--<li class="menu__item"><a href="#modal-register" class="menu__item__link">Регистрация</a></li>-->
                     </ul>
 					<!--<div class="header__flex__item__owl"></div>-->
 				</div>
-				<div class="header__flex__item col-md-4 col-xs-4 m-text_right header__flex__item--contacts m-padding-right_clear">
+				<div class="header__flex__item col-md-3 col-xs-3 m-text_right header__flex__item--contacts m-padding-right_clear">
 					<span class="header__flex__item__phone"><a href="tel:+79274440045">+7 (927) 444-00-45</a></span> <br/>
-					<span class="header__flex__item__email"><a href="mailto:info@lovecanvas.ru">info@lovecanvas.ru</a></span>
+                    <div ng-switch on="currentUser.role">
+                        <div ng-switch-when="user">
+                         <form class="ajax" method="post" action="/ajax/ajax.php" ajax-form>
+                             <input type="hidden" name="act" value="logout">
+                             <a href="{{currentUser.url}}">{{currentUser.name}}</a>
+                             <button class="btn btn-link header__flex__item__email" type="submit">выход</button>
+                        </form>
+                        </div>
+                        <div ng-switch-default>
+                            <span class="header__flex__item__email"><a href="#modal-login">вход в личный кабинет</a></span>
+                        </div>
+                    </div>
+					<!--<span class="header__flex__item__email"><a href="mailto:info@lovecanvas.ru">info@lovecanvas.ru</a></span>-->
 				</div>
 			</div>
 		</div>
@@ -55,13 +68,129 @@
             <span>© 2015 Love Canvas</span>
         </div>
     </footer>
+
+    <!-- REGISTRATION MODAL WINDOW-->
+    <div class="modal modal--register" id="modal-register" ng-click="restoreUrl()">
+        <div class="modal__dialog">
+            <div class="modal__inner">
+                <div class="modal__header clearfix">
+                    <button type="button" class="modal__close" data-dismiss="modal" aria-label="Закрыть">
+                        <span class="modal__close__icon" aria-hidden="true">×</span>
+                        <span class="modal__close__text" aria-hidden="true">Закрыть</span>
+                    </button>
+                </div>
+                <div class="modal__body">
+                    <form class="form-signin ajax" method="post" action="/ajax/ajax.php" ajax-form>
+
+                        <h1 class="form-signup-heading">Регистрация</h1>
+
+                        <div class="form__row form__row--is_required form__row--prefix">
+                            <span class="form__row--prefix__label">https://lovecanvas.ru/</span>
+                            <input name="urlname" type="text" class="input-block-level form__row--prefix--love" placeholder="имя" autofocus>
+                            <span class="m-text_error m-hidden"></span>
+                            <div>
+                                <small>Имя пользователя даёт уникальную ссылку на ваш профиль, которой вы можете делиться с друзьями и знакомыми.</small>
+                            </div>
+
+                        </div>
+
+                        <div class="form__row form__row--is_required">
+                            <input name="username" type="text" class="input-block-level" placeholder="Ваше имя">
+                            <span class="m-text_error m-hidden"></span>
+                        </div>
+
+                        <div class="form__row form__row--is_required">
+                            <input name="email" type="email" class="input-block-level" placeholder="Email-адрес">
+                            <span class="m-text_error m-hidden"></span>
+                        </div>
+
+                        <div class="form__row form__row--is_required">
+                            <input name="password" type="password" class="input-block-level" placeholder="Пароль">
+                            <span class="m-text_error m-hidden"></span>
+                        </div>
+
+                        <div class="main-error alert alert-error hide"></div>
+
+                        <div class="form__row m-text_center">
+                            <img src="/img/logo.png" alt="Logo" style="width: 40px;"/>
+                        </div>
+
+                        <div class="form__row form__row--is_required">
+                            <button class="btn btn-lg btn-info btn-block" type="submit">Зарегистрироваться</button>
+                        </div>
+
+                        <input type="hidden" name="act" value="register">
+
+                        <hr>
+
+                        <p>Уже есть аккаунт? <a href="#modal-login">Войти.</a>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
+
+    <!-- LOGIN MODAL WINDOW-->
+    <div class="modal modal--login" id="modal-login">
+        <div class="modal__dialog">
+            <div class="modal__inner">
+                <div class="modal__header clearfix">
+                    <button type="button" class="modal__close" data-dismiss="modal" aria-label="Закрыть" ng-click="restoreUrl()">
+                        <span class="modal__close__icon" aria-hidden="true">×</span>
+                        <span class="modal__close__text" aria-hidden="true">Закрыть</span>
+                    </button>
+                </div>
+                <div class="modal__body">
+                    <form class="form-signin ajax" method="post" action="/ajax/ajax.php" ajax-form>
+
+                        <h1 class="form-signin-heading">Вход</h1>
+
+                        <div class="form__row form__row--is_required">
+                            <input name="email" type="email" class="input-block-level" placeholder="Email-адрес" autofocus>
+                            <span class="m-text_error m-hidden"></span>
+                        </div>
+
+                        <div class="form__row form__row--is_required">
+                            <input name="password" type="password" class="input-block-level" placeholder="Пароль">
+                            <span class="m-text_error m-hidden"></span>
+                        </div>
+
+                        <div class="main-error alert alert-error hide"></div>
+
+                        <div class="form__row m-text_center">
+                            <img src="/img/logo.png" alt="Logo" style="width: 40px;"/>
+                        </div>
+
+                        <div class="form__row form__row--is_required">
+                            <button class="btn btn-lg btn-info btn-block" type="submit">Войти с помощью Email</button>
+                        </div>
+
+                        <input type="hidden" name="remember-me" value="true">
+                        <input type="hidden" name="act" value="login">
+
+                        <hr>
+
+                        <p>Нет аккаунта? <a href="#modal-register">Регистрация.</a>
+                    </form>
+
+                    <!-- <form class="ajax" method="post" action="/ajax/ajax.php" ajax-form>
+                         <input type="hidden" name="act" value="logout">
+                         <div class="form-actions">
+                             <button class="btn btn-info btn-primary" type="submit">Logout</button>
+                         </div>
+                     </form>-->
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div>
 </body>
-<script type="text/javascript" src="/js/ajax-form.js"></script>
+<!--<script type="text/javascript" src="/js/ajax-form.js"></script>-->
 <script type="text/javascript" src="/js/main.js"></script>
 <script type="text/javascript" src="/js/modal.js"></script>
 <script type="text/javascript" src="/js/directives/updateTitle.js"></script>
 <script type="text/javascript" src="/js/directives/addClassUiView.js"></script>
 <script type="text/javascript" src="/js/directives/ui-bootstrap-custom-0.12.0.js"></script>
+<script type="text/javascript" src="/js/directives/ajaxForm.js"></script>
 <script type="text/javascript" src="/js/services/sessionService.js"></script>
 <script type="text/javascript" src="/js/services/authService.js"></script>
 <script type="text/javascript" src="/js/services/appService.js"></script>

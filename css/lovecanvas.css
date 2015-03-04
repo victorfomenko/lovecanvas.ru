@@ -199,6 +199,9 @@ th {
 .m-text_small {
   font-size: 0.75em;
 }
+.m-text_error {
+  color: #f66b6a;
+}
 .m-padding-main {
   padding: 66px 0;
 }
@@ -1475,6 +1478,16 @@ a,
 a:hover {
   color: #30beda;
 }
+h1 {
+  color: #33383f;
+  font-weight: 400;
+  font-size: 22.5px;
+  font-size: 2.2425rem;
+  margin-bottom: 33px;
+  margin-bottom: 2.0625rem;
+  line-height: 36px;
+  line-height: 2.4rem;
+}
 h2 {
   font-size: 32px;
   font-size: 2.14rem;
@@ -1603,9 +1616,13 @@ h3 {
   margin-bottom: 22px;
   overflow: hidden;
 }
+.form__row input {
+  color: #33383f;
+}
 .form__row [type='text'],
 .form__row [type='email'],
-.form__row [type='tel'] {
+.form__row [type='tel'],
+.form__row [type='password'] {
   display: block;
   width: 100%;
   height: 46px;
@@ -1622,6 +1639,25 @@ h3 {
   content: "*";
   margin-left: 2px;
   color: #f66b6a;
+}
+.form__row--prefix {
+  position: relative;
+  padding-top: 1px;
+  margin-bottom: 33px;
+}
+.form__row--prefix__label {
+  pointer-events: none;
+  position: absolute;
+  z-index: 1;
+  top: 12.75px;
+  top: 0.74688rem;
+  left: 15.5px;
+  left: 0.96875rem;
+  font-size: 14px;
+  font-size: 1.2rem;
+}
+.form__row--prefix--love {
+  text-indent: 9.8em;
 }
 .form__samples {
   margin-bottom: 15px;
@@ -1957,7 +1993,7 @@ table th[class*="col-"] {
 .modal__dialog {
   position: relative;
   width: auto;
-  height: auto;
+  height: 100%;
 }
 .modal__inner {
   position: relative;
@@ -1992,7 +2028,7 @@ table th[class*="col-"] {
 .modal__close {
   float: right;
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
   color: #000;
   text-shadow: 0 1px 0 #fff;
@@ -2004,6 +2040,15 @@ table th[class*="col-"] {
   text-decoration: none;
   cursor: pointer;
   opacity: 0.5;
+}
+.modal__close__icon {
+  margin-right: -3px;
+}
+.modal__close__text {
+  font-size: 1rem;
+  vertical-align: middle;
+  line-height: 1;
+  font-weight: 200;
 }
 button.modal__close {
   -webkit-appearance: none;
@@ -2149,6 +2194,25 @@ button.modal__close {
 .modal--product .modal__footer ul {
   margin-top: 10px;
   padding-left: 2px;
+}
+.modal--login .modal__inner,
+.modal--register .modal__inner {
+  padding: 24px 36px;
+}
+.modal--login .modal__header,
+.modal--register .modal__header {
+  padding: 0;
+  border-bottom: 0;
+}
+.modal--login .modal__body,
+.modal--register .modal__body {
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .modal--login .modal__dialog,
+  .modal--register .modal__dialog {
+    width: 450px;
+  }
 }
 .menu {
   margin: 0;
@@ -2986,6 +3050,7 @@ input[type="button"].btn-block {
   display: inline-block;
   line-height: 120%;
 }
+.header__flex__item__email,
 .header__flex__item__email a,
 .header__flex__item__title__note {
   color: #8a8e90;

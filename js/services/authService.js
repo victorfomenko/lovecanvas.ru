@@ -3,7 +3,7 @@
         var authService = {};
 
         authService.login = function (credentials) {
-            var ajaxURL =   'ajax/ajax.php?act=login' +
+            var ajaxURL =   '/ajax/ajax.php?act=login' +
                             '&email=' + credentials.email +
                             '&password=' + credentials.password;
             if (credentials.rememberMe )  ajaxURL += '&remember-me=' + credentials.rememberMe;
@@ -20,13 +20,11 @@
 
         authService.loginOnRefreshPage = function () {
             var sid = $cookies.PHPSESSID;
-            console.log(sid);
             if(!sid) return false;
-            var ajaxUrl =   'ajax/ajax.php?act=profile';
+            var ajaxUrl =   '/ajax/ajax.php?act=profile';
             return $http
                 .post(ajaxUrl)
                 .then(function (res) {
-                    console.log(res);
                     if(res.data.status === 'err') return false;
                     Session.create(res.data.id, res.data.user.id,
                         res.data.user.role);
@@ -40,7 +38,7 @@
             $cookieStore.remove('sid');
 
             //clear session on the server
-            var ajaxUrl =   'ajax/ajax.php?act=logout';
+            var ajaxUrl =   '/ajax/ajax.php?act=logout';
             return $http
                 .post(ajaxUrl)
                 .then(function (res) {

@@ -1,33 +1,11 @@
 
-<form class="ajax" method="post" ng-submit="logout()">
-    <input type="hidden" name="act" value="logout">
-    <div class="form-actions">
-        <button class="btn btn-large btn-primary" type="submit">Logout</button>
-    </div>
-</form>
+
 
 <div ng-if="currentUser">Welcome, {{ currentUser.name }}</div>
 <div ng-if="isAuthorized(userRoles.admin)">You're admin.</div>
-<div ng-if="isAuthorized(userRoles.user)">You're user.</div>
 
 <div ng-switch on="currentUser.role">
-    <div ng-switch-when="userRoles.admin">You're admin.</div>
-    <div ng-switch-when="userRoles.user">You're user.</div>
+    <div ng-switch-when="admin">You're admin.</div>
+    <div ng-switch-when="user">You're user.</div>
     <div ng-switch-default>You're something else.</div>
 </div>
-
-<form class="form-signin ajax" method="post"  ng-submit="login(credentials)">
-    <div class="main-error alert alert-error hide"></div>
-
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <input name="email" type="email" ng-model="credentials.email" class="input-block-level" placeholder="Email" autofocus>
-    <input name="password" type="password" ng-model="credentials.password" class="input-block-level" placeholder="Password">
-    <label class="checkbox">
-        <input name="remember-me" type="checkbox" ng-model="credentials.rememberMe"> Remember me
-    </label>
-    <button class="btn btn-large btn-primary" type="submit">Sign in</button>
-
-    <div class="alert alert-info" style="margin-top:15px;">
-        <p>Not have an account? <a href="/register.php">Register it.</a>
-    </div>
-</form>

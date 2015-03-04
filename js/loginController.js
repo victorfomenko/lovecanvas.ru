@@ -5,9 +5,7 @@ app.controller('loginController', function ($scope, $rootScope, AUTH_EVENTS, USE
         'password': '',
         'rememberMe': true
     };
-    console.log($scope.currentUser);
-    console.log($scope.userRoles.user);
-    console.log($scope.isAuthorized($scope.userRoles.user));
+
     $scope.login = function (credentials) {
 
         //do not login if already login

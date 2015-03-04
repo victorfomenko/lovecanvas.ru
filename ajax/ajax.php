@@ -34,12 +34,12 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $remember = !!$this->getRequestParam("remember-me");
 
         if (empty($email)) {
-            $this->setFieldError("Email", "Enter the Email");
+            $this->setFieldError("email", "Введите Email");
             return;
         }
 
         if (empty($password)) {
-            $this->setFieldError("password", "Enter the password");
+            $this->setFieldError("password", "Введите пароль");
             return;
         }
 
@@ -47,7 +47,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $auth_result = $user->authorize($email, $password, $remember);
 
         if (!$auth_result) {
-            $this->setFieldError("password", "Invalid username or password");
+            $this->setFieldError("password", "Неправильное имя пользователя или пароль");
             return;
         }
 
@@ -116,36 +116,36 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $username = $this->getRequestParam("username");
         $URLName = $this->getRequestParam("urlname");
         $email = $this->getRequestParam("email");
-        $password1 = $this->getRequestParam("password1");
-        $password2 = $this->getRequestParam("password2");
+        $password1 = $this->getRequestParam("password");
+        $password2 = $password1; //$this->getRequestParam("password2");
 
         if (empty($username)) {
-            $this->setFieldError("username", "Enter the username");
+            $this->setFieldError("username", "Введите имя");
             return;
         }
 
         if (empty($URLName)) {
-            $this->setFieldError("URLName", "Enter the urlname");
+            $this->setFieldError("urlname", "Введите ссылку на профиль");
             return;
         }
 
         if (empty($email)) {
-            $this->setFieldError("Email", "Enter the Email");
+            $this->setFieldError("email", "Введите Email");
             return;
         }
 
         if (empty($password1)) {
-            $this->setFieldError("password1", "Enter the password");
+            $this->setFieldError("password", "Введите пароль");
             return;
         }
 
         if (empty($password2)) {
-            $this->setFieldError("password2", "Confirm the password");
+            $this->setFieldError("password2", "Подтвердите пароль");
             return;
         }
 
         if ($password1 !== $password2) {
-            $this->setFieldError("password2", "Confirm password is not match");
+            $this->setFieldError("password2", "Пароли не совпадают");
             return;
         }
 
@@ -160,7 +160,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $user->authorize($email, $password1);
 
         $this->message = sprintf("Hello, %s! Thank you for registration.", $username);
-        $this->setResponse("redirect", "/");
+        $this->setResponse("redirect", $URLName);
         $this->status = "ok";
     }
 }
