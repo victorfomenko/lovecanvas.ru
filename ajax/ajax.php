@@ -16,6 +16,8 @@ class AuthorizationAjaxRequest extends AjaxRequest
         "logout" => "logout",
         "register" => "register",
         "profile" => "profile",
+        "artist" => "artist",
+        "profileSave" => "profileSave",
     );
 
     public function login()
@@ -56,32 +58,6 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $this->setResponse('redirect', '.');
         $this->message = sprintf("Hello, %s! Access granted.", $email);
     }
-    public function profile () {
-        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-            // Method Not Allowed
-            http_response_code(405);
-            header("Allow: POST");
-            $this->setFieldError("main", "Method Not Allowed");
-            return;
-        }
-        if(empty($_SESSION["user_id"])) {
-            $this->setFieldError("session", "No session on the server");
-            return;
-        }
-        $user = new Auth\User();
-
-        $this->status = "ok";
-        $role = 'user';
-        if($_SESSION['is_admin']) $role = 'admin';
-        $this->setUserData(array(
-            'id' => $_SESSION['user_id'],
-            'name' => $_SESSION['user_name'],
-            'url' => $_SESSION['url_name'],
-            'role' => $role
-        ));
-        //$this->setResponse('redirect', '.');
-        //$this->message = sprintf("Hello, %s! Access granted.");
-    }
     public function logout()
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -100,7 +76,6 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $this->setResponse("redirect", ".");
         $this->status = "ok";
     }
-
     public function register()
     {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -161,6 +136,106 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
         $this->message = sprintf("Hello, %s! Thank you for registration.", $username);
         $this->setResponse("redirect", $URLName);
+        $this->status = "ok";
+    }
+    public function profile() {
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            // Method Not Allowed
+            http_response_code(405);
+            header("Allow: POST");
+            $this->setFieldError("main", "Method Not Allowed");
+            return;
+        }
+        if(empty($_SESSION["user_id"])) {
+            $this->setFieldError("session", "No session on the server");
+            return;
+        }
+        $user = new Auth\User();
+
+        $this->status = "ok";
+        $role = 'user';
+        if($_SESSION['is_admin']) $role = 'admin';
+        $this->setUserData(array(
+            'id' => $_SESSION['user_id'],
+            'name' => $_SESSION['user_name'],
+            'url' => $_SESSION['url_name'],
+            'role' => $role
+        ));
+        //$this->setResponse('redirect', '.');
+        //$this->message = sprintf("Hello, %s! Access granted.");
+    }
+    public function artist(){
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            // Method Not Allowed
+            http_response_code(405);
+            header("Allow: POST");
+            $this->setFieldError("main", "Method Not Allowed");
+            return;
+        }
+        if(empty($_SESSION["user_id"])) {
+            $this->setFieldError("session", "No session on the server");
+            return;
+        }
+        $url = $this->getRequestParam("userurl");
+        $user = new Auth\User();
+        $userInfo = $user->getUserInfo($url);
+
+        /*if (!$userInfo) {
+            $this->setFieldError("userinfo", "not authorized");
+            return;
+        }*/
+        $this->status = "ok";
+        $this->setUserData($userInfo);
+    }
+    public function profileSave(){
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            // Method Not Allowed
+            http_response_code(405);
+            header("Allow: POST");
+            $this->setFieldError("main", "Method Not Allowed");
+            return;
+        }
+        if(empty($_SESSION["user_id"])) {
+            $this->setFieldError("session", "No session on the server");
+            return;
+        }
+        $id = $this->getRequestParam("userid");
+        $urlname = $this->getRequestParam("urlname");
+        $username = $this->getRequestParam("username");
+        $email = $this->getRequestParam("email");
+        $phone = $this->getRequestParam("phone");
+        $website = $this->getRequestParam("website");
+        $about = $this->getRequestParam("about");
+
+        if (empty($username)) {
+            $this->setFieldError("username", "Введите имя");
+            return;
+        }
+
+        if (empty($email)) {
+            $this->setFieldError("email", "Введите Email");
+            return;
+        }
+        if($urlname !== $_SESSION['url_name'] && !$_SESSION['is_admin']) {
+            $this->message = sprintf("Sorry, %s! You have no access.");
+            return;
+        }
+        $arr = array(
+            'id'=> $id,
+            'username'=> $username,
+            'email'=> $email,
+            'phone'=> $phone,
+            'website'=> $website,
+            'about'=> $about,
+        );
+        $user = new Auth\User();
+        try {
+            $response = $user->setUserInfo($arr);
+        } catch (\Exception $e) {
+            $this->setFieldError("username", $e->getMessage());
+            return;
+        }
+        $this->message = sprintf("Данные были успешно обновлены.");
         $this->status = "ok";
     }
 }

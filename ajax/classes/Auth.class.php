@@ -124,6 +124,63 @@ class User
             'role' => $role
         );
     }
+    public function getUserInfo ($url){
+        //if (!$this->is_authorized) return;
+
+        $query = "select id, username, urlname, email, phone, website, avatar, about, admin from users where
+                  urlname = :urlname limit 1";
+        $sth = $this->db->prepare($query);
+        $sth->execute(
+            array(
+                ":urlname"    => $url
+            )
+        );
+        $this->user = $sth->fetch();
+        return array(
+            'id' => $this->user['id'],
+            'name' => $this->user['username'],
+            'url' => $this->user['urlname'],
+            'email' => $this->user['email'],
+            'phone' => $this->user['phone'],
+            'website' => $this->user['website'],
+            'avatar' => $this->user['avatar'],
+            'about' => $this->user['about'],
+            'role' => $this->user['admin']
+        );
+    }
+    public function setUserInfo ($arr){
+
+        $query = "update users set username = :username, email = :email, phone = :phone, website = :website, about = :about
+                  where id = :id";
+        $sth = $this->db->prepare($query);
+
+        try {
+            $this->db->beginTransaction();
+            $result = $sth->execute(
+                array(
+                    ":id"  =>      $arr['id'],
+                    ":username" => $arr['username'],
+                    ":email"    => $arr['email'],
+                    ":phone"    => $arr['phone'],
+                    ":website"    => $arr['website'],
+                    ":about"    => $arr['about'],
+                )
+            );
+            $this->db->commit();
+        } catch (\PDOException $e) {
+            $this->db->rollback();
+            echo "Database error: " . $e->getMessage();
+            die();
+        }
+
+        if (!$result) {
+            $info = $sth->errorInfo();
+            printf("Database error %d %s", $info[1], $info[2]);
+            die();
+        }
+
+        return $result;
+    }
     public function logout()
     {
         if (!empty($_SESSION["user_id"])) {

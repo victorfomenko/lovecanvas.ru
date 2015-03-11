@@ -225,6 +225,9 @@ th {
 .m-hidden {
   display: none;
 }
+.m-visibility_hidden {
+  visibility: hidden;
+}
 .m-rubble {
   font-family: ruble;
 }
@@ -253,6 +256,9 @@ th {
 .m-separator {
   border-bottom: 1px solid #e1e1e1;
   display: block;
+}
+.m-margin-bottom_small {
+  margin-bottom: 22px;
 }
 .m-separator--after-title {
   margin-bottom: 30px;
@@ -338,7 +344,9 @@ mark {
   color: #000;
 }
 small {
-  font-size: 80%;
+  font-size: 67%;
+  line-height: 1.2rem;
+  display: inline-block;
 }
 sub,
 sup {
@@ -1457,7 +1465,7 @@ body {
   font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   overflow-x: hidden;
-  line-height: 1.46667;
+  line-height: 1.46667em;
   font-size: 15px;
   min-height: 100%;
   background: #fff;
@@ -1470,6 +1478,7 @@ h5,
 h6 {
   font-weight: normal;
   margin: 10px 0;
+  color: #6e7b8e;
 }
 p {
   margin: 0 0 22px;
@@ -1482,17 +1491,30 @@ h1 {
   color: #33383f;
   font-weight: 400;
   font-size: 22.5px;
-  font-size: 2.2425rem;
+  font-size: 1.5rem;
+  margin-top: 0;
   margin-bottom: 33px;
+  margin-bottom: 1.47rem;
+  line-height: 36px;
+  line-height: 2.4rem;
+}
+h1.big {
+  font-size: 33.5px;
+  font-size: 2.2425rem;
+  margin-bottom: 31px;
   margin-bottom: 2.0625rem;
   line-height: 36px;
   line-height: 2.4rem;
 }
 h2 {
-  font-size: 32px;
-  font-size: 2.14rem;
-  margin-bottom: 18px;
-  margin-bottom: 1.25rem;
+  margin-top: 0;
+  font-weight: 500;
+  font-size: 18.75px;
+  font-size: 1.25188rem;
+  line-height: 33px;
+  line-height: 2.2rem;
+  margin-bottom: 11px;
+  margin-bottom: 0.6875rem;
 }
 h3 {
   font-size: 22px;
@@ -1613,16 +1635,18 @@ h3 {
   margin-top: -10px;
 }
 .form__row {
-  margin-bottom: 22px;
+  margin-bottom: 15px;
   overflow: hidden;
 }
 .form__row input {
   color: #33383f;
+  margin-bottom: 5.5px;
 }
 .form__row [type='text'],
 .form__row [type='email'],
 .form__row [type='tel'],
-.form__row [type='password'] {
+.form__row [type='password'],
+.form__row textarea {
   display: block;
   width: 100%;
   height: 46px;
@@ -1635,6 +1659,13 @@ h3 {
   border-radius: 3px;
   outline: none;
 }
+.form__row textarea {
+  height: auto;
+  color: #8a95a5;
+  font-size: 15px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
 .form__row--is_required label:after {
   content: "*";
   margin-left: 2px;
@@ -1643,16 +1674,16 @@ h3 {
 .form__row--prefix {
   position: relative;
   padding-top: 1px;
-  margin-bottom: 33px;
+  margin-bottom: 22px;
 }
 .form__row--prefix__label {
   pointer-events: none;
   position: absolute;
   z-index: 1;
   top: 12.75px;
-  top: 0.74688rem;
-  left: 15.5px;
-  left: 0.96875rem;
+  top: 0.86688rem;
+  left: 19.5px;
+  left: 1.29975rem;
   font-size: 14px;
   font-size: 1.2rem;
 }
@@ -1664,6 +1695,13 @@ h3 {
 }
 .form__row__note {
   font-size: 0.7em;
+}
+.form__row__label--title {
+  font-family: HelveticaNeue, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 5.5px;
+  margin-bottom: 0.34375rem;
 }
 .radio--image {
   position: absolute;
@@ -3646,13 +3684,18 @@ input[type="button"].btn-block {
   font-size: 19px;
 }
 .artist__avatar {
-  width: 75px;
-  height: 75px;
+  margin-bottom: 20px;
+  margin-top: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.user-avatar {
+  width: 96px;
+  height: 96px;
   -webkit-border-radius: 500px;
   -moz-border-radius: 500px;
   border-radius: 500px;
-  margin-bottom: 20px;
-  margin-top: 3px;
+  display: block;
 }
 .customer-review {
   margin: 100px 0 30px;
@@ -3696,4 +3739,34 @@ input[type="button"].btn-block {
   font-size: 1.1rem;
   line-height: 25px;
   line-height: 1.67rem;
+}
+.media,
+.media__body {
+  display: block;
+  overflow: hidden;
+  zoom: 1;
+}
+.media__aside {
+  margin-right: 22px;
+  margin-right: 1.375rem;
+  float: left;
+}
+.info {
+  padding: 11px 22px;
+  padding: 0.6875rem 1.375rem;
+  margin-bottom: 22px;
+  margin-bottom: 1.375rem;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  line-height: 22px;
+  line-height: 1.375rem;
+  opacity: 1;
+}
+.info--success {
+  background: #52be9b;
+  color: #fff;
+}
+.info--hide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }

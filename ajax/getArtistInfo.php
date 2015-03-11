@@ -2,7 +2,7 @@
 include('dbConnect.php');
 	$urlname = file_get_contents('php://input');
 
-    $q =   "SELECT id, username, avatar, about
+    $q =   "SELECT id, username, avatar, website, about
            FROM users
            WHERE urlname = '" . $urlname . "'";
 
@@ -12,6 +12,7 @@ include('dbConnect.php');
         $artist = array();
         $artist["id"] =         $data['id'];
         $artist["name"] =       $data['username'];
+        $artist["website"] =     $data['website'];
         $artist["avatar"] =     $data['avatar'];
         $artist["about"] =      $data['about'];
 

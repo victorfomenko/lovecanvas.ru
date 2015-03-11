@@ -153,9 +153,19 @@ app.directive('ajaxForm', function($rootScope, $timeout) {
 
                 validateByAjax: function($form, data) {
                     if (data.status === 'ok') {
-                        if (data.message !== undefined && data.message !== null) {
-                            // window.alert(data.message);
+                        var $mainSuccessContainer = $form.find('.info--success');
+                        if ($mainSuccessContainer !== null) {
+                            $mainSuccessContainer.html('<span>' + data.message + '</span>');
+                        } else {
+                            $form.append('<span>' + data.message + '</span>');
                         }
+                        $mainSuccessContainer.removeClass('info--hide');
+                        setTimeout(function(){
+                            $mainSuccessContainer.addClass('info--hide');
+                            setTimeout(function(){
+                                $('html, body').animate({scrollTop: 0}, 200);
+                            }, 300)
+                        }, 1000);
                         if (data.redirect === true) {
                             if (data.url !== undefined && data.url !== null) {
                                 window.location.href = data.url;

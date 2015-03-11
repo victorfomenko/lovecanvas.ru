@@ -44,9 +44,16 @@
                         <div ng-switch-when="user">
                          <form class="ajax" method="post" action="/ajax/ajax.php" ajax-form>
                              <input type="hidden" name="act" value="logout">
-                             <a href="{{currentUser.url}}">{{currentUser.name}}</a>
+                             <a href="/{{currentUser.url}}">{{currentUser.name}}</a>
                              <button class="btn btn-link header__flex__item__email" type="submit">выход</button>
                         </form>
+                        </div>
+                        <div ng-switch-when="admin">
+                            <form class="ajax" method="post" action="/ajax/ajax.php" ajax-form>
+                                <input type="hidden" name="act" value="logout">
+                                <span>admin: <a href="/{{currentUser.url}}">{{currentUser.name}}</a></span>
+                                <button class="btn btn-link header__flex__item__email" type="submit">выход</button>
+                            </form>
                         </div>
                         <div ng-switch-default>
                             <span class="header__flex__item__email"><a href="#modal-login">вход в личный кабинет</a></span>
@@ -89,7 +96,7 @@
                             <input name="urlname" type="text" class="input-block-level form__row--prefix--love" placeholder="имя" autofocus>
                             <span class="m-text_error m-hidden"></span>
                             <div>
-                                <small>Имя пользователя даёт уникальную ссылку на ваш профиль, которой вы можете делиться с друзьями и знакомыми.</small>
+                                <small class="m-text_small">Имя пользователя даёт уникальную ссылку на ваш профиль, которой вы можете делиться с друзьями и знакомыми.</small>
                             </div>
 
                         </div>
@@ -204,6 +211,7 @@
 <script type="text/javascript" src="/js/priceController.js"></script>
 <script type="text/javascript" src="/js/artistController.js"></script>
 <script type="text/javascript" src="/js/deliveryController.js"></script>
+<script type="text/javascript" src="/js/user/profileController.js"></script>
 
 <!-- gallery connect -->
 <script type="text/javascript" src="/js/gallery/jquery.collageCaption.js"></script>

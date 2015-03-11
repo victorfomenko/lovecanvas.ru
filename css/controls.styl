@@ -42,16 +42,18 @@
 	margin-top -10px
 
 .form__row
-	margin-bottom  22px
+	margin-bottom  15px
 	overflow hidden
 
 	input
 		color #33383f
+		margin-bottom 5.5px
 
 	[type='text'],
 	[type='email'],
 	[type='tel'],
-	[type='password']
+	[type='password'],
+	textarea
 		display block
 		width 100%
 		height 46px
@@ -62,6 +64,13 @@
 		border-radius(3px)
 		outline: none
 
+	textarea
+		height auto
+		color COLOR_TEXT
+		font-size 15px
+		padding-top 16px
+		padding-bottom 16px
+
 .form__row--is_required
 	label:after
 		content: "*";
@@ -71,16 +80,16 @@
 .form__row--prefix
 	position relative
 	padding-top 1px
-	margin-bottom 33px
+	margin-bottom 22px
 
 .form__row--prefix__label
 	pointer-events: none;
 	position: absolute;
 	z-index: 1;
 	top: 12.75px;
-	top: .74688rem;
-	left: 15.5px;
-	left: .96875rem;
+	top: .86688rem;
+	left: 19.5px;
+	left: 1.29975rem;
 	font-size: 14px;
 	font-size: 1.2rem;
 
@@ -92,6 +101,13 @@
 
 .form__row__note
 	font-size 0.7em
+
+.form__row__label--title
+	font-family HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-weight 500
+	font-size 15px
+	margin-bottom 5.5px
+	margin-bottom .34375rem
 
 .radio--image
 	position absolute

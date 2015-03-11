@@ -1,4 +1,20 @@
 var app = angular.module('app', ['ui.router', 'ui.bootstrap', 'ngSanitize', 'ngCookies' ]);
+
+app.constant('AUTH_EVENTS', {
+    loginSuccess: 'auth-login-success',
+    loginFailed: 'auth-login-failed',
+    logoutSuccess: 'auth-logout-success',
+    sessionTimeout: 'auth-session-timeout',
+    notAuthenticated: 'auth-not-authenticated',
+    notAuthorized: 'auth-not-authorized'
+});
+app.constant('USER_ROLES', {
+    all: '*',
+    admin: 'admin',
+    user: 'user',
+    guest: 'guest'
+});
+
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, USER_ROLES){
     $locationProvider.html5Mode({
         enabled: true,
@@ -80,6 +96,14 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, USER_
             controller: "artistController",
             data: {
                 authorizedRoles: [USER_ROLES.all, USER_ROLES.user]
+            }
+        })
+        .state('profile', {
+            url: "/:artistId/profile",
+            templateUrl: "/templates/user/profile.html",
+            controller: "profileController",
+            data: {
+                authorizedRoles: [ USER_ROLES.admin ]
             }
         });
 

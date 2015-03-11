@@ -1,0 +1,81 @@
+<section class="container m-main-title">
+    <div class="row">
+        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-2 m-text_center">
+
+        </div>
+        <div class="col-xs-12 col-sm-10 col-md-7 col-lg-6">
+            <h1>Профиль</h1>
+            <h2>Аватар</h2>
+            <div class="media m-margin-bottom_small">
+                <div class="media__aside">
+                    <div>
+                        <img class="user-avatar" src="/data/avatars/{{user.avatar}}.jpg" alt=""/>
+                    </div>
+                </div>
+                <div class="media__body">
+                    <form id="avatarDZ" action="/account/profile/image" method="post" enctype="multipart/form-data"
+                          class="dropzone btn btn-lg btn-helper dz-clickable is-hidden dz-max-files-reached"
+                          data-default-message="Изменить фото"
+                          data-invalid-file-type="Тип файла не поддерживается."
+                          data-max-files-exceeded="Maximum files exceeded"
+                          data-invalid-extension="Не верный формат файла .{{extension}}">
+
+                        <div class="dz-default dz-message"><span>Изменить фото</span></div>
+                    </form>
+                    <button class="btn btn-lg btn-info m-hidden">Применить</button>
+                    <button class="m-hidden btn btn-lg btn-helper">Отмена</button>
+                    <p>
+                        <small>Это фото является публичным.</small>
+                    </p>
+                </div>
+            </div>
+            <form action="/ajax/ajax.php" method="post" class="form ajax" ajax-form>
+                <h2>Информация о профиле</h2>
+                <div>
+                    <label for="urlname" class="form__row__label--title">Имя пользователя</label>
+                    <div class="form__row form__row--prefix">
+                        <span class="form__row--prefix__label">https://lovecanvas.ru/</span>
+                        <input id="urlname" type="text" class="input-block-level form__row--prefix--love" placeholder="имя" ng-model="user.url" disabled>
+                        <input type="hidden" name="urlname" value="{{user.url}}"/>
+                        <small>Данное имя пользователя даёт вам уникальную ссылку на ваш профиль, которую вы можете давать вашим знакомым и друзьям. Эта ссылка не может быть изменена.</small>
+                    </div>
+                </div>
+                <div class="form__row form__row--is_required">
+                    <label class="form__row__label--title" for="username">Отображаемое имя</label>
+                    <input name="username" id="username" type="text" ng-model="user.name"/>
+                    <span class="m-text_error m-hidden"></span>
+                    <!--<small>This name will display along with your photo on comments or your art pieces.</small>-->
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="form__row form__row--is_required">
+                            <label class="form__row__label--title" for="email">Email</label>
+                            <input name="email" id="email" type="email" ng-model="user.email"/>
+                            <span class="m-text_error m-hidden"></span>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="form__row">
+                            <label class="form__row__label--title" for="phone">Телефон</label>
+                            <input name="phone" id="phone" type="tel" ng-model="user.phone"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form__row">
+                    <label for="about">О себе</label>
+                    <textarea name="about" id="about" cols="30" rows="6" ng-model="user.about"></textarea>
+                </div>
+                <div class="form__row">
+                    <label for="username">Сайт</label>
+                    <input name="website" id="website" type="text" ng-model="user.website"/>
+                </div>
+                <div class="form__row">
+                    <input type="hidden" name="userid" value="{{user.id}}">
+                    <input type="hidden" name="act" value="profileSave">
+                    <button class="btn btn-info btn-lg" type="submit">Сохранить</button>
+                </div>
+                <div class="info info--success info--hide">&nbsp;</div>
+            </form>
+        </div>
+    </div>
+</section>
