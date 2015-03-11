@@ -4,8 +4,8 @@
 
         </div>
         <div class="col-xs-12 col-sm-10 col-md-7 col-lg-6">
-            <h1>Профиль</h1>
-            <h2>Аватар</h2>
+            <h1 class="h1">Профиль</h1>
+            <h2 class="h2">Аватар</h2>
             <div class="media m-margin-bottom_small">
                 <div class="media__aside">
                     <div>
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <form action="/ajax/ajax.php" method="post" class="form ajax" ajax-form>
-                <h2>Информация о профиле</h2>
+                <h2 class="h2">Информация о профиле</h2>
                 <div>
                     <label for="urlname" class="form__row__label--title">Имя пользователя</label>
                     <div class="form__row form__row--prefix">
@@ -62,11 +62,11 @@
                     </div>
                 </div>
                 <div class="form__row">
-                    <label for="about">О себе</label>
+                    <label class="form__row__label--title" for="about">О себе</label>
                     <textarea name="about" id="about" cols="30" rows="6" ng-model="user.about"></textarea>
                 </div>
                 <div class="form__row">
-                    <label for="username">Сайт</label>
+                    <label class="form__row__label--title" for="username">Сайт</label>
                     <input name="website" id="website" type="text" ng-model="user.website"/>
                 </div>
                 <div class="form__row">
