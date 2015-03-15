@@ -1,4 +1,4 @@
-app.controller('profileController', function ($scope, $http, $state, USER_ROLES, AuthService) {
+app.controller('profileController', function ($scope, $http, $state, Session, USER_ROLES, AuthService) {
     $scope.isHidden = true;
     var userURL = $state.params.artistId;
     $scope.dropzoneConfig = {

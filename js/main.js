@@ -103,7 +103,7 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, USER_
             templateUrl: "/templates/user/profile.html",
             controller: "profileController",
             data: {
-                authorizedRoles: [ USER_ROLES.admin ]
+                authorizedRoles: [ USER_ROLES.user, USER_ROLES.admin ]
             }
         });
 

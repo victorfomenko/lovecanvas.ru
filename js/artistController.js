@@ -1,4 +1,4 @@
-app.controller("artistController", function($scope, $state, $http, $timeout){
+app.controller("artistController", function($scope, $state, $http, $timeout, Session){
     var artistId = $state.params.artistId,
         artistData;
     $http.post('/ajax/getArtistInfo.php', artistId)
@@ -19,6 +19,7 @@ app.controller("artistController", function($scope, $state, $http, $timeout){
             }
             $timeout(collage, 200);
             $timeout(caption, 0);
+            $scope.isOwner = artistData.id === Session.userId;
         });
     $scope.artistId = artistId;
 
