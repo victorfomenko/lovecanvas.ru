@@ -76,7 +76,7 @@ app.controller('profileController', function ($scope, $http, $state, USER_ROLES,
         }).then(function(){
             $scope.user = result.user;
             if(!result.user.avatar) {
-                $scope.user.avatar = 'noavatar';
+                $scope.user.avatar = 'noavatar.jpg';
             }
         });
 });
