@@ -6,28 +6,17 @@
         <div class="col-xs-12 col-sm-10 col-md-7 col-lg-6">
             <h1 class="h1">Профиль</h1>
             <h2 class="h2">Аватар</h2>
-            <div class="media m-margin-bottom_small">
+            <div class="media dz m-margin-bottom_small" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig">
                 <div class="media__aside">
-                    <div>
-                        <img class="user-avatar" src="/data/avatars/{{user.avatar}}.jpg" alt=""/>
+                    <div class="dz-original-avatar" ng-class="{'m-hidden' : !isHidden}">
+                        <img class="user-avatar" ng-src="/data/avatars/{{user.avatar}}" alt="{{user.name}}" title="{{user.name}}"/>
                     </div>
-                    <div class="dropzone-previews"></div>
+                    <div class="dropzone-previews dz-preview"></div>
                 </div>
-                <div class="media__body">
-                    <!--<form id="avatarDZ" action="/account/profile/image" method="post" enctype="multipart/form-data"
-                          class="dropzone btn btn-lg btn-helper dz-clickable is-hidden dz-max-files-reached"
-                          data-default-message="Изменить фото"
-                          data-invalid-file-type="Тип файла не поддерживается."
-                          data-max-files-exceeded="Maximum files exceeded"
-                          data-invalid-extension="Не верный формат файла .{{extension}}">
-
-                        <div class="dz-default dz-message"><span>Изменить фото</span></div>
-                    </form>-->
-                    <form class="dropzone btn btn-lg btn-helper" method="post" enctype="multipart/form-data" action="/account/profile/image" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig">
-                        <div class="dz-default dz-message"><span>Изменить фото</span></div>
-                    </form>
-                    <button class="btn btn-lg btn-info m-hidden">Применить</button>
-                    <button class="m-hidden btn btn-lg btn-helper">Отмена</button>
+                <div class="media__body" id="dz-actions">
+                    <button class="btn btn-lg btn-helper dz-select" ng-class="{'m-hidden' : !isHidden}">Изменить фото</button>
+                    <button class="btn btn-lg btn-info dz-start" ng-class="{'m-hidden' : isHidden}">Применить</button>
+                    <button class="btn btn-lg btn-helper dz-cancel" ng-class="{'m-hidden' : isHidden}">Отмена</button>
                     <p>
                         <small>Это фото является публичным.</small>
                     </p>

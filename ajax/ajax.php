@@ -2,6 +2,7 @@
 
 include './classes/Auth.class.php';
 include './classes/AjaxRequest.class.php';
+include './classes/AjaxFileSave.class.php';
 
 if (!empty($_COOKIE['sid'])) {
     // check session id in cookies
@@ -18,6 +19,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         "profile" => "profile",
         "artist" => "artist",
         "profileSave" => "profileSave",
+        "avatarSave" => "avatarSave",
     );
 
     public function login()
@@ -45,7 +47,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
             return;
         }
 
-        $user = new Auth\User();
+        $user = new User();
         $auth_result = $user->authorize($email, $password, $remember);
 
         if (!$auth_result) {
@@ -70,7 +72,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
 
         setcookie("sid", "");
 
-        $user = new Auth\User();
+        $user = new User();
         $user->logout();
 
         $this->setResponse("redirect", ".");
@@ -124,7 +126,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
             return;
         }
 
-        $user = new Auth\User();
+        $user = new User();
 
         try {
             $new_user_id = $user->create($username, $URLName, $email, $password1);
@@ -150,7 +152,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
             $this->setFieldError("session", "No session on the server");
             return;
         }
-        $user = new Auth\User();
+        $user = new User();
 
         $this->status = "ok";
         $role = 'user';
@@ -177,7 +179,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
             return;
         }
         $url = $this->getRequestParam("userurl");
-        $user = new Auth\User();
+        $user = new User();
         $userInfo = $user->getUserInfo($url);
 
         /*if (!$userInfo) {
@@ -228,13 +230,38 @@ class AuthorizationAjaxRequest extends AjaxRequest
             'website'=> $website,
             'about'=> $about,
         );
-        $user = new Auth\User();
+        $user = new User();
         try {
             $response = $user->setUserInfo($arr);
         } catch (\Exception $e) {
             $this->setFieldError("username", $e->getMessage());
             return;
         }
+        $this->message = sprintf("Данные были успешно обновлены.");
+        $this->status = "ok";
+    }
+    public function avatarSave(){
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            // Method Not Allowed
+            http_response_code(405);
+            header("Allow: POST");
+            $this->setFieldError("main", "Method Not Allowed");
+            return;
+        }
+        if(empty($_SESSION["user_id"])) {
+            $this->setFieldError("session", "No session on the server");
+            return;
+        }
+        $urlname = $this->getRequestParam("urlname");
+
+        if($urlname !== $_SESSION['url_name'] && !$_SESSION['is_admin']) {
+            $this->message = sprintf("Sorry, %s! You have no access.");
+            return;
+        }
+        $target_dir = "../data/avatars/";
+        $upload = new FileSave();
+        $response = $upload->uploadAvatar($target_dir, 'file', $urlname);
+        $this->user = $response;
         $this->message = sprintf("Данные были успешно обновлены.");
         $this->status = "ok";
     }

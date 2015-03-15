@@ -1,7 +1,7 @@
 <section class="container m-main-title artist">
     <div class="row">
         <div class="col-xs-6 col-sm-2 col-md-3 col-lg-2 m-text_center">
-            <img class="artist__avatar user-avatar" ng-src="/data/avatars/{{artist.avatar}}.jpg">
+            <img class="artist__avatar user-avatar" ng-src="/data/avatars/{{artist.avatar}}" alt="{{artist.name}}" title="{{artist.name}}">
             <a ng-show="isAuthorized && currentUser.role === 'admin'" href="{{artistId}}/profile" class="btn btn-info btn-sm">Редактировать</a>
         </div>
         <div class="col-xs-6 col-sm-10 col-md-9 col-lg-10">
@@ -21,7 +21,7 @@
                 <a href="/gallery/{{pic.seourl}}" class="gallery__wrapper" ng-repeat="pic in pictures" data-caption="<strong class='caption__content__name'>{{pic.name}}</strong><span class='caption__content__author'>{{pic.author}}</span>">
 
                     <!--<i class='heart'></i>-->
-                    <img ng-src="{{pic.preview}}" width="{{pic.width}}" height="{{pic.height}}" alt="{{pic.name}}"/>
+                    <img ng-src="{{pic.preview}}" width="{{pic.width}}" height="{{pic.height}}" alt="{{pic.name}}" />
                 </a>
             </div>
         </div>

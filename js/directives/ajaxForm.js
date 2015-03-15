@@ -184,7 +184,7 @@ app.directive('ajaxForm', function($rootScope, $timeout) {
                         } else {
                             var $errField = $form.find('[name|="' + data.code + '"]');
                             var $errContainer = $errField.next('span');
-                            $errContainer.html(data.message).show();
+                            $errContainer.hasClass('m-hidden') ? $errContainer.removeClass('m-hidden') : $errContainer.html(data.message).show();
                             $('input', $form).on('keydown', function(){
                                 $('.m-text_error').hide();
                             });

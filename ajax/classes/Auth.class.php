@@ -1,17 +1,11 @@
 <?php
 
-namespace Auth;
+include 'db.class.php';
 
 class User
 {
     private $id;
     private $email;
-    private $db;
-    private $db_host = "localhost";
-    private $db_name = "lovecanvas";
-    private $db_user = "root";
-    private $db_pass = "TwofRag83";
-
     private $is_authorized = false;
 
     private $user_id;
@@ -22,7 +16,8 @@ class User
     public function __construct($email = null, $password = null)
     {
         $this->email = $email;
-        $this->connectDb($this->db_name, $this->db_user, $this->db_pass, $this->db_host);
+        $database = new Database();
+        $this->db =  $database->db;
     }
 
     public function __destruct()
@@ -253,18 +248,5 @@ class User
         } 
 
         return $result;
-    }
-
-    public function connectdb($db_name, $db_user, $db_pass, $db_host = "localhost")
-    {
-        try {
-            $this->db = new \pdo("mysql:host=$db_host;dbname=$db_name", $db_user, $db_pass);
-        } catch (\pdoexception $e) {
-            echo "database error: " . $e->getmessage();
-            die();
-        }
-        $this->db->query('set names utf8');
-
-        return $this;
     }
 }
