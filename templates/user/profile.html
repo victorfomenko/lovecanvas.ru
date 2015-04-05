@@ -1,74 +1,18 @@
 <section class="container m-main-title">
     <div class="row">
-        <div class="col-xs-12 col-sm-2 col-md-3 col-lg-2 m-text_center">
-
-        </div>
-        <div class="col-xs-12 col-sm-10 col-md-7 col-lg-6">
-            <h1 class="h1">Профиль</h1>
-            <h2 class="h2">Аватар</h2>
-            <div class="media dz m-margin-bottom_small" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig">
-                <div class="media__aside">
-                    <div class="dz-original-avatar" ng-class="{'m-hidden' : !isHidden}">
-                        <img class="user-avatar" ng-src="/data/avatars/{{user.avatar}}" alt="{{user.name}}" title="{{user.name}}"/>
-                    </div>
-                    <div class="dropzone-previews dz-preview"></div>
-                </div>
-                <div class="media__body" id="dz-actions">
-                    <button class="btn btn-lg btn-helper dz-select" ng-class="{'m-hidden' : !isHidden}">Изменить фото</button>
-                    <button class="btn btn-lg btn-info dz-start" ng-class="{'m-hidden' : isHidden}">Применить</button>
-                    <button class="btn btn-lg btn-helper dz-cancel" ng-class="{'m-hidden' : isHidden}">Отмена</button>
-                    <p>
-                        <small>Это фото является публичным.</small>
-                    </p>
-                </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+            <div class="m-margin-bottom_small">
+                <button class="btn btn-lg btn-info">Добавить фото</button>
             </div>
-            <form action="/ajax/ajax.php" method="post" class="form ajax" ajax-form>
-                <h2 class="h2">Информация о профиле</h2>
-                <div>
-                    <label for="urlname" class="form__row__label--title">Имя пользователя</label>
-                    <div class="form__row form__row--prefix">
-                        <span class="form__row--prefix__label">https://lovecanvas.ru/</span>
-                        <input id="urlname" type="text" class="input-block-level form__row--prefix--love" placeholder="имя" ng-model="user.url" disabled>
-                        <input type="hidden" name="urlname" value="{{user.url}}"/>
-                        <small>Данное имя пользователя даёт вам уникальную ссылку на ваш профиль, которую вы можете давать вашим знакомым и друзьям. Эта ссылка не может быть изменена.</small>
-                    </div>
-                </div>
-                <div class="form__row form__row--is_required">
-                    <label class="form__row__label--title" for="username">Отображаемое имя</label>
-                    <input name="username" id="username" type="text" ng-model="user.name"/>
-                    <span class="m-text_error m-hidden"></span>
-                    <!--<small>This name will display along with your photo on comments or your art pieces.</small>-->
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <div class="form__row form__row--is_required">
-                            <label class="form__row__label--title" for="email">Email</label>
-                            <input name="email" id="email" type="email" ng-model="user.email"/>
-                            <span class="m-text_error m-hidden"></span>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        <div class="form__row">
-                            <label class="form__row__label--title" for="phone">Телефон</label>
-                            <input name="phone" id="phone" type="tel" ng-model="user.phone"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="form__row">
-                    <label class="form__row__label--title" for="about">О себе</label>
-                    <textarea name="about" id="about" cols="30" rows="6" ng-model="user.about"></textarea>
-                </div>
-                <div class="form__row">
-                    <label class="form__row__label--title" for="username">Сайт</label>
-                    <input name="website" id="website" type="text" ng-model="user.website"/>
-                </div>
-                <div class="form__row">
-                    <input type="hidden" name="userid" value="{{user.id}}">
-                    <input type="hidden" name="act" value="profileSave">
-                    <button class="btn btn-info btn-lg" type="submit">Сохранить</button>
-                </div>
-                <div class="info info--success info--hide">&nbsp;</div>
-            </form>
+            <nav class="admin-nav" ng-repeat="section in adminNav">
+                <h2 class="admin-nav__title">{{section.title}}</h2>
+                <ul class="admin-nav__list">
+                    <li class="admin-nav__list__item" ng-class="{'is-active': list.isActive}" ng-click="changeActiveLink(list)" ng-repeat="list in section.list">
+                        <a class="admin-nav__list__item__link" href="{{list.link}}"><i class="icon {{list.icon}}"></i>{{list.name}}</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
+        <div class="col-xs-12 col-sm-6 col-md-7 col-lg-7" ui-view="profile"></div>
     </div>
 </section>

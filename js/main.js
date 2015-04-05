@@ -103,6 +103,30 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, USER_
             templateUrl: "/templates/user/profile.html",
             controller: "profileController",
             data: {
+                authorizedRoles: [ USER_ROLES.all, USER_ROLES.user, USER_ROLES.admin ]
+            }
+        })
+        .state('profile.edit', {
+            url: "/edit",
+            views: {
+                "profile": {
+                    templateUrl: "/templates/user/profile/edit.html",
+                    controller: "profileEditController"
+                }
+            },
+            data: {
+                authorizedRoles: [ USER_ROLES.user, USER_ROLES.admin ]
+            }
+        })
+        .state('profile.password', {
+            url: "/password",
+            views: {
+                "profile": {
+                    templateUrl: "/templates/user/profile/pwd.html",
+                    controller: "profilePwdController"
+                }
+            },
+            data: {
                 authorizedRoles: [ USER_ROLES.user, USER_ROLES.admin ]
             }
         });
@@ -126,18 +150,17 @@ app.constant('USER_ROLES', {
     user: 'user',
     guest: 'guest'
 });
-app.run(function ($rootScope, AUTH_EVENTS, USER_ROLES, AuthService) {
+app.run(function ($rootScope, AUTH_EVENTS, USER_ROLES, AuthService, $cookies) {
     $rootScope.$on('$stateChangeStart', function (event, next) {
-        var authorizedRoles = next.data.authorizedRoles,
-            anon = false;
-        if(!authorizedRoles) return;
+        var authorizedRoles = next.data.authorizedRoles;
+        if(!authorizedRoles) return; //return if we have no roles in list
 
-        _.forEach(authorizedRoles, function(item){
-            if ( item === USER_ROLES.all) anon = true;
-        });
-        if (anon) return;
+        //return if we have USER_ROLES.all access
+        for(var i = 0; i < authorizedRoles.length; i++) {
+            if ( authorizedRoles[i] === USER_ROLES.all) return;
+        }
 
-
+        //get user data from server using session id
         if (!AuthService.isAuthorized(authorizedRoles)) {
             event.preventDefault();
             if (AuthService.isAuthenticated()) {
@@ -148,6 +171,7 @@ app.run(function ($rootScope, AUTH_EVENTS, USER_ROLES, AuthService) {
                 $rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
             }
         }
+
     });
 });
 /*

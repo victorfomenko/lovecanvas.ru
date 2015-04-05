@@ -249,4 +249,36 @@ class User
 
         return $result;
     }
+
+    public function changePassword($password) {
+
+        $query = "update users set password = :password, salt = :salt
+                  where id = :id";
+        $hashes = $this->passwordHash($password);
+        $sth = $this->db->prepare($query);
+
+        try {
+            $this->db->beginTransaction();
+            $result = $sth->execute(
+                array(
+                    ':id' => $_SESSION["user_id"],
+                    ':password' => $hashes['hash'],
+                    ':salt' => $hashes['salt'],
+                )
+            );
+            $this->db->commit();
+        } catch (\PDOException $e) {
+            $this->db->rollback();
+            echo "Database error: " . $e->getMessage();
+            die();
+        }
+
+        if (!$result) {
+            $info = $sth->errorInfo();
+            printf("Database error %d %s", $info[1], $info[2]);
+            die();
+        }
+
+        return $result;
+    }
 }

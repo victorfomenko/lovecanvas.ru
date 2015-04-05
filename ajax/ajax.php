@@ -20,6 +20,7 @@ class AuthorizationAjaxRequest extends AjaxRequest
         "artist" => "artist",
         "profileSave" => "profileSave",
         "avatarSave" => "avatarSave",
+        "changePassword" => "changePassword",
     );
 
     public function login()
@@ -140,6 +141,53 @@ class AuthorizationAjaxRequest extends AjaxRequest
         $this->setResponse("redirect", $URLName);
         $this->status = "ok";
     }
+
+    public function changePassword (){
+        if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+            // Method Not Allowed
+            http_response_code(405);
+            header("Allow: POST");
+            $this->setFieldError("main", "Method Not Allowed");
+            return;
+        }
+        if(empty($_SESSION["user_id"])) {
+            $this->setFieldError("session", "No session on the server");
+            return;
+        }
+
+        $password1 = $this->getRequestParam("password");
+        $password2 = $this->getRequestParam("password2");
+
+        if (empty($password1)) {
+            $this->setFieldError("password", "Введите пароль");
+            return;
+        }
+
+        if (empty($password2)) {
+            $this->setFieldError("password2", "Подтвердите пароль");
+            return;
+        }
+
+        if ($password1 !== $password2) {
+            $this->setFieldError("password2", "Пароли не совпадают");
+            return;
+        }
+        $user = new User();
+        $role = 'user';
+        if($_SESSION['is_admin']) $role = 'admin';
+
+        try {
+            $response = $user->changePassword($password1);
+        } catch (\Exception $e) {
+            $this->setFieldError("username", $e->getMessage());
+            return;
+        }
+        $this->message = sprintf("Пароль был успешно изменён.");
+        $this->status = "ok";
+
+
+    }
+
     public function profile() {
         if ($_SERVER["REQUEST_METHOD"] !== "POST") {
             // Method Not Allowed
