@@ -12,6 +12,17 @@
         $scope.userRoles = USER_ROLES;
         $scope.isAuthorized = AuthService.isAuthorized;
 
+
+        //set error message by default
+        $scope.note = {
+            type: {
+                info: 'info',
+                error: 'info--error'
+            },
+            class: null,
+            message: null
+        };
+
         $scope.setCurrentUser = function (user) {
             $scope.currentUser = user;
         };
@@ -25,21 +36,6 @@
             });
         }
 
-        //login
-        /*$scope.login = function (credentials) {
-
-            //do not login if already login
-            if(AuthService.isAuthenticated()) return;
-
-            //start login
-            AuthService.login(credentials).then(function (user) {
-                $rootScope.$broadcast(AUTH_EVENTS.loginSuccess);
-                $scope.setCurrentUser(user);
-            }, function () {
-                $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
-            });
-
-        };*/
         $scope.restoreUrl = function(){
             $location.hash('');
         };

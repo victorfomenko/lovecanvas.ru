@@ -1,4 +1,4 @@
-<section class="container m-main-title artist">
+<section class="container m-padding-default artist">
     <div class="row">
         <div class="col-xs-6 col-sm-2 col-md-3 col-lg-2 m-text_center">
             <img class="artist__avatar user-avatar" ng-src="/data/avatars/{{artist.avatar}}" alt="{{artist.name}}" title="{{artist.name}}">
@@ -6,9 +6,9 @@
         </div>
         <div class="col-xs-6 col-sm-10 col-md-9 col-lg-10">
             <h1 class="artist__header">{{artist.name}}</h1>
-            <span class="m-text_small">{{artist.about}}</span>
-            <div ng-if="artist.website">
-                <a target="_blank" href='{{artist.website}}' class="m-text_small">{{artist.website}}</a>
+            <span class="artist__about">{{artist.about}}</span>
+            <div class="artist__link" ng-if="artist.website">
+                <a target="_blank" href='{{artist.website}}'>{{artist.website}}</a>
             </div>
         </div>
     </div>

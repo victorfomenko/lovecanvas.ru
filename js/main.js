@@ -118,6 +118,18 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, USER_
                 authorizedRoles: [ USER_ROLES.user, USER_ROLES.admin ]
             }
         })
+        .state('profile.upload', {
+            url: "/upload",
+            views: {
+                "profile": {
+                    templateUrl: "/templates/user/profile/upload.html",
+                    controller: "profileUploadController"
+                }
+            },
+            data: {
+                authorizedRoles: [ USER_ROLES.all, USER_ROLES.user, USER_ROLES.admin ]
+            }
+        })
         .state('profile.password', {
             url: "/password",
             views: {

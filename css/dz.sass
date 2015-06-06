@@ -1,0 +1,84 @@
+$dzProgressHeight: 10px
+
+.dz
+	display: block
+
+	.dz-error-message
+		height: 0
+
+	.dz-message .icon
+		font-size: 36px
+		font-size: 2.4rem
+
+	.dz-preview
+		width: 96px
+		width: 6.4rem
+
+	.dropzone-previews
+		@extend .m-list-horizontal
+
+	.dz-preview--art
+		@extend .m-list-horizontal
+		display: inline
+		float: left
+		position: relative
+		margin-right: 11px
+		margin-right: .7333rem
+		margin-bottom: 22px
+		margin-bottom: 1.466rem
+
+		.dz-size,
+		.dz-filename,
+		.dz-success-mark,
+		.dz-error-mark
+			display: none
+
+		.dz-details
+			position: relative
+			background: #313436
+			width: 96px
+			width: 6.4rem
+			height: 66px
+			height: 4.4rem
+			overflow: hidden
+			text-align: center
+			display: block
+
+		img.m-landscape
+			position: relative
+			left: 50%
+			-webkit-transform: translateX(-50%)
+			-ms-transform: translateX(-50%)
+			transform: translateX(-50%)
+			display: block
+
+
+		.dz-remove
+			text-align: center
+			color: $COLOR_TEXT
+			font-size: 12px
+			font-size: .75rem
+
+
+
+	.upload-tabs
+		.dz-upload-btn
+			text-align: center
+			display: inline-block
+			border: 3px dashed $COLOR_BORDER
+			color: $COLOR_BORDER
+			width: 96px
+			width: 6.4rem
+			height: 66px
+			height: 4.4rem
+			margin-bottom: 22px
+			margin-bottom: 1.466rem
+
+			i
+				display: inline-block
+				font-size: 2rem
+				text-decoration: none
+				@include vertical-align
+
+		.dz-upload-btn:hover
+			color: $COLOR_TEXT_LINK

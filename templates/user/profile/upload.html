@@ -1,0 +1,70 @@
+<h1 class="h1">Загрузить работу</h1>
+<div ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig" class="dz">
+    <div id="artDZ" class="dropzone m-margin-bottom_middle m-text_big">
+        <div class="dz-default dz-message">
+            <span><i class="icon icon-transfers-42 icon_large"></i><br>
+                Вы можете загрузить <strong>до 5 фото</strong> <br/>
+                <small>Максимальный размер файла: 25MB</small>
+            </span>
+        </div>
+    </div>
+
+    <form action="/account/upload/describe" method="post" enctype="multipart/form-data" id="uploadArt">
+        <div id="uploadTabs">
+            <div class="upload-tabs">
+                <div class="container--admin-content clearfix">
+                    <ul class="dropzone-previews beaker-tabs pull-left m-hidden clearfix"></ul>
+                    <a href="#" id="uploadArtBtn" class="dz-upload-btn m-hidden"><i class="icon icon-interface-89 icon_large"></i></a>
+                </div>
+            </div>
+            <div class="beaker-panels upload-panels m-hidden"></div>
+        </div>
+        <div class="button-group-rev">
+            <button class="dropzone-exit m-hidden button--primary button_loader" disabled="" id="submitArt" type="submit" data-label-loaded="Save all and continue">
+                <i class="icon--check-large icon_before_small"></i>
+                <span class="label">Uploading</span>
+            </button>
+            <a class="dropzone-next m-hidden button" id="nextImage" href="#">Next image</a>
+        </div>
+        <div class="description clearfix">
+            <div class="description__item row">
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <div class="description__item__pic">
+                        <img class="w100" src="/data/full/index952_flat_elements.jpg" alt=""/>
+                    </div>
+                    <section class="description__item__progress">
+                        <div class="progressbar">
+                            <i class="progressbar__progress"></i>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <div class="form__row form__row--is_required">
+                        <label for="title" class="form__row__label--title">Название</label>
+                        <input name="title" id="title" type="text" required class="input-block-level">
+                        <span class="m-text_error"></span>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-6 col-lg-6">
+                    <div class="form__row">
+                        <label for="brief_description" class="form__row__label--title">Краткое описание</label>
+                        <textarea name="description" id="brief_description" rows="3" class="input-block-level"></textarea>
+                        <span class="m-text_error"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="goToDescriptionArt" class="m-margin-bottom_middle m-hidden">
+        <button ng-click="startUpload()" class="btn btn-lg btn-info">Перейти к описанию <i class="icon-arrows-chevron-medium-circle-4-01"></i></button>
+    </div>
+</div>
+
+<!--
+<div class="dropzone dz-clickable" ng-dropzone dropzone-config="dropzoneConfig">
+    <div class="dz-message">
+        Drop files here or click to upload.<br>
+        <span class="note">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+    </div>
+
+</div>-->

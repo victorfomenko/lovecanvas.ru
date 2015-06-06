@@ -1,0 +1,138 @@
+.select
+	position: relative
+
+	select
+		text-indent: .01px
+		text-overflow: ""
+		-webkit-box-shadow: 0 2px 2px 0 rgba(140, 146, 159, 0.1)
+		box-shadow: 0 2px 2px 0 rgba(140, 146, 159, 0.1)
+		color: #33383F
+		display: block
+		background-image: none
+		background: #FFF
+		border: 1px solid #C7CDD1
+		border-radius: 3px
+		font-size: 14px
+		margin: 0
+		padding: 11.75px 17.6px
+		width: 100%
+		-webkit-appearance: button
+
+	select:disabled
+		cursor: not-allowed
+		opacity: .5
+
+.select:after
+	pointer-events: none
+	content: ""
+	position: absolute
+	width: 0
+	height: 0
+	border-top: 4px solid #8A95A5
+	border-left: 4px solid rgba(0, 0, 0, 0)
+	border-right: 4px solid rgba(0, 0, 0, 0)
+	top: 22.75px
+	right: 22px
+
+
+.select__width-separator
+	position: absolute
+	right: -23px
+	top: 50%
+	margin-top: -10px
+
+.form__row
+	margin-bottom:  15px
+	overflow: hidden
+
+	input
+		color: #33383f
+		margin-bottom: 5.5px
+
+	[type='text'],
+	[type='email'],
+	[type='tel'],
+	[type='password'],
+	textarea
+		display: block
+		width: 100%
+		height: 46px
+		border: 1px solid $COLOR_BORDER
+		padding: 6px 18px
+		font-weight: normal
+		font-size: 18px
+		@include border-radius(3px)
+		outline: none
+
+	textarea
+		height: auto
+		color: $COLOR_TEXT
+		font-size: 15px
+		padding-top: 16px
+		padding-bottom: 16px
+
+.form__row--is_required
+	label:after
+		content: "*"
+		margin-left: 2px
+		color: #f66b6a
+
+.form__row--prefix
+	position: relative
+	padding-top: 1px
+	margin-bottom: 22px
+
+.form__row--prefix__label
+	pointer-events: none
+	position: absolute
+	z-index: 1
+	top: 12.75px
+	top: .86688rem
+	left: 19.5px
+	left: 1.29975rem
+	font-size: 14px
+	font-size: 1.2rem
+
+.form__row--prefix--love
+	text-indent: 9.8em
+
+.form__samples
+	margin-bottom: 15px
+
+.form__row__note
+	font-size: 0.7em
+
+.form__row__label--title
+	font-family: HelveticaNeueMedium, HelveticaNeue-Medium, "Helvetica Neue Medium", HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif
+	font-weight: 500
+	font-size: 15px
+	margin-bottom: 5.5px
+	margin-bottom: .34375rem
+
+.radio--image
+	position: absolute
+	opacity: 0
+	cursor: pointer
+
+.radio--image+label
+	display: block
+	cursor: pointer
+
+
+	img
+		border: 3px solid #F3F5F5
+		max-width: 100%
+		height: auto
+		pointer-events: none
+
+.radio--image:checked+label img
+	border-color: $COLOR_SELECTED
+
+.form__price
+	font-size: 30px
+	margin-top: 5px
+	margin-bottom: 21px
+
+@media (min-width: 768px)
+	.product-info
+		padding-left: 50px
