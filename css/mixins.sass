@@ -23,25 +23,25 @@
 
 @mixin border-radius($val, $position: false)
 
-	@if position == false
+	@if $position == false
 		-webkit-border-radius: $val
 		-moz-border-radius: $val
 		border-radius: $val
 
-	@else if position == topleft
+	@else if $position == topleft
 		@include topleft($val)
 
-	@else if position == topright
+	@else if $position == topright
 		@include topright($val)
 
-	@else if position == top
+	@else if $position == top
 		@include topleft($val)
 		@include topright($val)
 
-	@else if position == bottomleft
+	@else if $position == bottomleft
 		@include bottomleft($val)
 
-	@else if position == bottomright
+	@else if $position == bottomright
 		@include bottomright($val)
 
 	@else

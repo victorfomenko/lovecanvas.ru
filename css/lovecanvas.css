@@ -6494,12 +6494,9 @@ h3 {
     padding: 6px 18px;
     font-weight: normal;
     font-size: 18px;
-    -webkit-border-bottom-left-radius: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    border-bottom-left-radius: 3px;
-    -webkit-border-bottom-right-radius: 3px;
-    -moz-border-radius-bottomright: 3px;
-    border-bottom-right-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     outline: none; }
   .form__row textarea {
     height: auto;
@@ -6813,12 +6810,9 @@ table th[class*="col-"] {
   color: #67707C; }
 
 .box {
-  -webkit-border-bottom-left-radius: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  border-bottom-left-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -moz-border-radius-bottomright: 5px;
-  border-bottom-right-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   padding: 20px;
   background-color: #F9F9F9;
   margin-bottom: 40px;
@@ -7173,12 +7167,9 @@ button.modal__close {
 .nav-tabs > li > a {
   margin-right: 2px;
   border: 1px solid transparent;
-  -webkit-border-bottom-left-radius: 4px 4px 0 0;
-  -moz-border-radius-bottomleft: 4px 4px 0 0;
-  border-bottom-left-radius: 4px 4px 0 0;
-  -webkit-border-bottom-right-radius: 4px 4px 0 0;
-  -moz-border-radius-bottomright: 4px 4px 0 0;
-  border-bottom-right-radius: 4px 4px 0 0; }
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0; }
 
 .nav-tabs > li > a:hover {
   border-color: #eeeeee #eeeeee #dddddd; }
@@ -7891,12 +7882,9 @@ input[type="button"].btn-block {
   display: inline-block;
   width: 215px;
   height: 215px;
-  -webkit-border-bottom-left-radius: 215px;
-  -moz-border-radius-bottomleft: 215px;
-  border-bottom-left-radius: 215px;
-  -webkit-border-bottom-right-radius: 215px;
-  -moz-border-radius-bottomright: 215px;
-  border-bottom-right-radius: 215px;
+  -webkit-border-radius: 215px;
+  -moz-border-radius: 215px;
+  border-radius: 215px;
   background-color: rgba(255, 255, 255, 0.5);
   margin-bottom: -88px;
   background-image: url("../img/owl.png");
@@ -8442,12 +8430,9 @@ input[type="button"].btn-block {
 .user-avatar {
   width: 96px;
   height: 96px;
-  -webkit-border-bottom-left-radius: 500px;
-  -moz-border-radius-bottomleft: 500px;
-  border-bottom-left-radius: 500px;
-  -webkit-border-bottom-right-radius: 500px;
-  -moz-border-radius-bottomright: 500px;
-  border-bottom-right-radius: 500px;
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
   display: block; }
 
 .customer-review {
