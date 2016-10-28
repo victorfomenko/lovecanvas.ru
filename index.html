@@ -36,6 +36,7 @@
                         <li class="menu__item"><a href="/gallery" class="menu__item__link">Галерея</a></li>
                         <li class="menu__item"><a href="/delivery" class="menu__item__link">Доставка</a></li>
                         <li class="menu__item"><a href="/price" class="menu__item__link">Цены</a></li>
+                        <li ng-show="isAuthorized && currentUser.role === 'admin'" class="menu__item"><a href="/orders" class="menu__item__link">Заказы</a></li>
                         <!--<li class="menu__item"><a href="#modal-register" class="menu__item__link">Регистрация</a></li>-->
                     </ul>
 					<!--<div class="header__flex__item__owl"></div>-->
@@ -213,6 +214,7 @@
 <script type="text/javascript" src="/js/productController.js"></script>
 <script type="text/javascript" src="/js/priceController.js"></script>
 <script type="text/javascript" src="/js/artistController.js"></script>
+<script type="text/javascript" src="/js/ordersController.js"></script>
 <script type="text/javascript" src="/js/deliveryController.js"></script>
 <script type="text/javascript" src="/js/user/profileController.js"></script>
 <script type="text/javascript" src="/js/user/profileEditController.js"></script>

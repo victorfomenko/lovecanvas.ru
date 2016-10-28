@@ -66,6 +66,14 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, USER_
                 className: 'price-bg'
             }
         })
+        .state('orders', {
+            url: "/orders",
+            templateUrl: "/templates/orders.html",
+            controller: "ordersController",
+            data: {
+                authorizedRoles: [ USER_ROLES.user, USER_ROLES.admin ]
+            }
+        })
         .state('gallery', {
             url: "/gallery",
             templateUrl: "/templates/gallery.html",

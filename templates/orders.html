@@ -1,0 +1,28 @@
+<section class="container m-padding-default orders">
+    <div class="row">
+        <table class="table tab-pane">
+            <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Адрес</th>
+                <th>Размер рамы</th>
+                <th>Тип рамы</th>
+                <th>Цена</th>
+                <th>Дата заказа</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="order in orders">
+                    <td>{{order.name}}</td>
+                    <td>{{order.phone}}</td>
+                    <td>{{order.address}}</td>
+                    <td>{{order.framesize}}</td>
+                    <td>{{order.frametype}}</td>
+                    <td>{{order.price}}</td>
+                    <td>{{order.date}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
