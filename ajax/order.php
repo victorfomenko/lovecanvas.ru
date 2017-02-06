@@ -62,7 +62,7 @@
 	$message .= "Тип рамы: " . $frameType . "<br>";
 	$message .= "Края: " . $borderType . "<br>";
 	$message .= "Цена: " . $price . "<br>";
-	$message .= "Фото: <a href='https://lovecanvas.ru" . $imageurl . "</a>'><br>";
+	$message .= "Фото: <a href='https://lovecanvas.ru" . $imageurl . "'>Photo</a><br>";
 	sendEmail("info@lovecanvas.ru", $subject, $message);
 
 	function sendEmail( $email, $subject, $message ) {
