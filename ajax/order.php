@@ -91,7 +91,8 @@
         }
         return $randomString;
     }
-	print("ok");
+    header ("Content-Type: application/json");
+	print(json_encode(array("status"=>"ok")));
 	exit;
 
 ?>

@@ -77,6 +77,7 @@ class AjaxRequest
     public function showResponse()
     {
         header("Content-Type: application/json; charset=UTF-8");
+        header("access-control-allow-origin: *");
         echo $this->response;
     }
 }
