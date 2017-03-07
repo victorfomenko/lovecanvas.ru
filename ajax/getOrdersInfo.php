@@ -3,7 +3,7 @@
     //$url = $_REQUEST["url"];
 
     $q =    "SELECT SQL_CALC_FOUND_ROWS
-                        o.name, o.phone, o.email, o.city, o.address, o.producttype, o.framesize, o.frametype, o.price, o.date
+                         o.image, o.name, o.phone, o.email, o.city, o.address, o.producttype, o.framesize, o.frametype, o.price, o.date
                         FROM orders AS o
                         ORDER BY id DESC";
 
@@ -25,6 +25,7 @@
             $order["frametype"] =       $data['frametype'];
             $order["price"] =           $data['price'];
             $order["date"] =            $data['date'];
+            $order["image"] =           $data['image'];
             array_push($orders, $order);
         }
     }
